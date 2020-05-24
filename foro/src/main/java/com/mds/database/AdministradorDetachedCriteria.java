@@ -42,7 +42,7 @@ public class AdministradorDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final CollectionExpression elimina;
 	
 	public AdministradorDetachedCriteria() {
-		super(com.mds.foro.Administrador.class, com.mds.database.AdministradorCriteria.class);
+		super(com.mds.database.Administrador.class, com.mds.database.AdministradorCriteria.class);
 		id_usuario = new IntegerExpression("id_usuario", this.getDetachedCriteria());
 		amigo_de = new CollectionExpression("ORM_amigo_de", this.getDetachedCriteria());
 		email = new StringExpression("email", this.getDetachedCriteria());

@@ -19,7 +19,7 @@ import javax.persistence.*;
 @org.hibernate.annotations.Proxy(lazy=false)
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorValue("Administrador")
-public class Administrador extends com.mds.foro.Moderador implements Serializable {
+public class Administrador extends com.mds.database.Moderador implements Serializable {
 	public Administrador() {
 	}
 	
@@ -42,12 +42,12 @@ public class Administrador extends com.mds.foro.Moderador implements Serializabl
 		
 	};
 	
-	@OneToMany(mappedBy="es_creada_por", targetEntity=com.mds.foro.Secciones.class)	
+	@OneToMany(mappedBy="es_creada_por", targetEntity=com.mds.database.Secciones.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_creaS = new java.util.HashSet();
 	
-	@OneToMany(mappedBy="eliminado_por", targetEntity=com.mds.foro.Usuario.class)	
+	@OneToMany(mappedBy="eliminado_por", targetEntity=com.mds.database.Usuario.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_elimina = new java.util.HashSet();

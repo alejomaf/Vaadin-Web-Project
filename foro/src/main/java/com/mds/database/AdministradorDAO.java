@@ -65,7 +65,7 @@ public class AdministradorDAO {
 	
 	public static Administrador loadAdministradorByORMID(PersistentSession session, int id_usuario) throws PersistentException {
 		try {
-			return (Administrador) session.load(com.mds.foro.Administrador.class, new Integer(id_usuario));
+			return (Administrador) session.load(com.mds.database.Administrador.class, new Integer(id_usuario));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -75,7 +75,7 @@ public class AdministradorDAO {
 	
 	public static Administrador getAdministradorByORMID(PersistentSession session, int id_usuario) throws PersistentException {
 		try {
-			return (Administrador) session.get(com.mds.foro.Administrador.class, new Integer(id_usuario));
+			return (Administrador) session.get(com.mds.database.Administrador.class, new Integer(id_usuario));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -85,7 +85,7 @@ public class AdministradorDAO {
 	
 	public static Administrador loadAdministradorByORMID(PersistentSession session, int id_usuario, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Administrador) session.load(com.mds.foro.Administrador.class, new Integer(id_usuario), lockMode);
+			return (Administrador) session.load(com.mds.database.Administrador.class, new Integer(id_usuario), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -95,7 +95,7 @@ public class AdministradorDAO {
 	
 	public static Administrador getAdministradorByORMID(PersistentSession session, int id_usuario, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Administrador) session.get(com.mds.foro.Administrador.class, new Integer(id_usuario), lockMode);
+			return (Administrador) session.get(com.mds.database.Administrador.class, new Integer(id_usuario), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -148,7 +148,7 @@ public class AdministradorDAO {
 	}
 	
 	public static List queryAdministrador(PersistentSession session, String condition, String orderBy) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From com.mds.foro.Administrador as Administrador");
+		StringBuffer sb = new StringBuffer("From com.mds.database.Administrador as Administrador");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -164,7 +164,7 @@ public class AdministradorDAO {
 	}
 	
 	public static List queryAdministrador(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From com.mds.foro.Administrador as Administrador");
+		StringBuffer sb = new StringBuffer("From com.mds.database.Administrador as Administrador");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -263,7 +263,7 @@ public class AdministradorDAO {
 	}
 	
 	public static java.util.Iterator iterateAdministradorByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From com.mds.foro.Administrador as Administrador");
+		StringBuffer sb = new StringBuffer("From com.mds.database.Administrador as Administrador");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -279,7 +279,7 @@ public class AdministradorDAO {
 	}
 	
 	public static java.util.Iterator iterateAdministradorByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From com.mds.foro.Administrador as Administrador");
+		StringBuffer sb = new StringBuffer("From com.mds.database.Administrador as Administrador");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -296,10 +296,10 @@ public class AdministradorDAO {
 	}
 	
 	public static Administrador createAdministrador() {
-		return new com.mds.foro.Administrador();
+		return new com.mds.database.Administrador();
 	}
 	
-	public static boolean save(com.mds.foro.Administrador administrador) throws PersistentException {
+	public static boolean save(com.mds.database.Administrador administrador) throws PersistentException {
 		try {
 			CUPersistentManager.instance().saveObject(administrador);
 			return true;
@@ -310,7 +310,7 @@ public class AdministradorDAO {
 		}
 	}
 	
-	public static boolean delete(com.mds.foro.Administrador administrador) throws PersistentException {
+	public static boolean delete(com.mds.database.Administrador administrador) throws PersistentException {
 		try {
 			CUPersistentManager.instance().deleteObject(administrador);
 			return true;
@@ -323,39 +323,39 @@ public class AdministradorDAO {
 	
 	public static boolean deleteAndDissociate(com.mds.database.Administrador administrador)throws PersistentException {
 		try {
-			com.mds.foro.Secciones[] lCreaSs = administrador.creaS.toArray();
+			com.mds.database.Secciones[] lCreaSs = administrador.creaS.toArray();
 			for(int i = 0; i < lCreaSs.length; i++) {
 				lCreaSs[i].setEs_creada_por(null);
 			}
-			com.mds.foro.Usuario[] lEliminas = administrador.elimina.toArray();
+			com.mds.database.Usuario[] lEliminas = administrador.elimina.toArray();
 			for(int i = 0; i < lEliminas.length; i++) {
 				lEliminas[i].setEliminado_por(null);
 			}
-			com.mds.foro.Mensaje[] lEliminaMods = administrador.eliminaMod.toArray();
+			com.mds.database.Mensaje[] lEliminaMods = administrador.eliminaMod.toArray();
 			for(int i = 0; i < lEliminaMods.length; i++) {
 				lEliminaMods[i].setEliminado_por(null);
 			}
-			com.mds.foro.Usuario[] lAmigo_des = administrador.amigo_de.toArray();
+			com.mds.database.Usuario[] lAmigo_des = administrador.amigo_de.toArray();
 			for(int i = 0; i < lAmigo_des.length; i++) {
 				lAmigo_des[i].es_amigo_de.remove(administrador);
 			}
-			com.mds.foro.Temas[] lCreaTs = administrador.creaT.toArray();
+			com.mds.database.Temas[] lCreaTs = administrador.creaT.toArray();
 			for(int i = 0; i < lCreaTs.length; i++) {
 				lCreaTs[i].setCreado_por(null);
 			}
-			com.mds.foro.Mensaje[] lEscribes = administrador.escribe.toArray();
+			com.mds.database.Mensaje[] lEscribes = administrador.escribe.toArray();
 			for(int i = 0; i < lEscribes.length; i++) {
 				lEscribes[i].setPertenece_a(null);
 			}
-			com.mds.foro.Usuario[] lReporta_as = administrador.reporta_a.toArray();
+			com.mds.database.Usuario[] lReporta_as = administrador.reporta_a.toArray();
 			for(int i = 0; i < lReporta_as.length; i++) {
 				lReporta_as[i].es_reportado_por.remove(administrador);
 			}
-			com.mds.foro.Notificaciones[] lTienes = administrador.tiene.toArray();
+			com.mds.database.Notificaciones[] lTienes = administrador.tiene.toArray();
 			for(int i = 0; i < lTienes.length; i++) {
 				lTienes[i].setDe(null);
 			}
-			com.mds.foro.Usuario[] lEs_amigo_des = administrador.es_amigo_de.toArray();
+			com.mds.database.Usuario[] lEs_amigo_des = administrador.es_amigo_de.toArray();
 			for(int i = 0; i < lEs_amigo_des.length; i++) {
 				lEs_amigo_des[i].amigo_de.remove(administrador);
 			}
@@ -363,15 +363,15 @@ public class AdministradorDAO {
 				administrador.getEliminado_por().elimina.remove(administrador);
 			}
 			
-			com.mds.foro.Mensaje[] lGustaMs = administrador.gustaM.toArray();
+			com.mds.database.Mensaje[] lGustaMs = administrador.gustaM.toArray();
 			for(int i = 0; i < lGustaMs.length; i++) {
 				lGustaMs[i].es_gustado.remove(administrador);
 			}
-			com.mds.foro.Usuario[] lEs_reportado_pors = administrador.es_reportado_por.toArray();
+			com.mds.database.Usuario[] lEs_reportado_pors = administrador.es_reportado_por.toArray();
 			for(int i = 0; i < lEs_reportado_pors.length; i++) {
 				lEs_reportado_pors[i].reporta_a.remove(administrador);
 			}
-			com.mds.foro.Temas[] lGustaTs = administrador.gustaT.toArray();
+			com.mds.database.Temas[] lGustaTs = administrador.gustaT.toArray();
 			for(int i = 0; i < lGustaTs.length; i++) {
 				lGustaTs[i].es_gustado.remove(administrador);
 			}
@@ -383,41 +383,41 @@ public class AdministradorDAO {
 		}
 	}
 	
-	public static boolean deleteAndDissociate(com.mds.foro.Administrador administrador, org.orm.PersistentSession session)throws PersistentException {
+	public static boolean deleteAndDissociate(com.mds.database.Administrador administrador, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			com.mds.foro.Secciones[] lCreaSs = administrador.creaS.toArray();
+			com.mds.database.Secciones[] lCreaSs = administrador.creaS.toArray();
 			for(int i = 0; i < lCreaSs.length; i++) {
 				lCreaSs[i].setEs_creada_por(null);
 			}
-			com.mds.foro.Usuario[] lEliminas = administrador.elimina.toArray();
+			com.mds.database.Usuario[] lEliminas = administrador.elimina.toArray();
 			for(int i = 0; i < lEliminas.length; i++) {
 				lEliminas[i].setEliminado_por(null);
 			}
-			com.mds.foro.Mensaje[] lEliminaMods = administrador.eliminaMod.toArray();
+			com.mds.database.Mensaje[] lEliminaMods = administrador.eliminaMod.toArray();
 			for(int i = 0; i < lEliminaMods.length; i++) {
 				lEliminaMods[i].setEliminado_por(null);
 			}
-			com.mds.foro.Usuario[] lAmigo_des = administrador.amigo_de.toArray();
+			com.mds.database.Usuario[] lAmigo_des = administrador.amigo_de.toArray();
 			for(int i = 0; i < lAmigo_des.length; i++) {
 				lAmigo_des[i].es_amigo_de.remove(administrador);
 			}
-			com.mds.foro.Temas[] lCreaTs = administrador.creaT.toArray();
+			com.mds.database.Temas[] lCreaTs = administrador.creaT.toArray();
 			for(int i = 0; i < lCreaTs.length; i++) {
 				lCreaTs[i].setCreado_por(null);
 			}
-			com.mds.foro.Mensaje[] lEscribes = administrador.escribe.toArray();
+			com.mds.database.Mensaje[] lEscribes = administrador.escribe.toArray();
 			for(int i = 0; i < lEscribes.length; i++) {
 				lEscribes[i].setPertenece_a(null);
 			}
-			com.mds.foro.Usuario[] lReporta_as = administrador.reporta_a.toArray();
+			com.mds.database.Usuario[] lReporta_as = administrador.reporta_a.toArray();
 			for(int i = 0; i < lReporta_as.length; i++) {
 				lReporta_as[i].es_reportado_por.remove(administrador);
 			}
-			com.mds.foro.Notificaciones[] lTienes = administrador.tiene.toArray();
+			com.mds.database.Notificaciones[] lTienes = administrador.tiene.toArray();
 			for(int i = 0; i < lTienes.length; i++) {
 				lTienes[i].setDe(null);
 			}
-			com.mds.foro.Usuario[] lEs_amigo_des = administrador.es_amigo_de.toArray();
+			com.mds.database.Usuario[] lEs_amigo_des = administrador.es_amigo_de.toArray();
 			for(int i = 0; i < lEs_amigo_des.length; i++) {
 				lEs_amigo_des[i].amigo_de.remove(administrador);
 			}
@@ -425,15 +425,15 @@ public class AdministradorDAO {
 				administrador.getEliminado_por().elimina.remove(administrador);
 			}
 			
-			com.mds.foro.Mensaje[] lGustaMs = administrador.gustaM.toArray();
+			com.mds.database.Mensaje[] lGustaMs = administrador.gustaM.toArray();
 			for(int i = 0; i < lGustaMs.length; i++) {
 				lGustaMs[i].es_gustado.remove(administrador);
 			}
-			com.mds.foro.Usuario[] lEs_reportado_pors = administrador.es_reportado_por.toArray();
+			com.mds.database.Usuario[] lEs_reportado_pors = administrador.es_reportado_por.toArray();
 			for(int i = 0; i < lEs_reportado_pors.length; i++) {
 				lEs_reportado_pors[i].reporta_a.remove(administrador);
 			}
-			com.mds.foro.Temas[] lGustaTs = administrador.gustaT.toArray();
+			com.mds.database.Temas[] lGustaTs = administrador.gustaT.toArray();
 			for(int i = 0; i < lGustaTs.length; i++) {
 				lGustaTs[i].es_gustado.remove(administrador);
 			}
@@ -450,7 +450,7 @@ public class AdministradorDAO {
 		}
 	}
 	
-	public static boolean refresh(com.mds.foro.Administrador administrador) throws PersistentException {
+	public static boolean refresh(com.mds.database.Administrador administrador) throws PersistentException {
 		try {
 			CUPersistentManager.instance().getSession().refresh(administrador);
 			return true;
@@ -461,7 +461,7 @@ public class AdministradorDAO {
 		}
 	}
 	
-	public static boolean evict(com.mds.foro.Administrador administrador) throws PersistentException {
+	public static boolean evict(com.mds.database.Administrador administrador) throws PersistentException {
 		try {
 			CUPersistentManager.instance().getSession().evict(administrador);
 			return true;
