@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import javax.servlet.annotation.WebServlet;
 
+import org.orm.PersistentException;
+
+import com.mds.database.SeccionesDAO;
 import com.mds.interfaz.DB_Main;
 import com.mds.interfaz.iAdministrador;
 import com.mds.interfaz.iComun_registrados;
@@ -11,9 +14,13 @@ import com.mds.interfaz.iUsuario_No_Registrado;
 import com.vaadin.ui.NativeButton;
 import com.vaadin.ui.Notification;
 import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.event.LayoutEvents.LayoutClickEvent;
+import com.vaadin.event.LayoutEvents.LayoutClickListener;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.declarative.Design;
 
 public class Comun_registrados extends Comun_registrados_ventana implements Serializable{
@@ -37,7 +44,7 @@ public class Comun_registrados extends Comun_registrados_ventana implements Seri
 		else if(usu.getModerador()==true) modo=1;
 		else modo=2;
 		
-		nombreUsuario.setValue(usu.getNombre_usuario());		
+		nombreUsuario.setValue(usu.getEmail());		
 		inicializarBotones();
 		switch(modo) {
 		
@@ -169,77 +176,21 @@ public class Comun_registrados extends Comun_registrados_ventana implements Seri
 	public void escrituraSec(int pag, int num){
 		//Formula optimizada para calcular la posicion de la seccion
 		primeraSeccion=3*(pag-1);
+		
 		if(num<3) {
 			if(num==2) {
-				nombreSeccion1.setValue(secciones[primeraSeccion].getNombre());
-				nombreSeccion1.add
-				nombreSeccion1.addClickListener(new Button.ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						borrarSeccion();					}
-				});
-//				fechaCreacionSeccion.setValue(secciones[primeraSeccion].cogerFecha);
-				borrarSeccion.addClickListener(new Button.ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						borrarSeccion();					}
-				});
-//				numeroTemas.setValue(Metodo para cargar numero de temas);
-//				numeroMensajesEnSeccion.setValue(Metodo para cargar numero de mensajes);
-				
+				asignarValores(nombreSeccion1, fechaCreacionSeccion, borrarSeccion, numeroTemas, numeroMensajesEnSeccion, seccion1);		
 				primeraSeccion++;
-				
-				nombreSeccion2.setValue(secciones[primeraSeccion].getNombre());
-//				fechaCreacionSeccion1.setValue(secciones[primeraSeccion].cogerFecha);
-				borrarSeccion1.addClickListener(new Button.ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						borrarSeccion();					}
-				});
-//				numeroTemas1.setValue(Metodo para cargar numero de temas);
-//				numeroMensajesEnSeccion1.setValue(Metodo para cargar numero de mensajes);
+				asignarValores(nombreSeccion2, fechaCreacionSeccion1, borrarSeccion1, numeroTemas1, numeroMensajesEnSeccion1, seccion2);
 			}
-			else{
-				nombreSeccion1.setValue(secciones[primeraSeccion].getNombre());
-//				fechaCreacionSeccion.setValue(secciones[primeraSeccion].cogerFecha);
-				borrarSeccion.addClickListener(new Button.ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						borrarSeccion();					}
-				});
-//				numeroTemas.setValue(Metodo para cargar numero de temas);
-//				numeroMensajesEnSeccion.setValue(Metodo para cargar numero de mensajes);
-			}
+			else asignarValores(nombreSeccion1, fechaCreacionSeccion, borrarSeccion, numeroTemas, numeroMensajesEnSeccion, seccion1);
 		}
 		else {
-			nombreSeccion1.setValue(secciones[primeraSeccion].getNombre());
-//			fechaCreacionSeccion.setValue(secciones[primeraSeccion].cogerFecha);
-			borrarSeccion.addClickListener(new Button.ClickListener() {
-				public void buttonClick(ClickEvent event) {
-					borrarSeccion();
-				}
-			});
-//			numeroTemas.setValue(Metodo para cargar numero de temas);
-//			numeroMensajesEnSeccion.setValue(Metodo para cargar numero de mensajes);
-			
+			asignarValores(nombreSeccion1, fechaCreacionSeccion, borrarSeccion, numeroTemas, numeroMensajesEnSeccion, seccion1);	
+			primeraSeccion++;	
+			asignarValores(nombreSeccion2, fechaCreacionSeccion1, borrarSeccion1, numeroTemas1, numeroMensajesEnSeccion1, seccion2);
 			primeraSeccion++;
-			
-			nombreSeccion2.setValue(secciones[primeraSeccion].getNombre());
-//			fechaCreacionSeccion1.setValue(secciones[primeraSeccion].cogerFecha);
-			borrarSeccion1.addClickListener(new Button.ClickListener() {
-				public void buttonClick(ClickEvent event) {
-					borrarSeccion();
-				}
-			});
-//			numeroTemas1.setValue(Metodo para cargar numero de temas);
-//			numeroMensajesEnSeccion1.setValue(Metodo para cargar numero de mensajes);
-			
-			primeraSeccion++;
-			
-			nombreSeccion3.setValue(secciones[primeraSeccion].getNombre());
-//			fechaCreacionSeccion2.setValue(secciones[primeraSeccion].cogerFecha);
-			borrarSeccion2.addClickListener(new Button.ClickListener() {
-				public void buttonClick(ClickEvent event) {
-					borrarSeccion();				}
-			});
-//			numeroTemas2.setValue(Metodo para cargar numero de temas);
-//			numeroMensajesEnSeccion2.setValue(Metodo para cargar numero de mensajes);
+			asignarValores(nombreSeccion3, fechaCreacionSeccion2, borrarSeccion2, numeroTemas2, numeroMensajesEnSeccion2, seccion3);
 		}
 		
 	}
@@ -257,6 +208,23 @@ public class Comun_registrados extends Comun_registrados_ventana implements Seri
 	public void borrarSeccion() {
 		iadm.borrarSeccion(secciones[primeraSeccion].getORMID());
 		setContent(new Comun_registrados(usu));
+	}
+	
+	public void asignarValores(Label nombreS, Label fechaC, Button borrarS, Label numeroT, Label numeroM, HorizontalLayout seccion) {
+		com.mds.database.Secciones secAux=secciones[primeraSeccion];
+		seccion.addLayoutClickListener(new LayoutClickListener() {
+			public void layoutClick(LayoutClickEvent event) {
+					setContent(new Seccion(usu,secAux));
+			}
+		});
+		nombreS.setValue(secAux.getNombre());
+//		fechaC.setValue(secciones[primeraSeccion].cogerFecha);
+		borrarS.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				borrarSeccion();				}
+		});
+//		numeroT.setValue(Metodo para cargar numero de temas);
+//		numeroM.setValue(Metodo para cargar numero de mensajes);
 	}
 	
 }

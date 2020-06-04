@@ -38,18 +38,19 @@ public class BD_Usuarios implements Serializable {
 		throw new UnsupportedOperationException();
 	}
 
-	public void registrarse(String aNombreUsuario, String aContrasena, String aNombreCompleto, String aDescripcion, String aFotoPerfil, String email)throws PersistentException {
+	public void registrarse(String aContrasena, String aNombreCompleto, String aDescripcion, String aFotoPerfil, String email)throws PersistentException {
 		PersistentTransaction t= CUPersistentManager.instance().getSession().beginTransaction();
 		try {
 			com.mds.database.Usuario usu = UsuarioDAO.createUsuario();
+			
 			usu.setReportado(false);
 			usu.setEmail(email);
 			usu.setModerador(false);
-			usu.setNombre_usuario(aNombreUsuario);
-			usu.setContraseña(aContrasena);
+			usu.setContrasena(aContrasena);
 			usu.setDescripcion(aDescripcion);
 			usu.setNombre_completo(aNombreCompleto);
 			usu.setFoto(aFotoPerfil);
+			
 			
 			UsuarioDAO.save(usu);
 			t.commit();
@@ -82,7 +83,7 @@ public class BD_Usuarios implements Serializable {
 		try {
 			com.mds.database.Usuario[] usu = UsuarioDAO.listUsuarioByQuery("Email = \'"+aUsuario+"\'", null);
 			if(usu.length==0) { CUPersistentManager.instance().disposePersistentManager(); return null;}
-			if (usu[0].getContraseña().equals(aContrasena)) return usu[0];
+			if (usu[0].getContrasena().equals(aContrasena)) return usu[0];
 		}catch (Exception e) {
 			t.rollback();
 		}

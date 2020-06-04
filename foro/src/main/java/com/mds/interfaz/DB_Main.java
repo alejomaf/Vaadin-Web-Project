@@ -166,10 +166,10 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 		throw new UnsupportedOperationException();
 	}
 
-	public void registrarse(String aNombreUsuario, String aContrasena, String aNombreCompleto, String aDescripcion,
+	public void registrarse(String aContrasena, String aNombreCompleto, String aDescripcion,
 			String aFotoPerfil, String email) {
 		try {
-		usu.registrarse(aNombreUsuario, aContrasena, aNombreCompleto, aDescripcion, aFotoPerfil, email);
+		usu.registrarse(aContrasena, aNombreCompleto, aDescripcion, aFotoPerfil, email);
 		}catch(PersistentException e) {
 			e.printStackTrace();
 		}

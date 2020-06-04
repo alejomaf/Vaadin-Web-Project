@@ -20,8 +20,6 @@ import org.orm.criteria.*;
 
 public class MensajeDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression id_mensaje;
-	public final IntegerExpression eliminado_porId;
-	public final AssociationExpression eliminado_por;
 	public final IntegerExpression respuesta_deId;
 	public final AssociationExpression respuesta_de;
 	public final CollectionExpression es_gustado;
@@ -29,7 +27,7 @@ public class MensajeDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final AssociationExpression son_de;
 	public final IntegerExpression num_likes;
 	public final StringExpression contenido;
-	public final BooleanExpression privado;
+	public final DateExpression fechaMensaje;
 	public final CollectionExpression tiene;
 	public final IntegerExpression pertenece_aId;
 	public final AssociationExpression pertenece_a;
@@ -38,8 +36,6 @@ public class MensajeDetachedCriteria extends AbstractORMDetachedCriteria {
 	public MensajeDetachedCriteria() {
 		super(com.mds.database.Mensaje.class, com.mds.database.MensajeCriteria.class);
 		id_mensaje = new IntegerExpression("id_mensaje", this.getDetachedCriteria());
-		eliminado_porId = new IntegerExpression("eliminado_por.id_usuario", this.getDetachedCriteria());
-		eliminado_por = new AssociationExpression("eliminado_por", this.getDetachedCriteria());
 		respuesta_deId = new IntegerExpression("respuesta_de.id_mensaje", this.getDetachedCriteria());
 		respuesta_de = new AssociationExpression("respuesta_de", this.getDetachedCriteria());
 		es_gustado = new CollectionExpression("ORM_es_gustado", this.getDetachedCriteria());
@@ -47,7 +43,7 @@ public class MensajeDetachedCriteria extends AbstractORMDetachedCriteria {
 		son_de = new AssociationExpression("son_de", this.getDetachedCriteria());
 		num_likes = new IntegerExpression("num_likes", this.getDetachedCriteria());
 		contenido = new StringExpression("contenido", this.getDetachedCriteria());
-		privado = new BooleanExpression("privado", this.getDetachedCriteria());
+		fechaMensaje = new DateExpression("fechaMensaje", this.getDetachedCriteria());
 		tiene = new CollectionExpression("ORM_tiene", this.getDetachedCriteria());
 		pertenece_aId = new IntegerExpression("pertenece_a.id_usuario", this.getDetachedCriteria());
 		pertenece_a = new AssociationExpression("pertenece_a", this.getDetachedCriteria());
@@ -57,8 +53,6 @@ public class MensajeDetachedCriteria extends AbstractORMDetachedCriteria {
 	public MensajeDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, com.mds.database.MensajeCriteria.class);
 		id_mensaje = new IntegerExpression("id_mensaje", this.getDetachedCriteria());
-		eliminado_porId = new IntegerExpression("eliminado_por.id_usuario", this.getDetachedCriteria());
-		eliminado_por = new AssociationExpression("eliminado_por", this.getDetachedCriteria());
 		respuesta_deId = new IntegerExpression("respuesta_de.id_mensaje", this.getDetachedCriteria());
 		respuesta_de = new AssociationExpression("respuesta_de", this.getDetachedCriteria());
 		es_gustado = new CollectionExpression("ORM_es_gustado", this.getDetachedCriteria());
@@ -66,15 +60,11 @@ public class MensajeDetachedCriteria extends AbstractORMDetachedCriteria {
 		son_de = new AssociationExpression("son_de", this.getDetachedCriteria());
 		num_likes = new IntegerExpression("num_likes", this.getDetachedCriteria());
 		contenido = new StringExpression("contenido", this.getDetachedCriteria());
-		privado = new BooleanExpression("privado", this.getDetachedCriteria());
+		fechaMensaje = new DateExpression("fechaMensaje", this.getDetachedCriteria());
 		tiene = new CollectionExpression("ORM_tiene", this.getDetachedCriteria());
 		pertenece_aId = new IntegerExpression("pertenece_a.id_usuario", this.getDetachedCriteria());
 		pertenece_a = new AssociationExpression("pertenece_a", this.getDetachedCriteria());
 		contiene = new CollectionExpression("ORM_contiene", this.getDetachedCriteria());
-	}
-	
-	public ModeradorDetachedCriteria createEliminado_porCriteria() {
-		return new ModeradorDetachedCriteria(createCriteria("eliminado_por"));
 	}
 	
 	public MensajeDetachedCriteria createRespuesta_deCriteria() {

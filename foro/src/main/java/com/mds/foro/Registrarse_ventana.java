@@ -23,10 +23,9 @@ import com.vaadin.ui.declarative.Design;
 public class Registrarse_ventana extends Panel {
 	protected NativeButton salir;
 	protected Label titulo;
-	protected TextField nombreUsuario;
+	protected TextField email;
 	protected PasswordField contrasena;
 	protected PasswordField contrasena2;
-	protected TextField email;
 	protected TextField nombreCompleto;
 	protected TextField descripcion;
 	protected NativeButton adjuntar;

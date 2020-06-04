@@ -47,6 +47,10 @@ public class Secciones implements Serializable {
 	@Column(name="Nombre", nullable=true, length=255)	
 	private String nombre;
 	
+	@Column(name="FechaSeccion", nullable=true)	
+	@Temporal(TemporalType.DATE)	
+	private java.util.Date fechaSeccion;
+	
 	@OneToMany(mappedBy="pertenece_a", targetEntity=com.mds.database.Temas.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
@@ -70,6 +74,14 @@ public class Secciones implements Serializable {
 	
 	public String getNombre() {
 		return nombre;
+	}
+	
+	public void setFechaSeccion(java.util.Date value) {
+		this.fechaSeccion = value;
+	}
+	
+	public java.util.Date getFechaSeccion() {
+		return fechaSeccion;
 	}
 	
 	private void setORM_Tiene(java.util.Set value) {

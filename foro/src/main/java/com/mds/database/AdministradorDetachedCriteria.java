@@ -20,10 +20,8 @@ import org.orm.criteria.*;
 
 public class AdministradorDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression id_usuario;
-	public final CollectionExpression amigo_de;
 	public final StringExpression email;
-	public final StringExpression contraseña;
-	public final StringExpression nombre_usuario;
+	public final StringExpression contrasena;
 	public final StringExpression descripcion;
 	public final BooleanExpression moderador;
 	public final BooleanExpression reportado;
@@ -32,19 +30,16 @@ public class AdministradorDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final BooleanExpression eliminado;
 	public final CollectionExpression creaT;
 	public final CollectionExpression escribe;
+	public final CollectionExpression amigo_de;
 	public final CollectionExpression tiene;
-	public final CollectionExpression es_amigo_de;
 	public final CollectionExpression gustaM;
 	public final CollectionExpression gustaT;
-	public final CollectionExpression eliminaMod;
 	
 	public AdministradorDetachedCriteria() {
 		super(com.mds.database.Administrador.class, com.mds.database.AdministradorCriteria.class);
 		id_usuario = new IntegerExpression("id_usuario", this.getDetachedCriteria());
-		amigo_de = new CollectionExpression("ORM_amigo_de", this.getDetachedCriteria());
 		email = new StringExpression("email", this.getDetachedCriteria());
-		contraseña = new StringExpression("contraseña", this.getDetachedCriteria());
-		nombre_usuario = new StringExpression("nombre_usuario", this.getDetachedCriteria());
+		contrasena = new StringExpression("contrasena", this.getDetachedCriteria());
 		descripcion = new StringExpression("descripcion", this.getDetachedCriteria());
 		moderador = new BooleanExpression("moderador", this.getDetachedCriteria());
 		reportado = new BooleanExpression("reportado", this.getDetachedCriteria());
@@ -53,20 +48,17 @@ public class AdministradorDetachedCriteria extends AbstractORMDetachedCriteria {
 		eliminado = new BooleanExpression("eliminado", this.getDetachedCriteria());
 		creaT = new CollectionExpression("ORM_creaT", this.getDetachedCriteria());
 		escribe = new CollectionExpression("ORM_escribe", this.getDetachedCriteria());
+		amigo_de = new CollectionExpression("ORM_amigo_de", this.getDetachedCriteria());
 		tiene = new CollectionExpression("ORM_tiene", this.getDetachedCriteria());
-		es_amigo_de = new CollectionExpression("ORM_es_amigo_de", this.getDetachedCriteria());
 		gustaM = new CollectionExpression("ORM_gustaM", this.getDetachedCriteria());
 		gustaT = new CollectionExpression("ORM_gustaT", this.getDetachedCriteria());
-		eliminaMod = new CollectionExpression("ORM_eliminaMod", this.getDetachedCriteria());
 	}
 	
 	public AdministradorDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, com.mds.database.AdministradorCriteria.class);
 		id_usuario = new IntegerExpression("id_usuario", this.getDetachedCriteria());
-		amigo_de = new CollectionExpression("ORM_amigo_de", this.getDetachedCriteria());
 		email = new StringExpression("email", this.getDetachedCriteria());
-		contraseña = new StringExpression("contraseña", this.getDetachedCriteria());
-		nombre_usuario = new StringExpression("nombre_usuario", this.getDetachedCriteria());
+		contrasena = new StringExpression("contrasena", this.getDetachedCriteria());
 		descripcion = new StringExpression("descripcion", this.getDetachedCriteria());
 		moderador = new BooleanExpression("moderador", this.getDetachedCriteria());
 		reportado = new BooleanExpression("reportado", this.getDetachedCriteria());
@@ -75,19 +67,10 @@ public class AdministradorDetachedCriteria extends AbstractORMDetachedCriteria {
 		eliminado = new BooleanExpression("eliminado", this.getDetachedCriteria());
 		creaT = new CollectionExpression("ORM_creaT", this.getDetachedCriteria());
 		escribe = new CollectionExpression("ORM_escribe", this.getDetachedCriteria());
+		amigo_de = new CollectionExpression("ORM_amigo_de", this.getDetachedCriteria());
 		tiene = new CollectionExpression("ORM_tiene", this.getDetachedCriteria());
-		es_amigo_de = new CollectionExpression("ORM_es_amigo_de", this.getDetachedCriteria());
 		gustaM = new CollectionExpression("ORM_gustaM", this.getDetachedCriteria());
 		gustaT = new CollectionExpression("ORM_gustaT", this.getDetachedCriteria());
-		eliminaMod = new CollectionExpression("ORM_eliminaMod", this.getDetachedCriteria());
-	}
-	
-	public MensajeDetachedCriteria createEliminaModCriteria() {
-		return new MensajeDetachedCriteria(createCriteria("ORM_eliminaMod"));
-	}
-	
-	public UsuarioDetachedCriteria createAmigo_deCriteria() {
-		return new UsuarioDetachedCriteria(createCriteria("ORM_amigo_de"));
 	}
 	
 	public TemasDetachedCriteria createCreaTCriteria() {
@@ -98,12 +81,12 @@ public class AdministradorDetachedCriteria extends AbstractORMDetachedCriteria {
 		return new MensajeDetachedCriteria(createCriteria("ORM_escribe"));
 	}
 	
-	public NotificacionesDetachedCriteria createTieneCriteria() {
-		return new NotificacionesDetachedCriteria(createCriteria("ORM_tiene"));
+	public UsuarioDetachedCriteria createAmigo_deCriteria() {
+		return new UsuarioDetachedCriteria(createCriteria("ORM_amigo_de"));
 	}
 	
-	public UsuarioDetachedCriteria createEs_amigo_deCriteria() {
-		return new UsuarioDetachedCriteria(createCriteria("ORM_es_amigo_de"));
+	public NotificacionesDetachedCriteria createTieneCriteria() {
+		return new NotificacionesDetachedCriteria(createCriteria("ORM_tiene"));
 	}
 	
 	public MensajeDetachedCriteria createGustaMCriteria() {

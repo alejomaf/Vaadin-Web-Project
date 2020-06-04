@@ -21,12 +21,14 @@ import org.orm.criteria.*;
 public class SeccionesCriteria extends AbstractORMCriteria {
 	public final IntegerExpression id_secciones;
 	public final StringExpression nombre;
+	public final DateExpression fechaSeccion;
 	public final CollectionExpression tiene;
 	
 	public SeccionesCriteria(Criteria criteria) {
 		super(criteria);
 		id_secciones = new IntegerExpression("id_secciones", this);
 		nombre = new StringExpression("nombre", this);
+		fechaSeccion = new DateExpression("fechaSeccion", this);
 		tiene = new CollectionExpression("ORM_tiene", this);
 	}
 	

@@ -1,5 +1,7 @@
 package com.mds.database;
 
+import java.io.Serializable;
+import java.sql.Date;
 import java.util.Vector;
 
 import org.orm.PersistentException;
@@ -7,7 +9,7 @@ import org.orm.PersistentTransaction;
 
 import com.mds.database.Temas;
 
-public class BD_Temas {
+public class BD_Temas implements Serializable {
 	public BD_Pincipal _bD_Pincipal;
 	public Vector<Temas> _unnamed_Temas_ = new Vector<Temas>();
 
@@ -40,9 +42,12 @@ public class BD_Temas {
 			com.mds.database.Temas tem = TemasDAO.createTemas();
 			tem.setNombre(titulo);
 			tem.setNum__likes(0);
-			tem.setCreado_por(usu);
-			tem.setPertenece_a(sec);
-
+			tem.setCreado_por(UsuarioDAO.loadUsuarioByORMID(usu.getORMID()));
+			tem.setContenido(contenido);
+			tem.setPertenece_a(SeccionesDAO.loadSeccionesByORMID(sec.getORMID()));
+			tem.setPublico(true);
+			tem.setFechaTema(new Date(0));
+			
 			TemasDAO.save(tem);
 			t.commit();
 			
@@ -56,7 +61,7 @@ public class BD_Temas {
 		com.mds.database.Temas[] tem=null;
 		PersistentTransaction t= CUPersistentManager.instance().getSession().beginTransaction();
 		try {
-			tem = TemasDAO.listTemasByQuery("id_secciones = \'"+sec.getId_secciones()+"\'", null);
+			tem = TemasDAO.listTemasByQuery("SeccionesId_secciones = \'"+sec.getId_secciones()+"\'", null);
 			if(tem.length==0) { CUPersistentManager.instance().disposePersistentManager(); return null;}
 		}catch (Exception e) {
 			t.rollback();

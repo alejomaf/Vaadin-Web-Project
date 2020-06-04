@@ -23,8 +23,8 @@ public class Temas implements Serializable {
 	}
 	
 	private java.util.Set this_getSet (int key) {
-		if (key == ORMConstants.KEY_TEMAS_ES_GUSTADO) {
-			return ORM_es_gustado;
+		if (key == ORMConstants.KEY_TEMAS_LEGUSTATEMA) {
+			return ORM_leGustaTema;
 		}
 		else if (key == ORMConstants.KEY_TEMAS_TIENE) {
 			return ORM_tiene;
@@ -65,7 +65,7 @@ public class Temas implements Serializable {
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinTable(name="Usuario_Temas", joinColumns={ @JoinColumn(name="TemasId_tema") }, inverseJoinColumns={ @JoinColumn(name="UsuarioId_usuario") })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_es_gustado = new java.util.HashSet();
+	private java.util.Set ORM_leGustaTema = new java.util.HashSet();
 	
 	@ManyToOne(targetEntity=com.mds.database.Secciones.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
@@ -81,6 +81,13 @@ public class Temas implements Serializable {
 	
 	@Column(name="Publico", nullable=false, length=1)	
 	private boolean publico;
+	
+	@Column(name="Contenido", nullable=true, length=255)	
+	private String contenido;
+	
+	@Column(name="FechaTema", nullable=true)	
+	@Temporal(TemporalType.DATE)	
+	private java.util.Date fechaTema;
 	
 	@ManyToOne(targetEntity=com.mds.database.Usuario.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
@@ -129,6 +136,22 @@ public class Temas implements Serializable {
 		return publico;
 	}
 	
+	public void setContenido(String value) {
+		this.contenido = value;
+	}
+	
+	public String getContenido() {
+		return contenido;
+	}
+	
+	public void setFechaTema(java.util.Date value) {
+		this.fechaTema = value;
+	}
+	
+	public java.util.Date getFechaTema() {
+		return fechaTema;
+	}
+	
 	public void setPertenece_a(com.mds.database.Secciones value) {
 		if (pertenece_a != null) {
 			pertenece_a.tiene.remove(this);
@@ -153,16 +176,16 @@ public class Temas implements Serializable {
 		return pertenece_a;
 	}
 	
-	private void setORM_Es_gustado(java.util.Set value) {
-		this.ORM_es_gustado = value;
+	private void setORM_LeGustaTema(java.util.Set value) {
+		this.ORM_leGustaTema = value;
 	}
 	
-	private java.util.Set getORM_Es_gustado() {
-		return ORM_es_gustado;
+	private java.util.Set getORM_LeGustaTema() {
+		return ORM_leGustaTema;
 	}
 	
 	@Transient	
-	public final com.mds.database.UsuarioSetCollection es_gustado = new com.mds.database.UsuarioSetCollection(this, _ormAdapter, ORMConstants.KEY_TEMAS_ES_GUSTADO, ORMConstants.KEY_USUARIO_GUSTAT, ORMConstants.KEY_MUL_MANY_TO_MANY);
+	public final com.mds.database.UsuarioSetCollection leGustaTema = new com.mds.database.UsuarioSetCollection(this, _ormAdapter, ORMConstants.KEY_TEMAS_LEGUSTATEMA, ORMConstants.KEY_USUARIO_GUSTAT, ORMConstants.KEY_MUL_MANY_TO_MANY);
 	
 	public void setCreado_por(com.mds.database.Usuario value) {
 		if (creado_por != null) {

@@ -6,11 +6,14 @@ import com.mds.interfaz.DB_Main;
 import com.mds.interfaz.iAdministrador;
 import com.mds.interfaz.iComun_privilegiados;
 import com.mds.interfaz.iComun_registrados;
+import com.vaadin.event.LayoutEvents.LayoutClickEvent;
+import com.vaadin.event.LayoutEvents.LayoutClickListener;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.HorizontalLayout;
 
 public class Seccion extends Seccion_ventana{
 	private Label _foroL;
@@ -45,11 +48,20 @@ public class Seccion extends Seccion_ventana{
 	
 	public Seccion(com.mds.database.Usuario usu, com.mds.database.Secciones sec) {
 		this.usu=usu;
+		this.sec=sec;
+		
 		if(usu.getORMID()==1) modo=0;
 		else if(usu.getModerador()==true) modo=1;
 		else modo=2;
 		
-		nombreUsuario.setValue(usu.getNombre_usuario());		
+		nombreUsuario.setValue(usu.getEmail());		
+		seccion.setValue(sec.getNombre());
+		seccionLink.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				setContent(new Comun_registrados(usu));
+			}
+		});
 		
 		inicializarBotones();
 		switch(modo) {
@@ -213,198 +225,39 @@ public class Seccion extends Seccion_ventana{
 		primerTema=5*(pag-1);
 		if(num<5) {
 			if(num==4) {
-				nombreTema.setValue(temas[primerTema].getNombre());
-				usuarioCreadorTema.setValue(temas[primerTema].getCreado_por().getNombre_usuario());
-				borrarTema.addClickListener(new Button.ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						borrarTema();}
-				});
-//				ultimoMensaje.setValue(Coger el último mensaje);
-//				diaEnviado.setValue(temas[primerTema].getFecha);
-//				numeroComentariosTema.setValue(numero de comentarios);
-//				numeroLikesTema.setValue(numero de likes);
-				
+				asignarValores(nombreTema, usuarioCreadorTema, borrarTema, ultimoMensaje, diaEnviado, numeroComentariosTema, numeroLikesTema, tema1);
 				primerTema++;
-				
-				nombreTema1.setValue(temas[primerTema].getNombre());
-				usuarioCreadorTema1.setValue(temas[primerTema].getCreado_por().getNombre_usuario());
-				borrarTema1.addClickListener(new Button.ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						borrarTema();}
-				});
-//				ultimoMensaje1.setValue(Coger el último mensaje);
-//				diaEnviado1.setValue(temas[primerTema].getFecha);
-//				numeroComentariosTema1.setValue(numero de comentarios);
-//				numeroLikesTema1.setValue(numero de likes);
-				
+				asignarValores(nombreTema1, usuarioCreadorTema1, borrarTema1, ultimoMensaje1, diaEnviado1, numeroComentariosTema1, numeroLikesTema1, tema2);
 				primerTema++;
-				
-				nombreTema2.setValue(temas[primerTema].getNombre());
-				usuarioCreadorTema2.setValue(temas[primerTema].getCreado_por().getNombre_usuario());
-				borrarTema2.addClickListener(new Button.ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						borrarTema();}
-				});
-//				ultimoMensaje2.setValue(Coger el último mensaje);
-//				diaEnviado2.setValue(temas[primerTema].getFecha);
-//				numeroComentariosTema2.setValue(numero de comentarios);
-//				numeroLikesTema2.setValue(numero de likes);
-				
+				asignarValores(nombreTema2, usuarioCreadorTema2, borrarTema2, ultimoMensaje2, diaEnviado2, numeroComentariosTema2, numeroLikesTema2, tema3);
 				primerTema++;
-				
-				nombreTema3.setValue(temas[primerTema].getNombre());
-				usuarioCreadorTema3.setValue(temas[primerTema].getCreado_por().getNombre_usuario());
-				borrarTema3.addClickListener(new Button.ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						borrarTema();}
-				});
-//				ultimoMensaje3.setValue(Coger el último mensaje);
-//				diaEnviado3.setValue(temas[primerTema].getFecha);
-//				numeroComentariosTema3.setValue(numero de comentarios);
-//				numeroLikesTema3.setValue(numero de likes);
+				asignarValores(nombreTema3, usuarioCreadorTema3, borrarTema3, ultimoMensaje3, diaEnviado3, numeroComentariosTema3, numeroLikesTema3, tema4);
 			}
 			else if (num==3){
-				nombreTema.setValue(temas[primerTema].getNombre());
-				usuarioCreadorTema.setValue(temas[primerTema].getCreado_por().getNombre_usuario());
-				borrarTema.addClickListener(new Button.ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						borrarTema();}
-				});
-//				ultimoMensaje.setValue(Coger el último mensaje);
-//				diaEnviado.setValue(temas[primerTema].getFecha);
-//				numeroComentariosTema.setValue(numero de comentarios);
-//				numeroLikesTema.setValue(numero de likes);
-				
+				asignarValores(nombreTema, usuarioCreadorTema, borrarTema, ultimoMensaje, diaEnviado, numeroComentariosTema, numeroLikesTema, tema1);
 				primerTema++;
-				
-				nombreTema1.setValue(temas[primerTema].getNombre());
-				usuarioCreadorTema1.setValue(temas[primerTema].getCreado_por().getNombre_usuario());
-				borrarTema1.addClickListener(new Button.ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						borrarTema();}
-				});
-//				ultimoMensaje1.setValue(Coger el último mensaje);
-//				diaEnviado1.setValue(temas[primerTema].getFecha);
-//				numeroComentariosTema1.setValue(numero de comentarios);
-//				numeroLikesTema1.setValue(numero de likes);
-				
+				asignarValores(nombreTema1, usuarioCreadorTema1, borrarTema1, ultimoMensaje1, diaEnviado1, numeroComentariosTema1, numeroLikesTema1, tema2);
 				primerTema++;
-				
-				nombreTema2.setValue(temas[primerTema].getNombre());
-				usuarioCreadorTema2.setValue(temas[primerTema].getCreado_por().getNombre_usuario());
-				borrarTema2.addClickListener(new Button.ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						borrarTema();}
-				});
-//				ultimoMensaje2.setValue(Coger el último mensaje);
-//				diaEnviado2.setValue(temas[primerTema].getFecha);
-//				numeroComentariosTema2.setValue(numero de comentarios);
-//				numeroLikesTema2.setValue(numero de likes);
+				asignarValores(nombreTema2, usuarioCreadorTema2, borrarTema2, ultimoMensaje2, diaEnviado2, numeroComentariosTema2, numeroLikesTema2, tema3);
 			}
 			else if (num==2) {
-				nombreTema.setValue(temas[primerTema].getNombre());
-				usuarioCreadorTema.setValue(temas[primerTema].getCreado_por().getNombre_usuario());
-				borrarTema.addClickListener(new Button.ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						borrarTema();}
-				});
-//				ultimoMensaje.setValue(Coger el último mensaje);
-//				diaEnviado.setValue(temas[primerTema].getFecha);
-//				numeroComentariosTema.setValue(numero de comentarios);
-//				numeroLikesTema.setValue(numero de likes);
-				
+				asignarValores(nombreTema, usuarioCreadorTema, borrarTema, ultimoMensaje, diaEnviado, numeroComentariosTema, numeroLikesTema, tema1);
 				primerTema++;
-				
-				nombreTema1.setValue(temas[primerTema].getNombre());
-				usuarioCreadorTema1.setValue(temas[primerTema].getCreado_por().getNombre_usuario());
-				borrarTema1.addClickListener(new Button.ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						borrarTema();}
-				});
-//				ultimoMensaje1.setValue(Coger el último mensaje);
-//				diaEnviado1.setValue(temas[primerTema].getFecha);
-//				numeroComentariosTema1.setValue(numero de comentarios);
-//				numeroLikesTema1.setValue(numero de likes);
+				asignarValores(nombreTema1, usuarioCreadorTema1, borrarTema1, ultimoMensaje1, diaEnviado1, numeroComentariosTema1, numeroLikesTema1, tema2);
 			}
-			else {
-				nombreTema.setValue(temas[primerTema].getNombre());
-				usuarioCreadorTema.setValue(temas[primerTema].getCreado_por().getNombre_usuario());
-				borrarTema.addClickListener(new Button.ClickListener() {
-					public void buttonClick(ClickEvent event) {
-						borrarTema();}
-				});
-//				ultimoMensaje.setValue(Coger el último mensaje);
-//				diaEnviado.setValue(temas[primerTema].getFecha);
-//				numeroComentariosTema.setValue(numero de comentarios);
-//				numeroLikesTema.setValue(numero de likes);
-				
-			}
+			else asignarValores(nombreTema, usuarioCreadorTema, borrarTema, ultimoMensaje, diaEnviado, numeroComentariosTema, numeroLikesTema, tema1);
 		}
 		else {
-			nombreTema.setValue(temas[primerTema].getNombre());
-			usuarioCreadorTema.setValue(temas[primerTema].getCreado_por().getNombre_usuario());
-			borrarTema.addClickListener(new Button.ClickListener() {
-				public void buttonClick(ClickEvent event) {
-					borrarTema();}
-			});
-//			ultimoMensaje.setValue(Coger el último mensaje);
-//			diaEnviado.setValue(temas[primerTema].getFecha);
-//			numeroComentariosTema.setValue(numero de comentarios);
-//			numeroLikesTema.setValue(numero de likes);
-			
+			asignarValores(nombreTema, usuarioCreadorTema, borrarTema, ultimoMensaje, diaEnviado, numeroComentariosTema, numeroLikesTema, tema1);
 			primerTema++;
-			
-			nombreTema1.setValue(temas[primerTema].getNombre());
-			usuarioCreadorTema1.setValue(temas[primerTema].getCreado_por().getNombre_usuario());
-			borrarTema1.addClickListener(new Button.ClickListener() {
-				public void buttonClick(ClickEvent event) {
-					borrarTema();}
-			});
-//			ultimoMensaje1.setValue(Coger el último mensaje);
-//			diaEnviado1.setValue(temas[primerTema].getFecha);
-//			numeroComentariosTema1.setValue(numero de comentarios);
-//			numeroLikesTema1.setValue(numero de likes);
-			
+			asignarValores(nombreTema1, usuarioCreadorTema1, borrarTema1, ultimoMensaje1, diaEnviado1, numeroComentariosTema1, numeroLikesTema1, tema2);
 			primerTema++;
-			
-			nombreTema2.setValue(temas[primerTema].getNombre());
-			usuarioCreadorTema2.setValue(temas[primerTema].getCreado_por().getNombre_usuario());
-			borrarTema2.addClickListener(new Button.ClickListener() {
-				public void buttonClick(ClickEvent event) {
-					borrarTema();}
-			});
-//			ultimoMensaje2.setValue(Coger el último mensaje);
-//			diaEnviado2.setValue(temas[primerTema].getFecha);
-//			numeroComentariosTema2.setValue(numero de comentarios);
-//			numeroLikesTema2.setValue(numero de likes);
-			
+			asignarValores(nombreTema2, usuarioCreadorTema2, borrarTema2, ultimoMensaje2, diaEnviado2, numeroComentariosTema2, numeroLikesTema2, tema3);
 			primerTema++;
-			
-			nombreTema3.setValue(temas[primerTema].getNombre());
-			usuarioCreadorTema3.setValue(temas[primerTema].getCreado_por().getNombre_usuario());
-			borrarTema3.addClickListener(new Button.ClickListener() {
-				public void buttonClick(ClickEvent event) {
-					borrarTema();}
-			});
-//			ultimoMensaje3.setValue(Coger el último mensaje);
-//			diaEnviado3.setValue(temas[primerTema].getFecha);
-//			numeroComentariosTema3.setValue(numero de comentarios);
-//			numeroLikesTema3.setValue(numero de likes);
-			
+			asignarValores(nombreTema3, usuarioCreadorTema3, borrarTema3, ultimoMensaje3, diaEnviado3, numeroComentariosTema3, numeroLikesTema3, tema4);
 			primerTema++;
-			
-			nombreTema4.setValue(temas[primerTema].getNombre());
-			usuarioCreadorTema4.setValue(temas[primerTema].getCreado_por().getNombre_usuario());
-			borrarTema4.addClickListener(new Button.ClickListener() {
-				public void buttonClick(ClickEvent event) {
-					borrarTema();}
-			});
-//			ultimoMensaje4.setValue(Coger el último mensaje);
-//			diaEnviado4.setValue(temas[primerTema].getFecha);
-//			numeroComentariosTema4.setValue(numero de comentarios);
-//			numeroLikesTema4.setValue(numero de likes);
+			asignarValores(nombreTema4, usuarioCreadorTema4, borrarTema4, ultimoMensaje4, diaEnviado4, numeroComentariosTema4, numeroLikesTema4, tema5);
 		}
-		
 	}
 	
 	public void pagAdelante() {
@@ -417,8 +270,29 @@ public class Seccion extends Seccion_ventana{
 		cargarPag();
 	}
 	
-	public void borrarTema() {
-		icp.Eliminar_tema(temas[primerTema].getORMID());
+	public void borrarTema(int id) {
+		icp.Eliminar_tema(id);
 		setContent(new Seccion(usu, sec));
+	}
+	
+	public void asignarValores(Label nombreS, Label usuC, Button borrarT, Label ultimoM, Label diaEnviado, Label numeroC, Label numeroL, HorizontalLayout tema) {
+		com.mds.database.Temas tem=temas[primerTema];
+		tema.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				setContent(new Tema());
+			}
+		});
+		nombreS.setValue(tem.getNombre());
+		usuC.setValue(tem.getCreado_por().getNombre_completo());
+//		fechaC.setValue(FECHA DE CREACION tema);
+		borrarT.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				borrarTema(tem.getORMID());}
+		});
+//		ultimoM.setValue(Coger el último mensaje);
+//		diaEnviado.setValue(temas[primerTema].getFecha);
+//		numeroC.setValue(numero de comentarios);
+//		numeroL.setValue(numero de likes);
 	}
 }

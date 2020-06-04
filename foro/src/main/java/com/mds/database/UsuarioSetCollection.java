@@ -72,8 +72,7 @@ public class UsuarioSetCollection extends org.orm.util.ORMSet {
 	 * @param propertyName Name of the property for sorting:<ul>
 	 * <li>id_usuario</li>
 	 * <li>email</li>
-	 * <li>contraseña</li>
-	 * <li>nombre_usuario</li>
+	 * <li>contrasena</li>
 	 * <li>descripcion</li>
 	 * <li>moderador</li>
 	 * <li>reportado</li>
@@ -92,8 +91,7 @@ public class UsuarioSetCollection extends org.orm.util.ORMSet {
 	 * @param propertyName Name of the property for sorting:<ul>
 	 * <li>id_usuario</li>
 	 * <li>email</li>
-	 * <li>contraseña</li>
-	 * <li>nombre_usuario</li>
+	 * <li>contrasena</li>
 	 * <li>descripcion</li>
 	 * <li>moderador</li>
 	 * <li>reportado</li>

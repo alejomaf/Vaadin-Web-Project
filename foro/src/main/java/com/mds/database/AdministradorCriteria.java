@@ -20,10 +20,8 @@ import org.orm.criteria.*;
 
 public class AdministradorCriteria extends AbstractORMCriteria {
 	public final IntegerExpression id_usuario;
-	public final CollectionExpression amigo_de;
 	public final StringExpression email;
-	public final StringExpression contraseña;
-	public final StringExpression nombre_usuario;
+	public final StringExpression contrasena;
 	public final StringExpression descripcion;
 	public final BooleanExpression moderador;
 	public final BooleanExpression reportado;
@@ -32,19 +30,16 @@ public class AdministradorCriteria extends AbstractORMCriteria {
 	public final BooleanExpression eliminado;
 	public final CollectionExpression creaT;
 	public final CollectionExpression escribe;
+	public final CollectionExpression amigo_de;
 	public final CollectionExpression tiene;
-	public final CollectionExpression es_amigo_de;
 	public final CollectionExpression gustaM;
 	public final CollectionExpression gustaT;
-	public final CollectionExpression eliminaMod;
 	
 	public AdministradorCriteria(Criteria criteria) {
 		super(criteria);
 		id_usuario = new IntegerExpression("id_usuario", this);
-		amigo_de = new CollectionExpression("ORM_amigo_de", this);
 		email = new StringExpression("email", this);
-		contraseña = new StringExpression("contraseña", this);
-		nombre_usuario = new StringExpression("nombre_usuario", this);
+		contrasena = new StringExpression("contrasena", this);
 		descripcion = new StringExpression("descripcion", this);
 		moderador = new BooleanExpression("moderador", this);
 		reportado = new BooleanExpression("reportado", this);
@@ -53,11 +48,10 @@ public class AdministradorCriteria extends AbstractORMCriteria {
 		eliminado = new BooleanExpression("eliminado", this);
 		creaT = new CollectionExpression("ORM_creaT", this);
 		escribe = new CollectionExpression("ORM_escribe", this);
+		amigo_de = new CollectionExpression("ORM_amigo_de", this);
 		tiene = new CollectionExpression("ORM_tiene", this);
-		es_amigo_de = new CollectionExpression("ORM_es_amigo_de", this);
 		gustaM = new CollectionExpression("ORM_gustaM", this);
 		gustaT = new CollectionExpression("ORM_gustaT", this);
-		eliminaMod = new CollectionExpression("ORM_eliminaMod", this);
 	}
 	
 	public AdministradorCriteria(PersistentSession session) {
@@ -68,14 +62,6 @@ public class AdministradorCriteria extends AbstractORMCriteria {
 		this(CUPersistentManager.instance().getSession());
 	}
 	
-	public MensajeCriteria createEliminaModCriteria() {
-		return new MensajeCriteria(createCriteria("ORM_eliminaMod"));
-	}
-	
-	public UsuarioCriteria createAmigo_deCriteria() {
-		return new UsuarioCriteria(createCriteria("ORM_amigo_de"));
-	}
-	
 	public TemasCriteria createCreaTCriteria() {
 		return new TemasCriteria(createCriteria("ORM_creaT"));
 	}
@@ -84,12 +70,12 @@ public class AdministradorCriteria extends AbstractORMCriteria {
 		return new MensajeCriteria(createCriteria("ORM_escribe"));
 	}
 	
-	public NotificacionesCriteria createTieneCriteria() {
-		return new NotificacionesCriteria(createCriteria("ORM_tiene"));
+	public UsuarioCriteria createAmigo_deCriteria() {
+		return new UsuarioCriteria(createCriteria("ORM_amigo_de"));
 	}
 	
-	public UsuarioCriteria createEs_amigo_deCriteria() {
-		return new UsuarioCriteria(createCriteria("ORM_es_amigo_de"));
+	public NotificacionesCriteria createTieneCriteria() {
+		return new NotificacionesCriteria(createCriteria("ORM_tiene"));
 	}
 	
 	public MensajeCriteria createGustaMCriteria() {

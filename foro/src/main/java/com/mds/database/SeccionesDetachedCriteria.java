@@ -21,12 +21,14 @@ import org.orm.criteria.*;
 public class SeccionesDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression id_secciones;
 	public final StringExpression nombre;
+	public final DateExpression fechaSeccion;
 	public final CollectionExpression tiene;
 	
 	public SeccionesDetachedCriteria() {
 		super(com.mds.database.Secciones.class, com.mds.database.SeccionesCriteria.class);
 		id_secciones = new IntegerExpression("id_secciones", this.getDetachedCriteria());
 		nombre = new StringExpression("nombre", this.getDetachedCriteria());
+		fechaSeccion = new DateExpression("fechaSeccion", this.getDetachedCriteria());
 		tiene = new CollectionExpression("ORM_tiene", this.getDetachedCriteria());
 	}
 	
@@ -34,6 +36,7 @@ public class SeccionesDetachedCriteria extends AbstractORMDetachedCriteria {
 		super(aDetachedCriteria, com.mds.database.SeccionesCriteria.class);
 		id_secciones = new IntegerExpression("id_secciones", this.getDetachedCriteria());
 		nombre = new StringExpression("nombre", this.getDetachedCriteria());
+		fechaSeccion = new DateExpression("fechaSeccion", this.getDetachedCriteria());
 		tiene = new CollectionExpression("ORM_tiene", this.getDetachedCriteria());
 	}
 	

@@ -14,8 +14,6 @@
 package com.mds.database;
 
 import java.io.Serializable;
-import java.sql.Date;
-
 import javax.persistence.*;
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
@@ -51,7 +49,8 @@ public class Notificaciones implements Serializable {
 	private com.mds.database.Usuario de;
 	
 	@Column(name="Fecha", nullable=true)	
-	private Date fecha;
+	@Temporal(TemporalType.DATE)	
+	private java.util.Date fecha;
 	
 	@Column(name="Enlace", nullable=true, length=255)	
 	private String enlace;
@@ -71,11 +70,11 @@ public class Notificaciones implements Serializable {
 		return getId_notificaciones();
 	}
 	
-	public void setFecha(Date value) {
+	public void setFecha(java.util.Date value) {
 		this.fecha = value;
 	}
 	
-	public Date getFecha() {
+	public java.util.Date getFecha() {
 		return fecha;
 	}
 	

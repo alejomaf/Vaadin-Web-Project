@@ -41,10 +41,6 @@ public class Mensaje implements Serializable {
 			this.son_de = (com.mds.database.Temas) owner;
 		}
 		
-		else if (key == ORMConstants.KEY_MENSAJE_ELIMINADO_POR) {
-			this.eliminado_por = (com.mds.database.Moderador) owner;
-		}
-		
 		else if (key == ORMConstants.KEY_MENSAJE_PERTENECE_A) {
 			this.pertenece_a = (com.mds.database.Usuario) owner;
 		}
@@ -72,12 +68,6 @@ public class Mensaje implements Serializable {
 	@org.hibernate.annotations.GenericGenerator(name="COM_MDS_DATABASE_MENSAJE_ID_MENSAJE_GENERATOR", strategy="native")	
 	private int id_mensaje;
 	
-	@ManyToOne(targetEntity=com.mds.database.Moderador.class, fetch=FetchType.LAZY)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns(value={ @JoinColumn(name="UsuarioId_usuario2", referencedColumnName="Id_usuario", nullable=false) }, foreignKey=@ForeignKey(name="FKMensaje429317"))	
-	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private com.mds.database.Moderador eliminado_por;
-	
 	@ManyToOne(targetEntity=com.mds.database.Mensaje.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns(value={ @JoinColumn(name="MensajeId_mensaje", referencedColumnName="Id_mensaje", nullable=false) }, foreignKey=@ForeignKey(name="FKMensaje78768"))	
@@ -102,8 +92,9 @@ public class Mensaje implements Serializable {
 	@Column(name="Contenido", nullable=true, length=255)	
 	private String contenido;
 	
-	@Column(name="Privado", nullable=false, length=1)	
-	private boolean privado;
+	@Column(name="FechaMensaje", nullable=true)	
+	@Temporal(TemporalType.DATE)	
+	private java.util.Date fechaMensaje;
 	
 	@OneToMany(mappedBy="respuesta_de", targetEntity=com.mds.database.Mensaje.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
@@ -149,12 +140,12 @@ public class Mensaje implements Serializable {
 		return contenido;
 	}
 	
-	public void setPrivado(boolean value) {
-		this.privado = value;
+	public void setFechaMensaje(java.util.Date value) {
+		this.fechaMensaje = value;
 	}
 	
-	public boolean getPrivado() {
-		return privado;
+	public java.util.Date getFechaMensaje() {
+		return fechaMensaje;
 	}
 	
 	public void setSon_de(com.mds.database.Temas value) {
@@ -191,30 +182,6 @@ public class Mensaje implements Serializable {
 	
 	@Transient	
 	public final com.mds.database.MensajeSetCollection tiene = new com.mds.database.MensajeSetCollection(this, _ormAdapter, ORMConstants.KEY_MENSAJE_TIENE, ORMConstants.KEY_MENSAJE_RESPUESTA_DE, ORMConstants.KEY_MUL_ONE_TO_MANY);
-	
-	public void setEliminado_por(com.mds.database.Moderador value) {
-		if (eliminado_por != null) {
-			eliminado_por.eliminaMod.remove(this);
-		}
-		if (value != null) {
-			value.eliminaMod.add(this);
-		}
-	}
-	
-	public com.mds.database.Moderador getEliminado_por() {
-		return eliminado_por;
-	}
-	
-	/**
-	 * This method is for internal use only.
-	 */
-	public void setORM_Eliminado_por(com.mds.database.Moderador value) {
-		this.eliminado_por = value;
-	}
-	
-	private com.mds.database.Moderador getORM_Eliminado_por() {
-		return eliminado_por;
-	}
 	
 	private void setORM_Es_gustado(java.util.Set value) {
 		this.ORM_es_gustado = value;

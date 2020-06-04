@@ -38,9 +38,6 @@ public class Usuario implements Serializable {
 		else if (key == ORMConstants.KEY_USUARIO_TIENE) {
 			return ORM_tiene;
 		}
-		else if (key == ORMConstants.KEY_USUARIO_ES_AMIGO_DE) {
-			return ORM_es_amigo_de;
-		}
 		else if (key == ORMConstants.KEY_USUARIO_GUSTAM) {
 			return ORM_gustaM;
 		}
@@ -65,20 +62,11 @@ public class Usuario implements Serializable {
 	@org.hibernate.annotations.GenericGenerator(name="COM_MDS_DATABASE_USUARIO_ID_USUARIO_GENERATOR", strategy="native")	
 	private int id_usuario;
 	
-	@ManyToMany(targetEntity=com.mds.database.Usuario.class)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinTable(name="Usuario_Usuario2", joinColumns={ @JoinColumn(name="UsuarioId_usuario2") }, inverseJoinColumns={ @JoinColumn(name="UsuarioId_usuario") })	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_amigo_de = new java.util.HashSet();
-	
 	@Column(name="Email", nullable=true, length=255)	
 	private String email;
 	
-	@Column(name="Contraseña", nullable=true, length=255)	
-	private String contraseña;
-	
-	@Column(name="Nombre_usuario", nullable=true, length=255)	
-	private String nombre_usuario;
+	@Column(name="Contrasena", nullable=true, length=255)	
+	private String contrasena;
 	
 	@Column(name="Descripcion", nullable=true, length=255)	
 	private String descripcion;
@@ -108,22 +96,23 @@ public class Usuario implements Serializable {
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_escribe = new java.util.HashSet();
 	
+	@ManyToMany(targetEntity=com.mds.database.Usuario.class)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
+	@JoinTable(name="null", joinColumns={ @JoinColumn(name="UsuarioId_usuario") }, inverseJoinColumns={  })	
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set ORM_amigo_de = new java.util.HashSet();
+	
 	@OneToMany(mappedBy="de", targetEntity=com.mds.database.Notificaciones.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_tiene = new java.util.HashSet();
-	
-	@ManyToMany(mappedBy="ORM_amigo_de", targetEntity=com.mds.database.Usuario.class)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_es_amigo_de = new java.util.HashSet();
 	
 	@ManyToMany(mappedBy="ORM_es_gustado", targetEntity=com.mds.database.Mensaje.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_gustaM = new java.util.HashSet();
 	
-	@ManyToMany(mappedBy="ORM_es_gustado", targetEntity=com.mds.database.Temas.class)	
+	@ManyToMany(mappedBy="ORM_leGustaTema", targetEntity=com.mds.database.Temas.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_gustaT = new java.util.HashSet();
@@ -148,20 +137,12 @@ public class Usuario implements Serializable {
 		return email;
 	}
 	
-	public void setContraseña(String value) {
-		this.contraseña = value;
+	public void setContrasena(String value) {
+		this.contrasena = value;
 	}
 	
-	public String getContraseña() {
-		return contraseña;
-	}
-	
-	public void setNombre_usuario(String value) {
-		this.nombre_usuario = value;
-	}
-	
-	public String getNombre_usuario() {
-		return nombre_usuario;
+	public String getContrasena() {
+		return contrasena;
 	}
 	
 	public void setDescripcion(String value) {
@@ -243,7 +224,7 @@ public class Usuario implements Serializable {
 	}
 	
 	@Transient	
-	public final com.mds.database.UsuarioSetCollection amigo_de = new com.mds.database.UsuarioSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_AMIGO_DE, ORMConstants.KEY_USUARIO_ES_AMIGO_DE, ORMConstants.KEY_MUL_MANY_TO_MANY);
+	public final com.mds.database.UsuarioSetCollection amigo_de = new com.mds.database.UsuarioSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_AMIGO_DE, ORMConstants.KEY_MUL_MANY_TO_MANY);
 	
 	private void setORM_Tiene(java.util.Set value) {
 		this.ORM_tiene = value;
@@ -255,17 +236,6 @@ public class Usuario implements Serializable {
 	
 	@Transient	
 	public final com.mds.database.NotificacionesSetCollection tiene = new com.mds.database.NotificacionesSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_TIENE, ORMConstants.KEY_NOTIFICACIONES_DE, ORMConstants.KEY_MUL_ONE_TO_MANY);
-	
-	private void setORM_Es_amigo_de(java.util.Set value) {
-		this.ORM_es_amigo_de = value;
-	}
-	
-	private java.util.Set getORM_Es_amigo_de() {
-		return ORM_es_amigo_de;
-	}
-	
-	@Transient	
-	public final com.mds.database.UsuarioSetCollection es_amigo_de = new com.mds.database.UsuarioSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_ES_AMIGO_DE, ORMConstants.KEY_USUARIO_AMIGO_DE, ORMConstants.KEY_MUL_MANY_TO_MANY);
 	
 	private void setORM_GustaM(java.util.Set value) {
 		this.ORM_gustaM = value;
@@ -287,7 +257,7 @@ public class Usuario implements Serializable {
 	}
 	
 	@Transient	
-	public final com.mds.database.TemasSetCollection gustaT = new com.mds.database.TemasSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_GUSTAT, ORMConstants.KEY_TEMAS_ES_GUSTADO, ORMConstants.KEY_MUL_MANY_TO_MANY);
+	public final com.mds.database.TemasSetCollection gustaT = new com.mds.database.TemasSetCollection(this, _ormAdapter, ORMConstants.KEY_USUARIO_GUSTAT, ORMConstants.KEY_TEMAS_LEGUSTATEMA, ORMConstants.KEY_MUL_MANY_TO_MANY);
 	
 	public String toString() {
 		return String.valueOf(getId_usuario());

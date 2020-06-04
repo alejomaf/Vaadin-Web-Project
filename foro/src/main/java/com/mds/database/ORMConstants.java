@@ -18,8 +18,6 @@ public interface ORMConstants extends org.orm.util.ORMBaseConstants {
 	
 	final int KEY_MENSAJE_CONTIENE = 1412087685;
 	
-	final int KEY_MENSAJE_ELIMINADO_POR = -1309770160;
-	
 	final int KEY_MENSAJE_ES_GUSTADO = 2105349484;
 	
 	final int KEY_MENSAJE_PERTENECE_A = 733623881;
@@ -30,15 +28,13 @@ public interface ORMConstants extends org.orm.util.ORMBaseConstants {
 	
 	final int KEY_MENSAJE_TIENE = 913450183;
 	
-	final int KEY_MODERADOR_ELIMINAMOD = 263632635;
-	
 	final int KEY_NOTIFICACIONES_DE = -1260703626;
 	
 	final int KEY_SECCIONES_TIENE = -1878841876;
 	
 	final int KEY_TEMAS_CREADO_POR = -284250789;
 	
-	final int KEY_TEMAS_ES_GUSTADO = 1464362909;
+	final int KEY_TEMAS_LEGUSTATEMA = -1497494963;
 	
 	final int KEY_TEMAS_PERTENECE_A = -1957090760;
 	
@@ -47,8 +43,6 @@ public interface ORMConstants extends org.orm.util.ORMBaseConstants {
 	final int KEY_USUARIO_AMIGO_DE = -393370196;
 	
 	final int KEY_USUARIO_CREAT = 2081774584;
-	
-	final int KEY_USUARIO_ES_AMIGO_DE = -160514981;
 	
 	final int KEY_USUARIO_ESCRIBE = 932934526;
 	

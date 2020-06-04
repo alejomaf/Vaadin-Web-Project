@@ -22,6 +22,7 @@ public class NotificacionesCriteria extends AbstractORMCriteria {
 	public final IntegerExpression id_notificaciones;
 	public final IntegerExpression deId;
 	public final AssociationExpression de;
+	public final DateExpression fecha;
 	public final StringExpression enlace;
 	public final StringExpression titulo;
 	
@@ -30,6 +31,7 @@ public class NotificacionesCriteria extends AbstractORMCriteria {
 		id_notificaciones = new IntegerExpression("id_notificaciones", this);
 		deId = new IntegerExpression("de.id_usuario", this);
 		de = new AssociationExpression("de", this);
+		fecha = new DateExpression("fecha", this);
 		enlace = new StringExpression("enlace", this);
 		titulo = new StringExpression("titulo", this);
 	}

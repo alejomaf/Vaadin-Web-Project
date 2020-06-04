@@ -20,12 +20,14 @@ import org.orm.criteria.*;
 
 public class TemasCriteria extends AbstractORMCriteria {
 	public final IntegerExpression id_tema;
-	public final CollectionExpression es_gustado;
+	public final CollectionExpression leGustaTema;
 	public final IntegerExpression pertenece_aId;
 	public final AssociationExpression pertenece_a;
 	public final StringExpression nombre;
 	public final IntegerExpression num__likes;
 	public final BooleanExpression publico;
+	public final StringExpression contenido;
+	public final DateExpression fechaTema;
 	public final IntegerExpression creado_porId;
 	public final AssociationExpression creado_por;
 	public final CollectionExpression tiene;
@@ -33,12 +35,14 @@ public class TemasCriteria extends AbstractORMCriteria {
 	public TemasCriteria(Criteria criteria) {
 		super(criteria);
 		id_tema = new IntegerExpression("id_tema", this);
-		es_gustado = new CollectionExpression("ORM_es_gustado", this);
+		leGustaTema = new CollectionExpression("ORM_leGustaTema", this);
 		pertenece_aId = new IntegerExpression("pertenece_a.id_secciones", this);
 		pertenece_a = new AssociationExpression("pertenece_a", this);
 		nombre = new StringExpression("nombre", this);
 		num__likes = new IntegerExpression("num__likes", this);
 		publico = new BooleanExpression("publico", this);
+		contenido = new StringExpression("contenido", this);
+		fechaTema = new DateExpression("fechaTema", this);
 		creado_porId = new IntegerExpression("creado_por.id_usuario", this);
 		creado_por = new AssociationExpression("creado_por", this);
 		tiene = new CollectionExpression("ORM_tiene", this);
@@ -52,8 +56,8 @@ public class TemasCriteria extends AbstractORMCriteria {
 		this(CUPersistentManager.instance().getSession());
 	}
 	
-	public UsuarioCriteria createEs_gustadoCriteria() {
-		return new UsuarioCriteria(createCriteria("ORM_es_gustado"));
+	public UsuarioCriteria createLeGustaTemaCriteria() {
+		return new UsuarioCriteria(createCriteria("ORM_leGustaTema"));
 	}
 	
 	public SeccionesCriteria createPertenece_aCriteria() {

@@ -28,6 +28,8 @@ public class Seccion_ventana extends Panel {
 	protected Button notificaciones;
 	protected Button ajustes;
 	protected Button cerrarSesion;
+	protected HorizontalLayout seccionLink;
+	protected Label seccion;
 	protected HorizontalLayout tema1;
 	protected Label nombreTema;
 	protected Label usuarioCreadorTema;

@@ -323,10 +323,6 @@ public class MensajeDAO {
 	
 	public static boolean deleteAndDissociate(com.mds.database.Mensaje mensaje)throws PersistentException {
 		try {
-			if (mensaje.getEliminado_por() != null) {
-				mensaje.getEliminado_por().eliminaMod.remove(mensaje);
-			}
-			
 			if (mensaje.getRespuesta_de() != null) {
 				mensaje.getRespuesta_de().tiene.remove(mensaje);
 			}
@@ -361,10 +357,6 @@ public class MensajeDAO {
 	
 	public static boolean deleteAndDissociate(com.mds.database.Mensaje mensaje, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			if (mensaje.getEliminado_por() != null) {
-				mensaje.getEliminado_por().eliminaMod.remove(mensaje);
-			}
-			
 			if (mensaje.getRespuesta_de() != null) {
 				mensaje.getRespuesta_de().tiene.remove(mensaje);
 			}

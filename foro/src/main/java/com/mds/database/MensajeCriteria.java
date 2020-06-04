@@ -20,8 +20,6 @@ import org.orm.criteria.*;
 
 public class MensajeCriteria extends AbstractORMCriteria {
 	public final IntegerExpression id_mensaje;
-	public final IntegerExpression eliminado_porId;
-	public final AssociationExpression eliminado_por;
 	public final IntegerExpression respuesta_deId;
 	public final AssociationExpression respuesta_de;
 	public final CollectionExpression es_gustado;
@@ -29,7 +27,7 @@ public class MensajeCriteria extends AbstractORMCriteria {
 	public final AssociationExpression son_de;
 	public final IntegerExpression num_likes;
 	public final StringExpression contenido;
-	public final BooleanExpression privado;
+	public final DateExpression fechaMensaje;
 	public final CollectionExpression tiene;
 	public final IntegerExpression pertenece_aId;
 	public final AssociationExpression pertenece_a;
@@ -38,8 +36,6 @@ public class MensajeCriteria extends AbstractORMCriteria {
 	public MensajeCriteria(Criteria criteria) {
 		super(criteria);
 		id_mensaje = new IntegerExpression("id_mensaje", this);
-		eliminado_porId = new IntegerExpression("eliminado_por.id_usuario", this);
-		eliminado_por = new AssociationExpression("eliminado_por", this);
 		respuesta_deId = new IntegerExpression("respuesta_de.id_mensaje", this);
 		respuesta_de = new AssociationExpression("respuesta_de", this);
 		es_gustado = new CollectionExpression("ORM_es_gustado", this);
@@ -47,7 +43,7 @@ public class MensajeCriteria extends AbstractORMCriteria {
 		son_de = new AssociationExpression("son_de", this);
 		num_likes = new IntegerExpression("num_likes", this);
 		contenido = new StringExpression("contenido", this);
-		privado = new BooleanExpression("privado", this);
+		fechaMensaje = new DateExpression("fechaMensaje", this);
 		tiene = new CollectionExpression("ORM_tiene", this);
 		pertenece_aId = new IntegerExpression("pertenece_a.id_usuario", this);
 		pertenece_a = new AssociationExpression("pertenece_a", this);
@@ -60,10 +56,6 @@ public class MensajeCriteria extends AbstractORMCriteria {
 	
 	public MensajeCriteria() throws PersistentException {
 		this(CUPersistentManager.instance().getSession());
-	}
-	
-	public ModeradorCriteria createEliminado_porCriteria() {
-		return new ModeradorCriteria(createCriteria("eliminado_por"));
 	}
 	
 	public MensajeCriteria createRespuesta_deCriteria() {

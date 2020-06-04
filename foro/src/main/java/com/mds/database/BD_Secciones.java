@@ -1,5 +1,6 @@
 package com.mds.database;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 import org.orm.PersistentException;
@@ -7,7 +8,7 @@ import org.orm.PersistentTransaction;
 
 import com.mds.database.Secciones;
 
-public class BD_Secciones {
+public class BD_Secciones implements Serializable{
 	public BD_Pincipal _bD_Pincipal;
 	public Vector<Secciones> _unnamed_Secciones_ = new Vector<Secciones>();
 
@@ -46,13 +47,18 @@ public class BD_Secciones {
 	public void borrarSecion(int aID) throws PersistentException{
 		PersistentTransaction t= CUPersistentManager.instance().getSession().beginTransaction();
 		try {
-			com.mds.database.Secciones sec = SeccionesDAO.loadSeccionesByORMID(aID);
-			
-			SeccionesDAO.delete(sec);
-			
+			com.mds.database.Temas[] tem= TemasDAO.listTemasByQuery("SeccionesId_secciones = \'"+SeccionesDAO.getSeccionesByORMID(aID).getId_secciones()+"\'", null);
+			if(tem!=null) for(Temas aux: tem) TemasDAO.delete(aux);
 			t.commit();
-			
 		}catch (Exception e) {
+			t.rollback();
+		}
+		PersistentTransaction t2= CUPersistentManager.instance().getSession().beginTransaction();
+		try {
+			com.mds.database.Secciones sec = SeccionesDAO.loadSeccionesByORMID(aID);
+			SeccionesDAO.delete(sec);
+			t2.commit();
+		}catch(Exception e) {
 			t.rollback();
 		}
 		CUPersistentManager.instance().disposePersistentManager();

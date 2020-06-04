@@ -323,9 +323,9 @@ public class TemasDAO {
 	
 	public static boolean deleteAndDissociate(com.mds.database.Temas temas)throws PersistentException {
 		try {
-			com.mds.database.Usuario[] lEs_gustados = temas.es_gustado.toArray();
-			for(int i = 0; i < lEs_gustados.length; i++) {
-				lEs_gustados[i].gustaT.remove(temas);
+			com.mds.database.Usuario[] lLeGustaTemas = temas.leGustaTema.toArray();
+			for(int i = 0; i < lLeGustaTemas.length; i++) {
+				lLeGustaTemas[i].gustaT.remove(temas);
 			}
 			if (temas.getPertenece_a() != null) {
 				temas.getPertenece_a().tiene.remove(temas);
@@ -349,9 +349,9 @@ public class TemasDAO {
 	
 	public static boolean deleteAndDissociate(com.mds.database.Temas temas, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			com.mds.database.Usuario[] lEs_gustados = temas.es_gustado.toArray();
-			for(int i = 0; i < lEs_gustados.length; i++) {
-				lEs_gustados[i].gustaT.remove(temas);
+			com.mds.database.Usuario[] lLeGustaTemas = temas.leGustaTema.toArray();
+			for(int i = 0; i < lLeGustaTemas.length; i++) {
+				lLeGustaTemas[i].gustaT.remove(temas);
 			}
 			if (temas.getPertenece_a() != null) {
 				temas.getPertenece_a().tiene.remove(temas);

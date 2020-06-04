@@ -323,14 +323,6 @@ public class AdministradorDAO {
 	
 	public static boolean deleteAndDissociate(com.mds.database.Administrador administrador)throws PersistentException {
 		try {
-			com.mds.database.Mensaje[] lEliminaMods = administrador.eliminaMod.toArray();
-			for(int i = 0; i < lEliminaMods.length; i++) {
-				lEliminaMods[i].setEliminado_por(null);
-			}
-			com.mds.database.Usuario[] lAmigo_des = administrador.amigo_de.toArray();
-			for(int i = 0; i < lAmigo_des.length; i++) {
-				lAmigo_des[i].es_amigo_de.remove(administrador);
-			}
 			com.mds.database.Temas[] lCreaTs = administrador.creaT.toArray();
 			for(int i = 0; i < lCreaTs.length; i++) {
 				lCreaTs[i].setCreado_por(null);
@@ -343,17 +335,13 @@ public class AdministradorDAO {
 			for(int i = 0; i < lTienes.length; i++) {
 				lTienes[i].setDe(null);
 			}
-			com.mds.database.Usuario[] lEs_amigo_des = administrador.es_amigo_de.toArray();
-			for(int i = 0; i < lEs_amigo_des.length; i++) {
-				lEs_amigo_des[i].amigo_de.remove(administrador);
-			}
 			com.mds.database.Mensaje[] lGustaMs = administrador.gustaM.toArray();
 			for(int i = 0; i < lGustaMs.length; i++) {
 				lGustaMs[i].es_gustado.remove(administrador);
 			}
 			com.mds.database.Temas[] lGustaTs = administrador.gustaT.toArray();
 			for(int i = 0; i < lGustaTs.length; i++) {
-				lGustaTs[i].es_gustado.remove(administrador);
+				lGustaTs[i].leGustaTema.remove(administrador);
 			}
 			return delete(administrador);
 		}
@@ -365,14 +353,6 @@ public class AdministradorDAO {
 	
 	public static boolean deleteAndDissociate(com.mds.database.Administrador administrador, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			com.mds.database.Mensaje[] lEliminaMods = administrador.eliminaMod.toArray();
-			for(int i = 0; i < lEliminaMods.length; i++) {
-				lEliminaMods[i].setEliminado_por(null);
-			}
-			com.mds.database.Usuario[] lAmigo_des = administrador.amigo_de.toArray();
-			for(int i = 0; i < lAmigo_des.length; i++) {
-				lAmigo_des[i].es_amigo_de.remove(administrador);
-			}
 			com.mds.database.Temas[] lCreaTs = administrador.creaT.toArray();
 			for(int i = 0; i < lCreaTs.length; i++) {
 				lCreaTs[i].setCreado_por(null);
@@ -385,17 +365,13 @@ public class AdministradorDAO {
 			for(int i = 0; i < lTienes.length; i++) {
 				lTienes[i].setDe(null);
 			}
-			com.mds.database.Usuario[] lEs_amigo_des = administrador.es_amigo_de.toArray();
-			for(int i = 0; i < lEs_amigo_des.length; i++) {
-				lEs_amigo_des[i].amigo_de.remove(administrador);
-			}
 			com.mds.database.Mensaje[] lGustaMs = administrador.gustaM.toArray();
 			for(int i = 0; i < lGustaMs.length; i++) {
 				lGustaMs[i].es_gustado.remove(administrador);
 			}
 			com.mds.database.Temas[] lGustaTs = administrador.gustaT.toArray();
 			for(int i = 0; i < lGustaTs.length; i++) {
-				lGustaTs[i].es_gustado.remove(administrador);
+				lGustaTs[i].leGustaTema.remove(administrador);
 			}
 			try {
 				session.delete(administrador);

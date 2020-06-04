@@ -327,10 +327,6 @@ public class UsuarioDAO {
 		}
 		
 		try {
-			com.mds.database.Usuario[] lAmigo_des = usuario.amigo_de.toArray();
-			for(int i = 0; i < lAmigo_des.length; i++) {
-				lAmigo_des[i].es_amigo_de.remove(usuario);
-			}
 			com.mds.database.Temas[] lCreaTs = usuario.creaT.toArray();
 			for(int i = 0; i < lCreaTs.length; i++) {
 				lCreaTs[i].setCreado_por(null);
@@ -343,17 +339,13 @@ public class UsuarioDAO {
 			for(int i = 0; i < lTienes.length; i++) {
 				lTienes[i].setDe(null);
 			}
-			com.mds.database.Usuario[] lEs_amigo_des = usuario.es_amigo_de.toArray();
-			for(int i = 0; i < lEs_amigo_des.length; i++) {
-				lEs_amigo_des[i].amigo_de.remove(usuario);
-			}
 			com.mds.database.Mensaje[] lGustaMs = usuario.gustaM.toArray();
 			for(int i = 0; i < lGustaMs.length; i++) {
 				lGustaMs[i].es_gustado.remove(usuario);
 			}
 			com.mds.database.Temas[] lGustaTs = usuario.gustaT.toArray();
 			for(int i = 0; i < lGustaTs.length; i++) {
-				lGustaTs[i].es_gustado.remove(usuario);
+				lGustaTs[i].leGustaTema.remove(usuario);
 			}
 			return delete(usuario);
 		}
@@ -369,10 +361,6 @@ public class UsuarioDAO {
 		}
 		
 		try {
-			com.mds.database.Usuario[] lAmigo_des = usuario.amigo_de.toArray();
-			for(int i = 0; i < lAmigo_des.length; i++) {
-				lAmigo_des[i].es_amigo_de.remove(usuario);
-			}
 			com.mds.database.Temas[] lCreaTs = usuario.creaT.toArray();
 			for(int i = 0; i < lCreaTs.length; i++) {
 				lCreaTs[i].setCreado_por(null);
@@ -385,17 +373,13 @@ public class UsuarioDAO {
 			for(int i = 0; i < lTienes.length; i++) {
 				lTienes[i].setDe(null);
 			}
-			com.mds.database.Usuario[] lEs_amigo_des = usuario.es_amigo_de.toArray();
-			for(int i = 0; i < lEs_amigo_des.length; i++) {
-				lEs_amigo_des[i].amigo_de.remove(usuario);
-			}
 			com.mds.database.Mensaje[] lGustaMs = usuario.gustaM.toArray();
 			for(int i = 0; i < lGustaMs.length; i++) {
 				lGustaMs[i].es_gustado.remove(usuario);
 			}
 			com.mds.database.Temas[] lGustaTs = usuario.gustaT.toArray();
 			for(int i = 0; i < lGustaTs.length; i++) {
-				lGustaTs[i].es_gustado.remove(usuario);
+				lGustaTs[i].leGustaTema.remove(usuario);
 			}
 			try {
 				session.delete(usuario);

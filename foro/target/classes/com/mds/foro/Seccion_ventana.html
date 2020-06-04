@@ -28,9 +28,14 @@
     <vaadin-horizontal-layout width-full>
      <vaadin-vertical-layout :expand="4">
       <vaadin-vertical-layout>
-       <vaadin-label plain-text>
-         Temas 
-       </vaadin-label>
+       <vaadin-horizontal-layout>
+        <vaadin-label plain-text>
+          Temas de 
+        </vaadin-label>
+        <vaadin-horizontal-layout _id="seccionLink">
+         <vaadin-label plain-text _id="seccion"></vaadin-label>
+        </vaadin-horizontal-layout>
+       </vaadin-horizontal-layout>
        <vaadin-horizontal-layout width-full _id="tema1">
         <vaadin-vertical-layout spacing="false" size-auto margin="false">
          <vaadin-label plain-text _id="nombreTema">
@@ -265,22 +270,6 @@
         </vaadin-button>
        </vaadin-horizontal-layout>
       </vaadin-vertical-layout>
-      <vaadin-vertical-layout>
-       <vaadin7-label size-auto plain-text>
-         Crear tema 
-       </vaadin7-label>
-       <vaadin-label plain-text>
-         Título 
-       </vaadin-label>
-       <vaadin-text-field width-full _id="tituloTema"></vaadin-text-field>
-       <vaadin-label plain-text>
-         Contenido tema 
-       </vaadin-label>
-       <vaadin-text-area width-full _id="contenidoTema"></vaadin-text-area>
-       <vaadin-button plain-text _id="crearTema" :middle :right>
-         Crear tema 
-       </vaadin-button>
-      </vaadin-vertical-layout>
      </vaadin-vertical-layout>
      <vaadin-vertical-layout size-auto :right :expand>
       <vaadin-label plain-text>
@@ -308,6 +297,26 @@
       </vaadin-vertical-layout>
      </vaadin-vertical-layout>
     </vaadin-horizontal-layout>
+    <vaadin-vertical-layout>
+     <vaadin-label plain-text>
+       Crear tema 
+     </vaadin-label>
+     <vaadin-horizontal-layout width-full>
+      <vaadin-label plain-text :expand>
+        Título del tema 
+      </vaadin-label>
+      <vaadin-text-field width-full _id="tituloTema" :expand="2"></vaadin-text-field>
+     </vaadin-horizontal-layout>
+     <vaadin-horizontal-layout width-full>
+      <vaadin-label plain-text :expand>
+        Introducción del tema 
+      </vaadin-label>
+      <vaadin-text-area width-full _id="contenidoTema" :expand="2"></vaadin-text-area>
+     </vaadin-horizontal-layout>
+     <vaadin-button plain-text _id="crearTema" :right>
+       Crear tema 
+     </vaadin-button>
+    </vaadin-vertical-layout>
    </vaadin-vertical-layout>
   </vaadin-panel>
  </body>

@@ -13,19 +13,19 @@ public class CreateCUData {
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : de
 			com.mds.database.NotificacionesDAO.save(lcommdsdatabaseNotificaciones);
 			com.mds.database.Usuario lcommdsdatabaseUsuario = com.mds.database.UsuarioDAO.createUsuario();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : gustaT, gustaM, es_amigo_de, tiene, escribe, creaT, eliminado, reportado, moderador, amigo_de
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : gustaT, gustaM, tiene, escribe, creaT, eliminado, reportado, moderador
 			com.mds.database.UsuarioDAO.save(lcommdsdatabaseUsuario);
 			com.mds.database.Moderador lcommdsdatabaseModerador = com.mds.database.ModeradorDAO.createModerador();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : eliminaMod
+			// Initialize the properties of the persistent object here
 			com.mds.database.ModeradorDAO.save(lcommdsdatabaseModerador);
 			com.mds.database.Administrador lcommdsdatabaseAdministrador = com.mds.database.AdministradorDAO.createAdministrador();
 			// Initialize the properties of the persistent object here
 			com.mds.database.AdministradorDAO.save(lcommdsdatabaseAdministrador);
 			com.mds.database.Temas lcommdsdatabaseTemas = com.mds.database.TemasDAO.createTemas();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tiene, creado_por, publico, num__likes, pertenece_a, es_gustado
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tiene, creado_por, publico, num__likes, pertenece_a, leGustaTema
 			com.mds.database.TemasDAO.save(lcommdsdatabaseTemas);
 			com.mds.database.Mensaje lcommdsdatabaseMensaje = com.mds.database.MensajeDAO.createMensaje();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : contiene, pertenece_a, tiene, privado, num_likes, son_de, es_gustado, respuesta_de, eliminado_por
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : contiene, pertenece_a, tiene, num_likes, son_de, es_gustado, respuesta_de
 			com.mds.database.MensajeDAO.save(lcommdsdatabaseMensaje);
 			com.mds.database.Media lcommdsdatabaseMedia = com.mds.database.MediaDAO.createMedia();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : es_de

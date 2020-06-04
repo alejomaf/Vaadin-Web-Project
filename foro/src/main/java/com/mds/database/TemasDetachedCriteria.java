@@ -20,12 +20,14 @@ import org.orm.criteria.*;
 
 public class TemasDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression id_tema;
-	public final CollectionExpression es_gustado;
+	public final CollectionExpression leGustaTema;
 	public final IntegerExpression pertenece_aId;
 	public final AssociationExpression pertenece_a;
 	public final StringExpression nombre;
 	public final IntegerExpression num__likes;
 	public final BooleanExpression publico;
+	public final StringExpression contenido;
+	public final DateExpression fechaTema;
 	public final IntegerExpression creado_porId;
 	public final AssociationExpression creado_por;
 	public final CollectionExpression tiene;
@@ -33,12 +35,14 @@ public class TemasDetachedCriteria extends AbstractORMDetachedCriteria {
 	public TemasDetachedCriteria() {
 		super(com.mds.database.Temas.class, com.mds.database.TemasCriteria.class);
 		id_tema = new IntegerExpression("id_tema", this.getDetachedCriteria());
-		es_gustado = new CollectionExpression("ORM_es_gustado", this.getDetachedCriteria());
+		leGustaTema = new CollectionExpression("ORM_leGustaTema", this.getDetachedCriteria());
 		pertenece_aId = new IntegerExpression("pertenece_a.id_secciones", this.getDetachedCriteria());
 		pertenece_a = new AssociationExpression("pertenece_a", this.getDetachedCriteria());
 		nombre = new StringExpression("nombre", this.getDetachedCriteria());
 		num__likes = new IntegerExpression("num__likes", this.getDetachedCriteria());
 		publico = new BooleanExpression("publico", this.getDetachedCriteria());
+		contenido = new StringExpression("contenido", this.getDetachedCriteria());
+		fechaTema = new DateExpression("fechaTema", this.getDetachedCriteria());
 		creado_porId = new IntegerExpression("creado_por.id_usuario", this.getDetachedCriteria());
 		creado_por = new AssociationExpression("creado_por", this.getDetachedCriteria());
 		tiene = new CollectionExpression("ORM_tiene", this.getDetachedCriteria());
@@ -47,19 +51,21 @@ public class TemasDetachedCriteria extends AbstractORMDetachedCriteria {
 	public TemasDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, com.mds.database.TemasCriteria.class);
 		id_tema = new IntegerExpression("id_tema", this.getDetachedCriteria());
-		es_gustado = new CollectionExpression("ORM_es_gustado", this.getDetachedCriteria());
+		leGustaTema = new CollectionExpression("ORM_leGustaTema", this.getDetachedCriteria());
 		pertenece_aId = new IntegerExpression("pertenece_a.id_secciones", this.getDetachedCriteria());
 		pertenece_a = new AssociationExpression("pertenece_a", this.getDetachedCriteria());
 		nombre = new StringExpression("nombre", this.getDetachedCriteria());
 		num__likes = new IntegerExpression("num__likes", this.getDetachedCriteria());
 		publico = new BooleanExpression("publico", this.getDetachedCriteria());
+		contenido = new StringExpression("contenido", this.getDetachedCriteria());
+		fechaTema = new DateExpression("fechaTema", this.getDetachedCriteria());
 		creado_porId = new IntegerExpression("creado_por.id_usuario", this.getDetachedCriteria());
 		creado_por = new AssociationExpression("creado_por", this.getDetachedCriteria());
 		tiene = new CollectionExpression("ORM_tiene", this.getDetachedCriteria());
 	}
 	
-	public UsuarioDetachedCriteria createEs_gustadoCriteria() {
-		return new UsuarioDetachedCriteria(createCriteria("ORM_es_gustado"));
+	public UsuarioDetachedCriteria createLeGustaTemaCriteria() {
+		return new UsuarioDetachedCriteria(createCriteria("ORM_leGustaTema"));
 	}
 	
 	public SeccionesDetachedCriteria createPertenece_aCriteria() {

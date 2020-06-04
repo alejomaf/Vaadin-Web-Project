@@ -22,6 +22,7 @@ public class NotificacionesDetachedCriteria extends AbstractORMDetachedCriteria 
 	public final IntegerExpression id_notificaciones;
 	public final IntegerExpression deId;
 	public final AssociationExpression de;
+	public final DateExpression fecha;
 	public final StringExpression enlace;
 	public final StringExpression titulo;
 	
@@ -30,6 +31,7 @@ public class NotificacionesDetachedCriteria extends AbstractORMDetachedCriteria 
 		id_notificaciones = new IntegerExpression("id_notificaciones", this.getDetachedCriteria());
 		deId = new IntegerExpression("de.id_usuario", this.getDetachedCriteria());
 		de = new AssociationExpression("de", this.getDetachedCriteria());
+		fecha = new DateExpression("fecha", this.getDetachedCriteria());
 		enlace = new StringExpression("enlace", this.getDetachedCriteria());
 		titulo = new StringExpression("titulo", this.getDetachedCriteria());
 	}
@@ -39,6 +41,7 @@ public class NotificacionesDetachedCriteria extends AbstractORMDetachedCriteria 
 		id_notificaciones = new IntegerExpression("id_notificaciones", this.getDetachedCriteria());
 		deId = new IntegerExpression("de.id_usuario", this.getDetachedCriteria());
 		de = new AssociationExpression("de", this.getDetachedCriteria());
+		fecha = new DateExpression("fecha", this.getDetachedCriteria());
 		enlace = new StringExpression("enlace", this.getDetachedCriteria());
 		titulo = new StringExpression("titulo", this.getDetachedCriteria());
 	}
