@@ -73,6 +73,7 @@ public class TemasSetCollection extends org.orm.util.ORMSet {
 	 * <li>id_tema</li>
 	 * <li>nombre</li>
 	 * <li>num__likes</li>
+	 * <li>publico</li>
 	 * </ul>
 	 * @return The persistent objects sorted array
 	 */
@@ -86,6 +87,7 @@ public class TemasSetCollection extends org.orm.util.ORMSet {
 	 * <li>id_tema</li>
 	 * <li>nombre</li>
 	 * <li>num__likes</li>
+	 * <li>publico</li>
 	 * </ul>
 	 * @param ascending true for ascending, false for descending
 	 * @return The persistent objects sorted array

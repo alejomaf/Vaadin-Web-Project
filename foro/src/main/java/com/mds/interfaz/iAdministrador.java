@@ -1,5 +1,7 @@
 package com.mds.interfaz;
 
+import com.mds.database.Secciones;
+
 public interface iAdministrador extends iUsuario_Registrado, iComun_privilegiados, iComun_registrados {
 
 	public void Conceder_privilegios(int aID);
@@ -12,13 +14,19 @@ public interface iAdministrador extends iUsuario_Registrado, iComun_privilegiado
 
 	public void Desbanear(int aID);
 
-	public void cargarSecciones();
+	public com.mds.database.Secciones[] cargarSecciones();
 
 	public void cargarNotificaciones();
 
-	public void cargarMensajes();
+	public void cargarMensajes(int aID);
 
-	public void cargarAmigos();
+	public void cargarAmigos(int aID);
 
-	public void cargarUsuariosReportados();
+	public void cargarUsuariosReportados(int aID);
+	
+	public void crearSeccion(String titulo);
+	
+	public void borrarSeccion(int aID);
+	
+	public com.mds.database.Temas[] cargarTema(Secciones sec);
 }

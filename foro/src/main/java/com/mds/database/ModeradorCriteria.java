@@ -27,15 +27,14 @@ public class ModeradorCriteria extends AbstractORMCriteria {
 	public final StringExpression descripcion;
 	public final BooleanExpression moderador;
 	public final BooleanExpression reportado;
+	public final StringExpression foto;
+	public final StringExpression nombre_completo;
+	public final BooleanExpression eliminado;
 	public final CollectionExpression creaT;
 	public final CollectionExpression escribe;
-	public final CollectionExpression reporta_a;
 	public final CollectionExpression tiene;
 	public final CollectionExpression es_amigo_de;
-	public final IntegerExpression eliminado_porId;
-	public final AssociationExpression eliminado_por;
 	public final CollectionExpression gustaM;
-	public final CollectionExpression es_reportado_por;
 	public final CollectionExpression gustaT;
 	public final CollectionExpression eliminaMod;
 	
@@ -49,15 +48,14 @@ public class ModeradorCriteria extends AbstractORMCriteria {
 		descripcion = new StringExpression("descripcion", this);
 		moderador = new BooleanExpression("moderador", this);
 		reportado = new BooleanExpression("reportado", this);
+		foto = new StringExpression("foto", this);
+		nombre_completo = new StringExpression("nombre_completo", this);
+		eliminado = new BooleanExpression("eliminado", this);
 		creaT = new CollectionExpression("ORM_creaT", this);
 		escribe = new CollectionExpression("ORM_escribe", this);
-		reporta_a = new CollectionExpression("ORM_reporta_a", this);
 		tiene = new CollectionExpression("ORM_tiene", this);
 		es_amigo_de = new CollectionExpression("ORM_es_amigo_de", this);
-		eliminado_porId = new IntegerExpression("eliminado_por.id_usuario", this);
-		eliminado_por = new AssociationExpression("eliminado_por", this);
 		gustaM = new CollectionExpression("ORM_gustaM", this);
-		es_reportado_por = new CollectionExpression("ORM_es_reportado_por", this);
 		gustaT = new CollectionExpression("ORM_gustaT", this);
 		eliminaMod = new CollectionExpression("ORM_eliminaMod", this);
 	}
@@ -86,10 +84,6 @@ public class ModeradorCriteria extends AbstractORMCriteria {
 		return new MensajeCriteria(createCriteria("ORM_escribe"));
 	}
 	
-	public UsuarioCriteria createReporta_aCriteria() {
-		return new UsuarioCriteria(createCriteria("ORM_reporta_a"));
-	}
-	
 	public NotificacionesCriteria createTieneCriteria() {
 		return new NotificacionesCriteria(createCriteria("ORM_tiene"));
 	}
@@ -98,16 +92,8 @@ public class ModeradorCriteria extends AbstractORMCriteria {
 		return new UsuarioCriteria(createCriteria("ORM_es_amigo_de"));
 	}
 	
-	public AdministradorCriteria createEliminado_porCriteria() {
-		return new AdministradorCriteria(createCriteria("eliminado_por"));
-	}
-	
 	public MensajeCriteria createGustaMCriteria() {
 		return new MensajeCriteria(createCriteria("ORM_gustaM"));
-	}
-	
-	public UsuarioCriteria createEs_reportado_porCriteria() {
-		return new UsuarioCriteria(createCriteria("ORM_es_reportado_por"));
 	}
 	
 	public TemasCriteria createGustaTCriteria() {

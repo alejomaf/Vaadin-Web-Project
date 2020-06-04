@@ -40,8 +40,8 @@ public class Notificaciones implements Serializable {
 	
 	@Column(name="Id_notificaciones", nullable=false, length=10)	
 	@Id	
-	@GeneratedValue(generator="COM_MDS_FORO_NOTIFICACIONES_ID_NOTIFICACIONES_GENERATOR")	
-	@org.hibernate.annotations.GenericGenerator(name="COM_MDS_FORO_NOTIFICACIONES_ID_NOTIFICACIONES_GENERATOR", strategy="native")	
+	@GeneratedValue(generator="COM_MDS_DATABASE_NOTIFICACIONES_ID_NOTIFICACIONES_GENERATOR")	
+	@org.hibernate.annotations.GenericGenerator(name="COM_MDS_DATABASE_NOTIFICACIONES_ID_NOTIFICACIONES_GENERATOR", strategy="native")	
 	private int id_notificaciones;
 	
 	@ManyToOne(targetEntity=com.mds.database.Usuario.class, fetch=FetchType.LAZY)	

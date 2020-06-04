@@ -39,8 +39,8 @@ public class Media implements Serializable {
 	
 	@Column(name="Id_media", nullable=false, length=10)	
 	@Id	
-	@GeneratedValue(generator="COM_MDS_FORO_MEDIA_ID_MEDIA_GENERATOR")	
-	@org.hibernate.annotations.GenericGenerator(name="COM_MDS_FORO_MEDIA_ID_MEDIA_GENERATOR", strategy="native")	
+	@GeneratedValue(generator="COM_MDS_DATABASE_MEDIA_ID_MEDIA_GENERATOR")	
+	@org.hibernate.annotations.GenericGenerator(name="COM_MDS_DATABASE_MEDIA_ID_MEDIA_GENERATOR", strategy="native")	
 	private int id_media;
 	
 	@ManyToOne(targetEntity=com.mds.database.Mensaje.class, fetch=FetchType.LAZY)	

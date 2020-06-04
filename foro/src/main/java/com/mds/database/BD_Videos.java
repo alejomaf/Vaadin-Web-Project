@@ -1,5 +1,7 @@
 package com.mds.database;
+
 import java.util.Vector;
+import com.mds.database.Video;
 
 public class BD_Videos {
 	public BD_Pincipal _bD_Pincipal;

@@ -20,16 +20,12 @@ import org.orm.criteria.*;
 
 public class SeccionesDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression id_secciones;
-	public final IntegerExpression es_creada_porId;
-	public final AssociationExpression es_creada_por;
 	public final StringExpression nombre;
 	public final CollectionExpression tiene;
 	
 	public SeccionesDetachedCriteria() {
 		super(com.mds.database.Secciones.class, com.mds.database.SeccionesCriteria.class);
 		id_secciones = new IntegerExpression("id_secciones", this.getDetachedCriteria());
-		es_creada_porId = new IntegerExpression("es_creada_por.id_usuario", this.getDetachedCriteria());
-		es_creada_por = new AssociationExpression("es_creada_por", this.getDetachedCriteria());
 		nombre = new StringExpression("nombre", this.getDetachedCriteria());
 		tiene = new CollectionExpression("ORM_tiene", this.getDetachedCriteria());
 	}
@@ -37,14 +33,8 @@ public class SeccionesDetachedCriteria extends AbstractORMDetachedCriteria {
 	public SeccionesDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, com.mds.database.SeccionesCriteria.class);
 		id_secciones = new IntegerExpression("id_secciones", this.getDetachedCriteria());
-		es_creada_porId = new IntegerExpression("es_creada_por.id_usuario", this.getDetachedCriteria());
-		es_creada_por = new AssociationExpression("es_creada_por", this.getDetachedCriteria());
 		nombre = new StringExpression("nombre", this.getDetachedCriteria());
 		tiene = new CollectionExpression("ORM_tiene", this.getDetachedCriteria());
-	}
-	
-	public AdministradorDetachedCriteria createEs_creada_porCriteria() {
-		return new AdministradorDetachedCriteria(createCriteria("es_creada_por"));
 	}
 	
 	public TemasDetachedCriteria createTieneCriteria() {

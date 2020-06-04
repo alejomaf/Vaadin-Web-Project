@@ -2,16 +2,20 @@ package com.mds.foro;
 
 import javax.servlet.annotation.WebServlet;
 
+
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.NativeButton;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.declarative.Design;
+import com.mds.foro.*;
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
  * (or tab) or some part of an HTML page where a Vaadin application is embedded.
@@ -24,20 +28,10 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        final VerticalLayout layout = new VerticalLayout();
+    	
+        Comun_usuarios comun = new Comun_usuarios();
+        setContent(comun);
         
-        final TextField name = new TextField();
-        name.setCaption("Type your name here:");
-
-        Button button = new Button("Click Me");
-        button.addClickListener(e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue() 
-                    + ", it works!"));
-        });
-        
-        layout.addComponents(name, button);
-        
-        setContent(layout);
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)

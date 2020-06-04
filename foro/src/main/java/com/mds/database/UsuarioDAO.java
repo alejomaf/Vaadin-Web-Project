@@ -339,10 +339,6 @@ public class UsuarioDAO {
 			for(int i = 0; i < lEscribes.length; i++) {
 				lEscribes[i].setPertenece_a(null);
 			}
-			com.mds.database.Usuario[] lReporta_as = usuario.reporta_a.toArray();
-			for(int i = 0; i < lReporta_as.length; i++) {
-				lReporta_as[i].es_reportado_por.remove(usuario);
-			}
 			com.mds.database.Notificaciones[] lTienes = usuario.tiene.toArray();
 			for(int i = 0; i < lTienes.length; i++) {
 				lTienes[i].setDe(null);
@@ -351,17 +347,9 @@ public class UsuarioDAO {
 			for(int i = 0; i < lEs_amigo_des.length; i++) {
 				lEs_amigo_des[i].amigo_de.remove(usuario);
 			}
-			if (usuario.getEliminado_por() != null) {
-				usuario.getEliminado_por().elimina.remove(usuario);
-			}
-			
 			com.mds.database.Mensaje[] lGustaMs = usuario.gustaM.toArray();
 			for(int i = 0; i < lGustaMs.length; i++) {
 				lGustaMs[i].es_gustado.remove(usuario);
-			}
-			com.mds.database.Usuario[] lEs_reportado_pors = usuario.es_reportado_por.toArray();
-			for(int i = 0; i < lEs_reportado_pors.length; i++) {
-				lEs_reportado_pors[i].reporta_a.remove(usuario);
 			}
 			com.mds.database.Temas[] lGustaTs = usuario.gustaT.toArray();
 			for(int i = 0; i < lGustaTs.length; i++) {
@@ -393,10 +381,6 @@ public class UsuarioDAO {
 			for(int i = 0; i < lEscribes.length; i++) {
 				lEscribes[i].setPertenece_a(null);
 			}
-			com.mds.database.Usuario[] lReporta_as = usuario.reporta_a.toArray();
-			for(int i = 0; i < lReporta_as.length; i++) {
-				lReporta_as[i].es_reportado_por.remove(usuario);
-			}
 			com.mds.database.Notificaciones[] lTienes = usuario.tiene.toArray();
 			for(int i = 0; i < lTienes.length; i++) {
 				lTienes[i].setDe(null);
@@ -405,17 +389,9 @@ public class UsuarioDAO {
 			for(int i = 0; i < lEs_amigo_des.length; i++) {
 				lEs_amigo_des[i].amigo_de.remove(usuario);
 			}
-			if (usuario.getEliminado_por() != null) {
-				usuario.getEliminado_por().elimina.remove(usuario);
-			}
-			
 			com.mds.database.Mensaje[] lGustaMs = usuario.gustaM.toArray();
 			for(int i = 0; i < lGustaMs.length; i++) {
 				lGustaMs[i].es_gustado.remove(usuario);
-			}
-			com.mds.database.Usuario[] lEs_reportado_pors = usuario.es_reportado_por.toArray();
-			for(int i = 0; i < lEs_reportado_pors.length; i++) {
-				lEs_reportado_pors[i].reporta_a.remove(usuario);
 			}
 			com.mds.database.Temas[] lGustaTs = usuario.gustaT.toArray();
 			for(int i = 0; i < lGustaTs.length; i++) {

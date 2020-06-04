@@ -343,10 +343,6 @@ public class ModeradorDAO {
 			for(int i = 0; i < lEscribes.length; i++) {
 				lEscribes[i].setPertenece_a(null);
 			}
-			com.mds.database.Usuario[] lReporta_as = moderador.reporta_a.toArray();
-			for(int i = 0; i < lReporta_as.length; i++) {
-				lReporta_as[i].es_reportado_por.remove(moderador);
-			}
 			com.mds.database.Notificaciones[] lTienes = moderador.tiene.toArray();
 			for(int i = 0; i < lTienes.length; i++) {
 				lTienes[i].setDe(null);
@@ -355,17 +351,9 @@ public class ModeradorDAO {
 			for(int i = 0; i < lEs_amigo_des.length; i++) {
 				lEs_amigo_des[i].amigo_de.remove(moderador);
 			}
-			if (moderador.getEliminado_por() != null) {
-				moderador.getEliminado_por().elimina.remove(moderador);
-			}
-			
 			com.mds.database.Mensaje[] lGustaMs = moderador.gustaM.toArray();
 			for(int i = 0; i < lGustaMs.length; i++) {
 				lGustaMs[i].es_gustado.remove(moderador);
-			}
-			com.mds.database.Usuario[] lEs_reportado_pors = moderador.es_reportado_por.toArray();
-			for(int i = 0; i < lEs_reportado_pors.length; i++) {
-				lEs_reportado_pors[i].reporta_a.remove(moderador);
 			}
 			com.mds.database.Temas[] lGustaTs = moderador.gustaT.toArray();
 			for(int i = 0; i < lGustaTs.length; i++) {
@@ -401,10 +389,6 @@ public class ModeradorDAO {
 			for(int i = 0; i < lEscribes.length; i++) {
 				lEscribes[i].setPertenece_a(null);
 			}
-			com.mds.database.Usuario[] lReporta_as = moderador.reporta_a.toArray();
-			for(int i = 0; i < lReporta_as.length; i++) {
-				lReporta_as[i].es_reportado_por.remove(moderador);
-			}
 			com.mds.database.Notificaciones[] lTienes = moderador.tiene.toArray();
 			for(int i = 0; i < lTienes.length; i++) {
 				lTienes[i].setDe(null);
@@ -413,17 +397,9 @@ public class ModeradorDAO {
 			for(int i = 0; i < lEs_amigo_des.length; i++) {
 				lEs_amigo_des[i].amigo_de.remove(moderador);
 			}
-			if (moderador.getEliminado_por() != null) {
-				moderador.getEliminado_por().elimina.remove(moderador);
-			}
-			
 			com.mds.database.Mensaje[] lGustaMs = moderador.gustaM.toArray();
 			for(int i = 0; i < lGustaMs.length; i++) {
 				lGustaMs[i].es_gustado.remove(moderador);
-			}
-			com.mds.database.Usuario[] lEs_reportado_pors = moderador.es_reportado_por.toArray();
-			for(int i = 0; i < lEs_reportado_pors.length; i++) {
-				lEs_reportado_pors[i].reporta_a.remove(moderador);
 			}
 			com.mds.database.Temas[] lGustaTs = moderador.gustaT.toArray();
 			for(int i = 0; i < lGustaTs.length; i++) {

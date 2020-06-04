@@ -323,14 +323,6 @@ public class AdministradorDAO {
 	
 	public static boolean deleteAndDissociate(com.mds.database.Administrador administrador)throws PersistentException {
 		try {
-			com.mds.database.Secciones[] lCreaSs = administrador.creaS.toArray();
-			for(int i = 0; i < lCreaSs.length; i++) {
-				lCreaSs[i].setEs_creada_por(null);
-			}
-			com.mds.database.Usuario[] lEliminas = administrador.elimina.toArray();
-			for(int i = 0; i < lEliminas.length; i++) {
-				lEliminas[i].setEliminado_por(null);
-			}
 			com.mds.database.Mensaje[] lEliminaMods = administrador.eliminaMod.toArray();
 			for(int i = 0; i < lEliminaMods.length; i++) {
 				lEliminaMods[i].setEliminado_por(null);
@@ -347,10 +339,6 @@ public class AdministradorDAO {
 			for(int i = 0; i < lEscribes.length; i++) {
 				lEscribes[i].setPertenece_a(null);
 			}
-			com.mds.database.Usuario[] lReporta_as = administrador.reporta_a.toArray();
-			for(int i = 0; i < lReporta_as.length; i++) {
-				lReporta_as[i].es_reportado_por.remove(administrador);
-			}
 			com.mds.database.Notificaciones[] lTienes = administrador.tiene.toArray();
 			for(int i = 0; i < lTienes.length; i++) {
 				lTienes[i].setDe(null);
@@ -359,17 +347,9 @@ public class AdministradorDAO {
 			for(int i = 0; i < lEs_amigo_des.length; i++) {
 				lEs_amigo_des[i].amigo_de.remove(administrador);
 			}
-			if (administrador.getEliminado_por() != null) {
-				administrador.getEliminado_por().elimina.remove(administrador);
-			}
-			
 			com.mds.database.Mensaje[] lGustaMs = administrador.gustaM.toArray();
 			for(int i = 0; i < lGustaMs.length; i++) {
 				lGustaMs[i].es_gustado.remove(administrador);
-			}
-			com.mds.database.Usuario[] lEs_reportado_pors = administrador.es_reportado_por.toArray();
-			for(int i = 0; i < lEs_reportado_pors.length; i++) {
-				lEs_reportado_pors[i].reporta_a.remove(administrador);
 			}
 			com.mds.database.Temas[] lGustaTs = administrador.gustaT.toArray();
 			for(int i = 0; i < lGustaTs.length; i++) {
@@ -385,14 +365,6 @@ public class AdministradorDAO {
 	
 	public static boolean deleteAndDissociate(com.mds.database.Administrador administrador, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			com.mds.database.Secciones[] lCreaSs = administrador.creaS.toArray();
-			for(int i = 0; i < lCreaSs.length; i++) {
-				lCreaSs[i].setEs_creada_por(null);
-			}
-			com.mds.database.Usuario[] lEliminas = administrador.elimina.toArray();
-			for(int i = 0; i < lEliminas.length; i++) {
-				lEliminas[i].setEliminado_por(null);
-			}
 			com.mds.database.Mensaje[] lEliminaMods = administrador.eliminaMod.toArray();
 			for(int i = 0; i < lEliminaMods.length; i++) {
 				lEliminaMods[i].setEliminado_por(null);
@@ -409,10 +381,6 @@ public class AdministradorDAO {
 			for(int i = 0; i < lEscribes.length; i++) {
 				lEscribes[i].setPertenece_a(null);
 			}
-			com.mds.database.Usuario[] lReporta_as = administrador.reporta_a.toArray();
-			for(int i = 0; i < lReporta_as.length; i++) {
-				lReporta_as[i].es_reportado_por.remove(administrador);
-			}
 			com.mds.database.Notificaciones[] lTienes = administrador.tiene.toArray();
 			for(int i = 0; i < lTienes.length; i++) {
 				lTienes[i].setDe(null);
@@ -421,17 +389,9 @@ public class AdministradorDAO {
 			for(int i = 0; i < lEs_amigo_des.length; i++) {
 				lEs_amigo_des[i].amigo_de.remove(administrador);
 			}
-			if (administrador.getEliminado_por() != null) {
-				administrador.getEliminado_por().elimina.remove(administrador);
-			}
-			
 			com.mds.database.Mensaje[] lGustaMs = administrador.gustaM.toArray();
 			for(int i = 0; i < lGustaMs.length; i++) {
 				lGustaMs[i].es_gustado.remove(administrador);
-			}
-			com.mds.database.Usuario[] lEs_reportado_pors = administrador.es_reportado_por.toArray();
-			for(int i = 0; i < lEs_reportado_pors.length; i++) {
-				lEs_reportado_pors[i].reporta_a.remove(administrador);
 			}
 			com.mds.database.Temas[] lGustaTs = administrador.gustaT.toArray();
 			for(int i = 0; i < lGustaTs.length; i++) {

@@ -1,5 +1,7 @@
 package com.mds.database;
+
 import java.util.Vector;
+import com.mds.database.Mensaje;
 
 public class BD_Mensajes {
 	public BD_Pincipal _bD_Pincipal;
@@ -17,7 +19,7 @@ public class BD_Mensajes {
 		throw new UnsupportedOperationException();
 	}
 
-	public void cargarMensajes() {
+	public void cargarMensajes(int aID) {
 		throw new UnsupportedOperationException();
 	}
 }

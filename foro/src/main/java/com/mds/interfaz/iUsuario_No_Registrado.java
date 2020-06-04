@@ -4,7 +4,7 @@ public interface iUsuario_No_Registrado extends iComun_usuarios {
 
 	public void buscarSeccion(String aBusqueda);
 
-	public void registrarse();
+	public void registrarse(String aNombreUsuario, String aContrasena, String aNombreCompleto, String aDescripcion, String aFotoPerfil, String email);
 
-	public void iniciarSesion(String aUsuario, String aContrasena);
+	public com.mds.database.Usuario iniciarSesion(String aUsuario, String aContrasena);
 }

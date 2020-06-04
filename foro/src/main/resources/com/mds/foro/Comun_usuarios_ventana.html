@@ -8,13 +8,13 @@
  <body>
   <vaadin-panel responsive>
    <vaadin-vertical-layout responsive size-full>
-    <vaadin-horizontal-layout responsive width-full :center>
+    <vaadin-horizontal-layout responsive width-full _id="encabezado" :center>
      <vaadin-image source="https://cdn.shortpixel.ai/client/to_webp,q_lossy,ret_img,w_501/https://clenguas.ual.es/wp-content/uploads/2018/11/logo_UAL.jpg" width="150px"></vaadin-image>
-     <vaadin-horizontal-layout :middle :right>
-      <vaadin-native-button responsive width="100px" plain-text>
+     <vaadin-horizontal-layout _id="barraSuperior" :middle :right>
+      <vaadin-native-button responsive id="registrarse" width="100px" plain-text _id="registrar">
         Registrarse 
       </vaadin-native-button>
-      <vaadin-native-button responsive width="130px" plain-text>
+      <vaadin-native-button responsive id="iniciar" width="130px" plain-text _id="iniciar">
         Iniciar sesión 
       </vaadin-native-button>
      </vaadin-horizontal-layout>
@@ -22,7 +22,7 @@
     <vaadin-horizontal-layout width-full>
      <vaadin-vertical-layout _id="cuadroPrincipal" :expand="4">
       <vaadin-vertical-layout>
-       <vaadin-label icon="kljl" plain-text>
+       <vaadin-label plain-text>
          Secciones 
        </vaadin-label>
        <vaadin-horizontal-layout width-full>

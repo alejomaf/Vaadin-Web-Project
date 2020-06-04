@@ -6,23 +6,26 @@
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
-  <vaadin-vertical-layout size-full>
-   <vaadin-vertical-layout responsive width="352px" :middle :center>
-    <vaadin-label caption="Registrarse" responsive plain-text :bottom :center :expand></vaadin-label>
-    <vaadin-text-field caption="Nombre de usuario" responsive :bottom :center :expand></vaadin-text-field>
-    <vaadin-password-field caption="Contraseña" responsive :center :expand></vaadin-password-field>
-    <vaadin-password-field caption="Nombre completo" responsive :center></vaadin-password-field>
-    <vaadin-password-field caption="Háblanos acerca de ti" responsive :center></vaadin-password-field>
+  <vaadin-panel size-full>
+   <vaadin-vertical-layout responsive width="352px">
+    <vaadin-native-button icon="fonticon://Vaadin-Icons/e750" plain-text _id="salir" :right></vaadin-native-button>
+    <vaadin-label caption="Registrarse" responsive plain-text _id="titulo" :middle :center :expand></vaadin-label>
+    <vaadin-text-field caption="Nombre de usuario" responsive _id="nombreUsuario" :middle :center :expand></vaadin-text-field>
+    <vaadin-password-field caption="Contraseña" responsive _id="contrasena" :middle :center :expand></vaadin-password-field>
+    <vaadin-password-field caption="Repetir contraseña" responsive _id="contrasena2" :middle :center></vaadin-password-field>
+    <vaadin-text-field caption="Correo electrónico" responsive _id="email" :middle :center></vaadin-text-field>
+    <vaadin-text-field caption="Nombre completo" responsive _id="nombreCompleto" :middle :center></vaadin-text-field>
+    <vaadin-text-field caption="Háblanos acerca de ti" responsive _id="descripcion" :middle :center></vaadin-text-field>
     <vaadin-horizontal-layout responsive margin :center :expand="2">
      <vaadin-label caption="Adjuntar foto de perfil" responsive plain-text></vaadin-label>
-     <vaadin-native-button responsive width="90px" plain-text :middle :center :expand>
+     <vaadin-native-button responsive width="90px" plain-text _id="adjuntar" :middle :center :expand>
        Adjuntar 
      </vaadin-native-button>
     </vaadin-horizontal-layout>
-    <vaadin-native-button responsive width="120px" plain-text :center>
+    <vaadin-native-button responsive width="120px" plain-text _id="registrarse" :center>
       Registrarse 
     </vaadin-native-button>
    </vaadin-vertical-layout>
-  </vaadin-vertical-layout>
+  </vaadin-panel>
  </body>
 </html>

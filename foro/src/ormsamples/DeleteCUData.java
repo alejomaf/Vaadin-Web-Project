@@ -9,36 +9,36 @@ public class DeleteCUData {
 	public void deleteTestData() throws PersistentException {
 		PersistentTransaction t = com.mds.database.CUPersistentManager.instance().getSession().beginTransaction();
 		try {
-			com.mds.database.Notificaciones lcommdsforoNotificaciones = com.mds.database.NotificacionesDAO.loadNotificacionesByQuery(null, null);
+			com.mds.database.Notificaciones lcommdsdatabaseNotificaciones = com.mds.database.NotificacionesDAO.loadNotificacionesByQuery(null, null);
 			// Delete the persistent object
-			com.mds.database.NotificacionesDAO.delete(lcommdsforoNotificaciones);
-			com.mds.database.Usuario lcommdsforoUsuario = com.mds.database.UsuarioDAO.loadUsuarioByQuery(null, null);
+			com.mds.database.NotificacionesDAO.delete(lcommdsdatabaseNotificaciones);
+			com.mds.database.Usuario lcommdsdatabaseUsuario = com.mds.database.UsuarioDAO.loadUsuarioByQuery(null, null);
 			// Delete the persistent object
-			com.mds.database.UsuarioDAO.delete(lcommdsforoUsuario);
-			com.mds.database.Moderador lcommdsforoModerador = com.mds.database.ModeradorDAO.loadModeradorByQuery(null, null);
+			com.mds.database.UsuarioDAO.delete(lcommdsdatabaseUsuario);
+			com.mds.database.Moderador lcommdsdatabaseModerador = com.mds.database.ModeradorDAO.loadModeradorByQuery(null, null);
 			// Delete the persistent object
-			com.mds.database.ModeradorDAO.delete(lcommdsforoModerador);
-			com.mds.database.Administrador lcommdsforoAdministrador = com.mds.database.AdministradorDAO.loadAdministradorByQuery(null, null);
+			com.mds.database.ModeradorDAO.delete(lcommdsdatabaseModerador);
+			com.mds.database.Administrador lcommdsdatabaseAdministrador = com.mds.database.AdministradorDAO.loadAdministradorByQuery(null, null);
 			// Delete the persistent object
-			com.mds.database.AdministradorDAO.delete(lcommdsforoAdministrador);
-			com.mds.database.Temas lcommdsforoTemas = com.mds.database.TemasDAO.loadTemasByQuery(null, null);
+			com.mds.database.AdministradorDAO.delete(lcommdsdatabaseAdministrador);
+			com.mds.database.Temas lcommdsdatabaseTemas = com.mds.database.TemasDAO.loadTemasByQuery(null, null);
 			// Delete the persistent object
-			com.mds.database.TemasDAO.delete(lcommdsforoTemas);
-			com.mds.database.Mensaje lcommdsforoMensaje = com.mds.database.MensajeDAO.loadMensajeByQuery(null, null);
+			com.mds.database.TemasDAO.delete(lcommdsdatabaseTemas);
+			com.mds.database.Mensaje lcommdsdatabaseMensaje = com.mds.database.MensajeDAO.loadMensajeByQuery(null, null);
 			// Delete the persistent object
-			com.mds.database.MensajeDAO.delete(lcommdsforoMensaje);
-			com.mds.database.Media lcommdsforoMedia = com.mds.database.MediaDAO.loadMediaByQuery(null, null);
+			com.mds.database.MensajeDAO.delete(lcommdsdatabaseMensaje);
+			com.mds.database.Media lcommdsdatabaseMedia = com.mds.database.MediaDAO.loadMediaByQuery(null, null);
 			// Delete the persistent object
-			com.mds.database.MediaDAO.delete(lcommdsforoMedia);
-			com.mds.database.Video lcommdsforoVideo = com.mds.database.VideoDAO.loadVideoByQuery(null, null);
+			com.mds.database.MediaDAO.delete(lcommdsdatabaseMedia);
+			com.mds.database.Video lcommdsdatabaseVideo = com.mds.database.VideoDAO.loadVideoByQuery(null, null);
 			// Delete the persistent object
-			com.mds.database.VideoDAO.delete(lcommdsforoVideo);
-			com.mds.database.Secciones lcommdsforoSecciones = com.mds.database.SeccionesDAO.loadSeccionesByQuery(null, null);
+			com.mds.database.VideoDAO.delete(lcommdsdatabaseVideo);
+			com.mds.database.Secciones lcommdsdatabaseSecciones = com.mds.database.SeccionesDAO.loadSeccionesByQuery(null, null);
 			// Delete the persistent object
-			com.mds.database.SeccionesDAO.delete(lcommdsforoSecciones);
-			com.mds.database.Foto lcommdsforoFoto = com.mds.database.FotoDAO.loadFotoByQuery(null, null);
+			com.mds.database.SeccionesDAO.delete(lcommdsdatabaseSecciones);
+			com.mds.database.Foto lcommdsdatabaseFoto = com.mds.database.FotoDAO.loadFotoByQuery(null, null);
 			// Delete the persistent object
-			com.mds.database.FotoDAO.delete(lcommdsforoFoto);
+			com.mds.database.FotoDAO.delete(lcommdsdatabaseFoto);
 			t.commit();
 		}
 		catch (Exception e) {

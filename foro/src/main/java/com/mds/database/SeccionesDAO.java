@@ -323,10 +323,6 @@ public class SeccionesDAO {
 	
 	public static boolean deleteAndDissociate(com.mds.database.Secciones secciones)throws PersistentException {
 		try {
-			if (secciones.getEs_creada_por() != null) {
-				secciones.getEs_creada_por().creaS.remove(secciones);
-			}
-			
 			com.mds.database.Temas[] lTienes = secciones.tiene.toArray();
 			for(int i = 0; i < lTienes.length; i++) {
 				lTienes[i].setPertenece_a(null);
@@ -341,10 +337,6 @@ public class SeccionesDAO {
 	
 	public static boolean deleteAndDissociate(com.mds.database.Secciones secciones, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			if (secciones.getEs_creada_por() != null) {
-				secciones.getEs_creada_por().creaS.remove(secciones);
-			}
-			
 			com.mds.database.Temas[] lTienes = secciones.tiene.toArray();
 			for(int i = 0; i < lTienes.length; i++) {
 				lTienes[i].setPertenece_a(null);

@@ -1,5 +1,7 @@
 package com.mds.database;
+
 import java.util.Vector;
+import com.mds.database.Notificaciones;
 
 public class BD_Notificaciones {
 	public BD_Pincipal _bD_Pincipal;

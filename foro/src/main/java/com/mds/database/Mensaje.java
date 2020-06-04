@@ -68,8 +68,8 @@ public class Mensaje implements Serializable {
 	
 	@Column(name="Id_mensaje", nullable=false, length=10)	
 	@Id	
-	@GeneratedValue(generator="COM_MDS_FORO_MENSAJE_ID_MENSAJE_GENERATOR")	
-	@org.hibernate.annotations.GenericGenerator(name="COM_MDS_FORO_MENSAJE_ID_MENSAJE_GENERATOR", strategy="native")	
+	@GeneratedValue(generator="COM_MDS_DATABASE_MENSAJE_ID_MENSAJE_GENERATOR")	
+	@org.hibernate.annotations.GenericGenerator(name="COM_MDS_DATABASE_MENSAJE_ID_MENSAJE_GENERATOR", strategy="native")	
 	private int id_mensaje;
 	
 	@ManyToOne(targetEntity=com.mds.database.Moderador.class, fetch=FetchType.LAZY)	

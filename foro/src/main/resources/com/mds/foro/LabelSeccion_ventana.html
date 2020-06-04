@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.1.5">
+ </head>
+ <body>
+  <vaadin-horizontal-layout width-full>
+   <vaadin-label plain-text _id="nombreSeccion" :middle>
+     Nombre de la sección 
+   </vaadin-label>
+   <vaadin-horizontal-layout :middle :right>
+    <vaadin-label plain-text _id="fechaCreacionSeccion">
+      Creado el 10/03/2020 
+    </vaadin-label>
+    <vaadin-button icon="fonticon://Vaadin-Icons/e80b" plain-text _id="borrarSeccion"></vaadin-button>
+    <vaadin-horizontal-layout>
+     <vaadin-label plain-text>
+       Número de temas: 
+     </vaadin-label>
+     <vaadin-label plain-text _id="numeroTemas">
+       x 
+     </vaadin-label>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout>
+     <vaadin-label plain-text>
+       Número de mensajes: 
+     </vaadin-label>
+     <vaadin-label plain-text _id="numeroMensajesEnSeccion">
+       x 
+     </vaadin-label>
+    </vaadin-horizontal-layout>
+   </vaadin-horizontal-layout>
+  </vaadin-horizontal-layout>
+ </body>
+</html>

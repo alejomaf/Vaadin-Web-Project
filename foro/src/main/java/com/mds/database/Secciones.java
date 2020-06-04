@@ -30,35 +30,19 @@ public class Secciones implements Serializable {
 		return null;
 	}
 	
-	private void this_setOwner(Object owner, int key) {
-		if (key == ORMConstants.KEY_SECCIONES_ES_CREADA_POR) {
-			this.es_creada_por = (com.mds.database.Administrador) owner;
-		}
-	}
-	
 	@Transient	
 	org.orm.util.ORMAdapter _ormAdapter = new org.orm.util.AbstractORMAdapter() {
 		public java.util.Set getSet(int key) {
 			return this_getSet(key);
 		}
 		
-		public void setOwner(Object owner, int key) {
-			this_setOwner(owner, key);
-		}
-		
 	};
 	
 	@Column(name="Id_secciones", nullable=false, length=10)	
 	@Id	
-	@GeneratedValue(generator="COM_MDS_FORO_SECCIONES_ID_SECCIONES_GENERATOR")	
-	@org.hibernate.annotations.GenericGenerator(name="COM_MDS_FORO_SECCIONES_ID_SECCIONES_GENERATOR", strategy="native")	
+	@GeneratedValue(generator="COM_MDS_DATABASE_SECCIONES_ID_SECCIONES_GENERATOR")	
+	@org.hibernate.annotations.GenericGenerator(name="COM_MDS_DATABASE_SECCIONES_ID_SECCIONES_GENERATOR", strategy="native")	
 	private int id_secciones;
-	
-	@ManyToOne(targetEntity=com.mds.database.Administrador.class, fetch=FetchType.LAZY)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns(value={ @JoinColumn(name="UsuarioId_usuario", referencedColumnName="Id_usuario", nullable=false) }, foreignKey=@ForeignKey(name="FKSecciones453714"))	
-	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private com.mds.database.Administrador es_creada_por;
 	
 	@Column(name="Nombre", nullable=true, length=255)	
 	private String nombre;
@@ -86,30 +70,6 @@ public class Secciones implements Serializable {
 	
 	public String getNombre() {
 		return nombre;
-	}
-	
-	public void setEs_creada_por(com.mds.database.Administrador value) {
-		if (es_creada_por != null) {
-			es_creada_por.creaS.remove(this);
-		}
-		if (value != null) {
-			value.creaS.add(this);
-		}
-	}
-	
-	public com.mds.database.Administrador getEs_creada_por() {
-		return es_creada_por;
-	}
-	
-	/**
-	 * This method is for internal use only.
-	 */
-	public void setORM_Es_creada_por(com.mds.database.Administrador value) {
-		this.es_creada_por = value;
-	}
-	
-	private com.mds.database.Administrador getORM_Es_creada_por() {
-		return es_creada_por;
 	}
 	
 	private void setORM_Tiene(java.util.Set value) {

@@ -327,20 +327,8 @@ public class TemasDAO {
 			for(int i = 0; i < lEs_gustados.length; i++) {
 				lEs_gustados[i].gustaT.remove(temas);
 			}
-			if (temas.getEs() != null) {
-				temas.getEs().setPublico(null);
-			}
-			
-			if (temas.getSon() != null) {
-				temas.getSon().setPrivados(null);
-			}
-			
 			if (temas.getPertenece_a() != null) {
 				temas.getPertenece_a().tiene.remove(temas);
-			}
-			
-			if (temas.getTemas() != null) {
-				temas.getTemas().setOcultos(null);
 			}
 			
 			if (temas.getCreado_por() != null) {
@@ -351,18 +339,6 @@ public class TemasDAO {
 			for(int i = 0; i < lTienes.length; i++) {
 				lTienes[i].setSon_de(null);
 			}
-			if (temas.getPublico() != null) {
-				temas.getPublico().setEs(null);
-			}
-			
-			if (temas.getPrivados() != null) {
-				temas.getPrivados().setSon(null);
-			}
-			
-			if (temas.getOcultos() != null) {
-				temas.getOcultos().setTemas(null);
-			}
-			
 			return delete(temas);
 		}
 		catch(Exception e) {
@@ -377,20 +353,8 @@ public class TemasDAO {
 			for(int i = 0; i < lEs_gustados.length; i++) {
 				lEs_gustados[i].gustaT.remove(temas);
 			}
-			if (temas.getEs() != null) {
-				temas.getEs().setPublico(null);
-			}
-			
-			if (temas.getSon() != null) {
-				temas.getSon().setPrivados(null);
-			}
-			
 			if (temas.getPertenece_a() != null) {
 				temas.getPertenece_a().tiene.remove(temas);
-			}
-			
-			if (temas.getTemas() != null) {
-				temas.getTemas().setOcultos(null);
 			}
 			
 			if (temas.getCreado_por() != null) {
@@ -401,18 +365,6 @@ public class TemasDAO {
 			for(int i = 0; i < lTienes.length; i++) {
 				lTienes[i].setSon_de(null);
 			}
-			if (temas.getPublico() != null) {
-				temas.getPublico().setEs(null);
-			}
-			
-			if (temas.getPrivados() != null) {
-				temas.getPrivados().setSon(null);
-			}
-			
-			if (temas.getOcultos() != null) {
-				temas.getOcultos().setTemas(null);
-			}
-			
 			try {
 				session.delete(temas);
 				return true;

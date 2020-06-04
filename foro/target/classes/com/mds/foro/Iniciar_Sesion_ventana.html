@@ -6,23 +6,26 @@
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
-  <vaadin-vertical-layout size-full>
-   <vaadin-vertical-layout responsive size-auto :middle :center>
-    <vaadin-label caption="Iniciar Sesión" responsive plain-text :bottom :center :expand></vaadin-label>
-    <vaadin-text-field caption="Nombre" responsive :bottom :center :expand></vaadin-text-field>
-    <vaadin-password-field caption="Contraseña" responsive :center :expand></vaadin-password-field>
-    <vaadin-native-button responsive width="140px" plain-text :center>
-      Recordar contraseña 
-    </vaadin-native-button>
-    <vaadin-horizontal-layout responsive margin :center :expand="2">
-     <vaadin-native-button responsive height="33px" plain-text :middle :center :expand>
-       Iniciar sesión 
+  <vaadin-panel size-full>
+   <vaadin-vertical-layout size-full>
+    <vaadin-vertical-layout responsive size-auto :middle :center>
+     <vaadin-native-button icon="fonticon://Vaadin-Icons/e750" plain-text _id="salir" :right></vaadin-native-button>
+     <vaadin-label caption="Iniciar Sesión" responsive plain-text :bottom :center :expand></vaadin-label>
+     <vaadin-text-field caption="Nombre" responsive _id="nombre" :bottom :center :expand></vaadin-text-field>
+     <vaadin-password-field caption="Contraseña" responsive _id="contrasena" :center :expand></vaadin-password-field>
+     <vaadin-native-button responsive width="140px" plain-text _id="recordarContrasena" :center>
+       Recordar contraseña 
      </vaadin-native-button>
-     <vaadin-native-button responsive width="120px" plain-text :middle :center :expand>
-       Registrarse 
-     </vaadin-native-button>
-    </vaadin-horizontal-layout>
+     <vaadin-horizontal-layout responsive margin :center :expand="2">
+      <vaadin-native-button responsive height="33px" plain-text _id="iniciar" :middle :center :expand>
+        Iniciar sesión 
+      </vaadin-native-button>
+      <vaadin-native-button responsive width="120px" plain-text _id="registro" :middle :center :expand>
+        Registrarse 
+      </vaadin-native-button>
+     </vaadin-horizontal-layout>
+    </vaadin-vertical-layout>
    </vaadin-vertical-layout>
-  </vaadin-vertical-layout>
+  </vaadin-panel>
  </body>
 </html>

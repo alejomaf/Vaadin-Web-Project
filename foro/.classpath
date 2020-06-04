@@ -6,6 +6,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry excluding="main/java/|main/resources/|test/java/" kind="src" path="src"/>
 	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
@@ -37,7 +38,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/alejo/OneDrive/Estudio/Work/Universidad/3doIngenieriaInformatica/MDS2/BBDD/lib/orm.jar"/>
+	<classpathentry kind="lib" path="C:/Users/alejo/OneDrive/Estudio/Work/Universidad/3doIngenieriaInformatica/MDS2/BBDD/lib/orm.jar" sourcepath="C:/Users/alejo/OneDrive/Estudio/Work/Universidad/3doIngenieriaInformatica/MDS2/BBDD/lib/orm.jar"/>
 	<classpathentry kind="lib" path="C:/Users/alejo/Downloads/mysql-connector-java-5.1.15-bin.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

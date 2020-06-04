@@ -6,7 +6,6 @@ package ormsamples;
 
 import org.orm.*;
 public class CreateCUDatabaseSchema {
-	
 	public static void main(String[] args) {
 		try {
 			ORMDatabaseInitiator.createSchema(com.mds.database.CUPersistentManager.instance());

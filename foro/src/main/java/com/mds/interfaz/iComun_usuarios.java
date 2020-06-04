@@ -2,7 +2,7 @@ package com.mds.interfaz;
 
 public interface iComun_usuarios {
 
-	public boolean modificarContrasena(int aID);
+	public boolean modificarContrasena(int aID, String aContrasenaAntigua, String aContrasenaNueva);
 
 	public void modificarPerfil(String aNombreCompleto, String aDescripcion, String aImagen);
 
