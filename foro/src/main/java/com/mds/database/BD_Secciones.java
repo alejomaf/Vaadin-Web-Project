@@ -45,21 +45,36 @@ public class BD_Secciones implements Serializable{
 	}
 	
 	public void borrarSecion(int aID) throws PersistentException{
-		PersistentTransaction t= CUPersistentManager.instance().getSession().beginTransaction();
-		try {
 			com.mds.database.Temas[] tem= TemasDAO.listTemasByQuery("SeccionesId_secciones = \'"+SeccionesDAO.getSeccionesByORMID(aID).getId_secciones()+"\'", null);
-			if(tem!=null) for(Temas aux: tem) TemasDAO.delete(aux);
-			t.commit();
-		}catch (Exception e) {
-			t.rollback();
-		}
+			
+			if(tem!=null) for(Temas aux: tem) {
+				
+				PersistentTransaction t= CUPersistentManager.instance().getSession().beginTransaction();
+				try {
+					com.mds.database.Mensaje[] men= MensajeDAO.listMensajeByQuery("TemasId_tema = \'"+aux.getId_tema()+"\'", null);
+					if(men!=null) for(Mensaje menAux: men) MensajeDAO.delete(menAux);
+					t.commit();
+				}catch (Exception e) {
+					t.rollback();
+				}
+
 		PersistentTransaction t2= CUPersistentManager.instance().getSession().beginTransaction();
+		try {	
+				TemasDAO.delete(aux);
+				t2.commit();
+				
+		}catch (Exception e) {
+			t2.rollback();
+		}
+		
+		}
+		PersistentTransaction t3= CUPersistentManager.instance().getSession().beginTransaction();
 		try {
 			com.mds.database.Secciones sec = SeccionesDAO.loadSeccionesByORMID(aID);
 			SeccionesDAO.delete(sec);
-			t2.commit();
+			t3.commit();
 		}catch(Exception e) {
-			t.rollback();
+			t3.rollback();
 		}
 		CUPersistentManager.instance().disposePersistentManager();
 	}

@@ -13,7 +13,7 @@ public class CreateCUData {
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : de
 			com.mds.database.NotificacionesDAO.save(lcommdsdatabaseNotificaciones);
 			com.mds.database.Usuario lcommdsdatabaseUsuario = com.mds.database.UsuarioDAO.createUsuario();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : gustaT, gustaM, tiene, escribe, creaT, eliminado, reportado, moderador
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : gustaT, gustaM, es_amigo_de, tiene, amigo_de, escribe, creaT, eliminado, reportado, moderador
 			com.mds.database.UsuarioDAO.save(lcommdsdatabaseUsuario);
 			com.mds.database.Moderador lcommdsdatabaseModerador = com.mds.database.ModeradorDAO.createModerador();
 			// Initialize the properties of the persistent object here

@@ -93,6 +93,11 @@ public class Seccion extends Seccion_ventana{
 				
 			}
 		});
+		ajustes.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				setContent(new Ajustes(usu, 1));
+			}
+		});
 		crearTema.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				crearTema();
@@ -113,12 +118,6 @@ public class Seccion extends Seccion_ventana{
 	}
 	
 	public void componentesAdministrador() {
-		
-		ajustes.addClickListener(new Button.ClickListener() {
-			public void buttonClick(ClickEvent event) {
-				setContent(new Ajustes_administrador());
-			}
-		});
 		
 	}
 	
@@ -280,7 +279,7 @@ public class Seccion extends Seccion_ventana{
 		tema.addLayoutClickListener(new LayoutClickListener() {
 			@Override
 			public void layoutClick(LayoutClickEvent event) {
-				setContent(new Tema());
+				setContent(new Tema(usu, sec, tem));
 			}
 		});
 		nombreS.setValue(tem.getNombre());

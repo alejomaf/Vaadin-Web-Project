@@ -60,6 +60,11 @@
 
 	<dependencies>
 		<dependency>
+		   <groupId>org.webjars.bowergithub.telecomsante</groupId>
+		   <artifactId>tsante-dropdown</artifactId>
+		   <version>0.1.1</version>
+		</dependency>
+		<dependency>
   			<groupId>org.apache.commons</groupId>
   			<artifactId>commons-email</artifactId>
   			<version>1.5</version>

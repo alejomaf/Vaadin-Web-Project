@@ -335,9 +335,17 @@ public class ModeradorDAO {
 			for(int i = 0; i < lEscribes.length; i++) {
 				lEscribes[i].setPertenece_a(null);
 			}
+			com.mds.database.Usuario[] lAmigo_des = moderador.amigo_de.toArray();
+			for(int i = 0; i < lAmigo_des.length; i++) {
+				lAmigo_des[i].es_amigo_de.remove(moderador);
+			}
 			com.mds.database.Notificaciones[] lTienes = moderador.tiene.toArray();
 			for(int i = 0; i < lTienes.length; i++) {
 				lTienes[i].setDe(null);
+			}
+			com.mds.database.Usuario[] lEs_amigo_des = moderador.es_amigo_de.toArray();
+			for(int i = 0; i < lEs_amigo_des.length; i++) {
+				lEs_amigo_des[i].amigo_de.remove(moderador);
 			}
 			com.mds.database.Mensaje[] lGustaMs = moderador.gustaM.toArray();
 			for(int i = 0; i < lGustaMs.length; i++) {
@@ -369,9 +377,17 @@ public class ModeradorDAO {
 			for(int i = 0; i < lEscribes.length; i++) {
 				lEscribes[i].setPertenece_a(null);
 			}
+			com.mds.database.Usuario[] lAmigo_des = moderador.amigo_de.toArray();
+			for(int i = 0; i < lAmigo_des.length; i++) {
+				lAmigo_des[i].es_amigo_de.remove(moderador);
+			}
 			com.mds.database.Notificaciones[] lTienes = moderador.tiene.toArray();
 			for(int i = 0; i < lTienes.length; i++) {
 				lTienes[i].setDe(null);
+			}
+			com.mds.database.Usuario[] lEs_amigo_des = moderador.es_amigo_de.toArray();
+			for(int i = 0; i < lEs_amigo_des.length; i++) {
+				lEs_amigo_des[i].amigo_de.remove(moderador);
 			}
 			com.mds.database.Mensaje[] lGustaMs = moderador.gustaM.toArray();
 			for(int i = 0; i < lGustaMs.length; i++) {

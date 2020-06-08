@@ -6,16 +6,23 @@
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
-  <vaadin-vertical-layout size-full>
-   <vaadin-vertical-layout responsive size-auto :middle :center>
-    <vaadin-label caption="Modificar contraseña" responsive plain-text :bottom :center :expand></vaadin-label>
-    <vaadin-password-field caption="Contraseña antigua" responsive :bottom :center></vaadin-password-field>
-    <vaadin-password-field caption="Nueva contraseña" responsive :center :expand></vaadin-password-field>
-    <vaadin-password-field caption="Confirmar nueva contraseña" responsive :center></vaadin-password-field>
-    <vaadin-native-button responsive width="100px" plain-text :center>
-      Modificar 
-    </vaadin-native-button>
+  <vaadin-panel size-full>
+   <vaadin-vertical-layout size-full>
+    <vaadin-vertical-layout responsive size-auto :middle :center>
+     <vaadin-label caption="Modificar contraseña" responsive plain-text :bottom :center :expand></vaadin-label>
+     <vaadin-password-field caption="Contraseña antigua" responsive _id="contrasenaAntigua" :bottom :center></vaadin-password-field>
+     <vaadin-password-field caption="Nueva contraseña" responsive _id="contrasenaNueva" :center :expand></vaadin-password-field>
+     <vaadin-password-field caption="Confirmar nueva contraseña" responsive _id="contrasenaNueva2" :center></vaadin-password-field>
+     <vaadin-horizontal-layout>
+      <vaadin-button plain-text _id="salir">
+        Volver 
+      </vaadin-button>
+      <vaadin-button plain-text _id="modificar">
+        Modificar 
+      </vaadin-button>
+     </vaadin-horizontal-layout>
+    </vaadin-vertical-layout>
    </vaadin-vertical-layout>
-  </vaadin-vertical-layout>
+  </vaadin-panel>
  </body>
 </html>

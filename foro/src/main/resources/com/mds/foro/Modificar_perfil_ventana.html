@@ -6,18 +6,25 @@
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
-  <vaadin-vertical-layout size-full>
-   <vaadin-vertical-layout responsive size-auto :middle :center>
-    <vaadin-label caption="Modificar información" responsive plain-text :bottom :center :expand></vaadin-label>
-    <vaadin-text-field caption="Nombre completo" width-full :center></vaadin-text-field>
-    <vaadin-text-field caption="Háblanos acerca de ti" width-full :center></vaadin-text-field>
-    <vaadin-button icon="fonticon://Vaadin-Icons/e80d" plain-text :center>
-      Adjuntar foto de perfil 
-    </vaadin-button>
-    <vaadin-native-button responsive width="100px" plain-text :center>
-      Modificar 
-    </vaadin-native-button>
+  <vaadin-panel size-full>
+   <vaadin-vertical-layout size-full>
+    <vaadin-vertical-layout responsive size-auto :middle :center>
+     <vaadin-label caption="Modificar información" responsive plain-text :bottom :center :expand></vaadin-label>
+     <vaadin-text-field caption="Nombre completo" width-full _id="nombreCompleto" :center></vaadin-text-field>
+     <vaadin-text-field caption="Háblanos acerca de ti" width-full _id="descripcion" :center></vaadin-text-field>
+     <vaadin-button icon="fonticon://Vaadin-Icons/e80d" plain-text _id="adjuntarFoto" :center>
+       Adjuntar foto de perfil 
+     </vaadin-button>
+     <vaadin-horizontal-layout :center>
+      <vaadin-button plain-text _id="salir">
+        Volver 
+      </vaadin-button>
+      <vaadin-button plain-text _id="modificar">
+        Modificar 
+      </vaadin-button>
+     </vaadin-horizontal-layout>
+    </vaadin-vertical-layout>
    </vaadin-vertical-layout>
-  </vaadin-vertical-layout>
+  </vaadin-panel>
  </body>
 </html>

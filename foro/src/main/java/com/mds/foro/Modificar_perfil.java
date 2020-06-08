@@ -2,7 +2,7 @@ package com.mds.foro;
 
 import com.vaadin.ui.*;
 
-public class Modificar_perfil {
+public class Modificar_perfil extends Modificar_perfil_ventana {
 	private Label _tituloL;
 	private Label _nombreCompletoL;
 	private TextField _nombreCompletoTF;
@@ -15,6 +15,10 @@ public class Modificar_perfil {
 	private Button _modificarB;
 	public Ajustes _unnamed_Ajustes_;
 
+	
+	public Modificar_perfil() {
+		
+	}
 	public void modificarPerfil(String aNombreCompleto, String aDescripcion, String aImagen) {
 		throw new UnsupportedOperationException();
 	}

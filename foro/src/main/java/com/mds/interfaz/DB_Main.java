@@ -2,6 +2,7 @@ package com.mds.interfaz;
 import com.mds.database.*;
 import com.mds.database.Administrador;
 import com.mds.database.Moderador;
+import com.mds.database.Notificaciones;
 import com.mds.database.Usuario;
 
 import java.io.Serializable;
@@ -14,13 +15,23 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 	BD_Usuarios usu=new BD_Usuarios();
 	BD_Secciones sec=new BD_Secciones();
 	BD_Temas tem= new BD_Temas();
+	BD_Mensajes men= new BD_Mensajes();
+	BD_Notificaciones not= new BD_Notificaciones();
 	
 	public void Conceder_privilegios(int aID) {
-		throw new UnsupportedOperationException();
+		try {
+			usu.Conceder_privilegios(aID);
+		}catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void Retirar_privilegios(int aID) {
-		throw new UnsupportedOperationException();
+		try {
+			usu.Retirar_privilegios(aID);
+		}catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void Privatizar_tema(int aID) {
@@ -28,11 +39,19 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 	}
 
 	public void Banear(int aID) {
-		throw new UnsupportedOperationException();
+		try {
+			usu.Banear(aID);
+		}catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void Desbanear(int aID) {
-		throw new UnsupportedOperationException();
+		try {
+			usu.Desbanear(aID);
+		}catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public com.mds.database.Secciones[] cargarSecciones() {
@@ -45,36 +64,80 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 		return null;
 	}
 
-	public void cargarNotificaciones() {
-		throw new UnsupportedOperationException();
+	public Notificaciones[] cargarNotificaciones(int aID) {
+		try {
+			return not.cargarNotificaciones(aID);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
-	public void cargarMensajes(int aID) {
-		throw new UnsupportedOperationException();
+	public com.mds.database.Mensaje[] cargarMensajes(int aID){
+		try {
+			return men.cargarMensajes(aID);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
-	public void cargarAmigos(int aID) {
-		throw new UnsupportedOperationException();
+	public Usuario[] cargarAmigos(int aID) {
+		try {
+			return usu.cargarAmigos(aID);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
-	public void cargarUsuariosReportados(int aID) {
-		throw new UnsupportedOperationException();
+	public Usuario[] cargarUsuariosReportados() {
+		try {
+			return usu.cargarUsuariosReportados();
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public Usuario[] cargarUsuariosBaneados() {
+		try {
+			return usu.cargarUsuariosBaneados();
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
-	public boolean modificarContrasena(int aID, String aContrasenaAntigua, String aContrasenaNueva) {
-		throw new UnsupportedOperationException();
+	public boolean modificarContrasena(int aID, String aContrasenaNueva) {
+		try {
+			return usu.modificarContrasena(aID, aContrasenaNueva);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
-	public void modificarPerfil(String aNombreCompleto, String aDescripcion, String aImagen) {
-		throw new UnsupportedOperationException();
+	public void modificarPerfil(int aID, String nombreCompleto, String descripcion) {
+		try {
+			usu.modificarPerfil(aID, nombreCompleto, descripcion);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void Enviar_solicitud_amistad(int aID) {
 		throw new UnsupportedOperationException();
 	}
 
-	public void Eliminar_amigos(int aID) {
-		throw new UnsupportedOperationException();
+	public void Eliminar_amigos(int aID, int aID2) {
+		try {
+			usu.Eliminar_amigo(aID, aID2);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void Eliminar_notificacion(int aID) {
@@ -86,11 +149,19 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 	}
 
 	public void Eliminar_mensaje(int aID) {
-		throw new UnsupportedOperationException();
+		try {
+			men.Eliminar_mensaje(aID);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public void crearMensaje(int aID, String aMensaje) {
-		throw new UnsupportedOperationException();
+	public void crearMensaje(int aID, int idR, int idT, String aMensaje) {
+		try {
+			men.crearMensaje(aID, idR, idT, aMensaje);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void Dar_me_gusta_tema(int aID) {
@@ -98,7 +169,11 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 	}
 
 	public void Eliminar_tema(int aID) {
-		throw new UnsupportedOperationException();
+		try {
+			tem.Eliminar_tema(aID);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void Crear_tema(String titulo, String contenido, Usuario usu, Secciones sec) {
@@ -123,11 +198,19 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 	}
 
 	public void Desmarcar(int aID) {
-		throw new UnsupportedOperationException();
+		try {
+			usu.Desmarcar(aID);
+		}catch(PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void Marcar(int aID) {
-		throw new UnsupportedOperationException();
+		try {
+			usu.Marcar(aID);
+		}catch(PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public Correo get_Correo() {
@@ -205,4 +288,62 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 		}
 		return null;
 	}
+
+	@Override
+	public void modificarFoto(String foto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void anadirAmigo(Usuario usu, Usuario usu2) {
+		// TODO Auto-generated method stub
+		try {
+			not.anadirAmigo(usu, usu2);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public Usuario[] cargarUsuarios(int aID) {
+		// TODO Auto-generated method stub
+				try {
+					return usu.cargarUsuarios(aID);
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return null;
+	}
+
+	@Override
+	public void borrarNotificacion(int aID) {
+		try {
+			not.borrarNotificacion(aID);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void aceptarSolicitud(Usuario usu, int aID) {
+		try {
+			not.aceptarSolicitud(usu, aID);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public Temas cargarTema(int aID) {
+		try {
+			return tem.cargarUnTema(aID);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

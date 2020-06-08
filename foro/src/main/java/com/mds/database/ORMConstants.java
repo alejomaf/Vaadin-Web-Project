@@ -44,6 +44,8 @@ public interface ORMConstants extends org.orm.util.ORMBaseConstants {
 	
 	final int KEY_USUARIO_CREAT = 2081774584;
 	
+	final int KEY_USUARIO_ES_AMIGO_DE = -160514981;
+	
 	final int KEY_USUARIO_ESCRIBE = 932934526;
 	
 	final int KEY_USUARIO_GUSTAM = 228225644;

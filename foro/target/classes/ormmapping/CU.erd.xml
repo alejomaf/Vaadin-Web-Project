@@ -163,18 +163,6 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="UsuarioId_usuario">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>com.mds.database.Usuario.Id_usuario</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
     <Column name="Email">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
@@ -467,6 +455,32 @@
       <UserTypes/>
     </Column>
   </Entity>
+  <Entity name="Usuario_Usuario" Unlogged="false" PKClustered="0">
+    <Column name="UsuarioId_usuario">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>com.mds.database.Usuario.Id_usuario</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="UsuarioId_usuario2">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>com.mds.database.Usuario.Id_usuario</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+  </Entity>
   <Entity name="Usuario_Mensaje" Unlogged="false" PKClustered="0">
     <Column name="UsuarioId_usuario">
       <PrimaryKey>true</PrimaryKey>
@@ -579,11 +593,21 @@
       <Column>Id_secciones</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKUsuario250901">
-    <ReferenceTable>Usuario</ReferenceTable>
+  <ForeignKey name="FKUsuario_Us813590">
+    <ReferenceTable>Usuario_Usuario</ReferenceTable>
     <ReferencedTable>Usuario</ReferencedTable>
     <Columns>
       <Column>UsuarioId_usuario</Column>
+    </Columns>
+    <RefColumns>
+      <Column>Id_usuario</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKUsuario_Us631169">
+    <ReferenceTable>Usuario_Usuario</ReferenceTable>
+    <ReferencedTable>Usuario</ReferencedTable>
+    <Columns>
+      <Column>UsuarioId_usuario2</Column>
     </Columns>
     <RefColumns>
       <Column>Id_usuario</Column>

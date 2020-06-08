@@ -14,13 +14,59 @@
       <vaadin-label plain-text _id="nombreUsuario" :middle></vaadin-label>
      </vaadin-horizontal-layout>
      <vaadin-horizontal-layout :middle :right>
-      <vaadin-button height="37px" plain-text _id="notificaciones">
+      <vaadin-vertical-layout visible="false" spacing="false" size-auto margin="false" _id="listaNotificaciones">
+       <vaadin-horizontal-layout visible="false" _id="notificacion1">
+        <vaadin-label plain-text _id="tituloNotificacion" :middle :center>
+          Notificación de ejemplo 
+        </vaadin-label>
+        <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" plain-text _id="eliminarNotificacion" :middle :center></vaadin-button>
+        <vaadin-button visible="false" plain-text _id="aceptarNotificacion">
+          ✔ 
+        </vaadin-button>
+        <vaadin-button visible="false" plain-text _id="visualizarNotificacion">
+          👁️ 
+        </vaadin-button>
+       </vaadin-horizontal-layout>
+       <vaadin-horizontal-layout visible="false" _id="notificacion2">
+        <vaadin-label plain-text _id="tituloNotificacion1" :middle :center>
+          Notificación de ejemplo 
+        </vaadin-label>
+        <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" plain-text _id="eliminarNotificacion1" :middle :center></vaadin-button>
+        <vaadin-button visible="false" plain-text _id="aceptarNotificacion1">
+          ✔ 
+        </vaadin-button>
+        <vaadin-button visible="false" plain-text _id="visualizarNotificacion1">
+          👁️ 
+        </vaadin-button>
+       </vaadin-horizontal-layout>
+       <vaadin-horizontal-layout visible="false" _id="notificacion3">
+        <vaadin-label plain-text _id="tituloNotificacion2" :middle :center>
+          Notificación de ejemplo 
+        </vaadin-label>
+        <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" plain-text _id="eliminarNotificacion2" :middle :center></vaadin-button>
+        <vaadin-button visible="false" plain-text _id="aceptarNotificacion2">
+          ✔ 
+        </vaadin-button>
+        <vaadin-button visible="false" plain-text _id="visualizarNotificacion2">
+          👁️ 
+        </vaadin-button>
+       </vaadin-horizontal-layout>
+       <vaadin-horizontal-layout :right>
+        <vaadin-button visible="false" plain-text _id="notificacionAtras">
+          &lt; 
+        </vaadin-button>
+        <vaadin-button visible="false" plain-text _id="notificacionAdelante">
+          &gt; 
+        </vaadin-button>
+       </vaadin-horizontal-layout>
+      </vaadin-vertical-layout>
+      <vaadin-button height="37px" plain-text _id="notificaciones" :center>
         Notificaciones 
       </vaadin-button>
-      <vaadin-button plain-text _id="ajustes">
+      <vaadin-button plain-text _id="ajustes" :center>
         Ajustes 
       </vaadin-button>
-      <vaadin-button plain-text _id="cerrarSesion">
+      <vaadin-button plain-text _id="cerrarSesion" :center>
         Cerrar sesión 
       </vaadin-button>
      </vaadin-horizontal-layout>

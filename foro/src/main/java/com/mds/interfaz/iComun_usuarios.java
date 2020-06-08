@@ -1,14 +1,19 @@
 package com.mds.interfaz;
 
+import com.mds.database.Usuario;
+
 public interface iComun_usuarios {
 
-	public boolean modificarContrasena(int aID, String aContrasenaAntigua, String aContrasenaNueva);
+	public boolean modificarContrasena(int aID, String aContrasenaNueva);
 
-	public void modificarPerfil(String aNombreCompleto, String aDescripcion, String aImagen);
+	public void modificarPerfil(int aID, String aNombreCompleto, String aDescripcion);
+	
+	public void modificarFoto(String foto);
 
 	public void Enviar_solicitud_amistad(int aID);
 
-	public void Eliminar_amigos(int aID);
+	public void Eliminar_amigos(int aID, int aID2);
 
 	public void Eliminar_notificacion(int aID);
+	
 }

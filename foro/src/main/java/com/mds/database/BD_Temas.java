@@ -14,17 +14,26 @@ public class BD_Temas implements Serializable {
 	public Vector<Temas> _unnamed_Temas_ = new Vector<Temas>();
 
 	public void Eliminar_tema(int aID) throws PersistentException{
-		PersistentTransaction t= CUPersistentManager.instance().getSession().beginTransaction();
-		try {
-			com.mds.database.Temas tem = TemasDAO.loadTemasByORMID(aID);
-			
-			TemasDAO.delete(tem);
-			
-			t.commit();
-			
-		}catch (Exception e) {
-			t.rollback();
-		}
+				PersistentTransaction t= CUPersistentManager.instance().getSession().beginTransaction();
+				try {
+					com.mds.database.Mensaje[] men= MensajeDAO.listMensajeByQuery("TemasId_tema = \'"+aID+"\'", null);
+					if(men!=null) for(Mensaje menAux: men) MensajeDAO.delete(menAux);
+					t.commit();
+					
+				}catch (Exception e) {
+					t.rollback();
+				}
+
+				PersistentTransaction t2= CUPersistentManager.instance().getSession().beginTransaction();
+				try {	
+					
+				TemasDAO.delete(TemasDAO.loadTemasByORMID(aID));
+
+				t2.commit();
+				
+				}catch (Exception e) {
+					t2.rollback();
+				}
 		CUPersistentManager.instance().disposePersistentManager();
 	}
 
@@ -63,6 +72,18 @@ public class BD_Temas implements Serializable {
 		try {
 			tem = TemasDAO.listTemasByQuery("SeccionesId_secciones = \'"+sec.getId_secciones()+"\'", null);
 			if(tem.length==0) { CUPersistentManager.instance().disposePersistentManager(); return null;}
+		}catch (Exception e) {
+			t.rollback();
+		}
+		CUPersistentManager.instance().disposePersistentManager();
+		return tem;
+	}
+
+	public Temas cargarUnTema(int aID) throws PersistentException {
+		com.mds.database.Temas tem=null;
+		PersistentTransaction t= CUPersistentManager.instance().getSession().beginTransaction();
+		try {
+			tem= TemasDAO.loadTemasByORMID(aID);
 		}catch (Exception e) {
 			t.rollback();
 		}

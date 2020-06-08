@@ -32,6 +32,7 @@ public class ModeradorDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final CollectionExpression escribe;
 	public final CollectionExpression amigo_de;
 	public final CollectionExpression tiene;
+	public final CollectionExpression es_amigo_de;
 	public final CollectionExpression gustaM;
 	public final CollectionExpression gustaT;
 	
@@ -50,6 +51,7 @@ public class ModeradorDetachedCriteria extends AbstractORMDetachedCriteria {
 		escribe = new CollectionExpression("ORM_escribe", this.getDetachedCriteria());
 		amigo_de = new CollectionExpression("ORM_amigo_de", this.getDetachedCriteria());
 		tiene = new CollectionExpression("ORM_tiene", this.getDetachedCriteria());
+		es_amigo_de = new CollectionExpression("ORM_es_amigo_de", this.getDetachedCriteria());
 		gustaM = new CollectionExpression("ORM_gustaM", this.getDetachedCriteria());
 		gustaT = new CollectionExpression("ORM_gustaT", this.getDetachedCriteria());
 	}
@@ -69,6 +71,7 @@ public class ModeradorDetachedCriteria extends AbstractORMDetachedCriteria {
 		escribe = new CollectionExpression("ORM_escribe", this.getDetachedCriteria());
 		amigo_de = new CollectionExpression("ORM_amigo_de", this.getDetachedCriteria());
 		tiene = new CollectionExpression("ORM_tiene", this.getDetachedCriteria());
+		es_amigo_de = new CollectionExpression("ORM_es_amigo_de", this.getDetachedCriteria());
 		gustaM = new CollectionExpression("ORM_gustaM", this.getDetachedCriteria());
 		gustaT = new CollectionExpression("ORM_gustaT", this.getDetachedCriteria());
 	}
@@ -87,6 +90,10 @@ public class ModeradorDetachedCriteria extends AbstractORMDetachedCriteria {
 	
 	public NotificacionesDetachedCriteria createTieneCriteria() {
 		return new NotificacionesDetachedCriteria(createCriteria("ORM_tiene"));
+	}
+	
+	public UsuarioDetachedCriteria createEs_amigo_deCriteria() {
+		return new UsuarioDetachedCriteria(createCriteria("ORM_es_amigo_de"));
 	}
 	
 	public MensajeDetachedCriteria createGustaMCriteria() {

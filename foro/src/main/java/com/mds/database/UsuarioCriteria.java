@@ -32,6 +32,7 @@ public class UsuarioCriteria extends AbstractORMCriteria {
 	public final CollectionExpression escribe;
 	public final CollectionExpression amigo_de;
 	public final CollectionExpression tiene;
+	public final CollectionExpression es_amigo_de;
 	public final CollectionExpression gustaM;
 	public final CollectionExpression gustaT;
 	
@@ -50,6 +51,7 @@ public class UsuarioCriteria extends AbstractORMCriteria {
 		escribe = new CollectionExpression("ORM_escribe", this);
 		amigo_de = new CollectionExpression("ORM_amigo_de", this);
 		tiene = new CollectionExpression("ORM_tiene", this);
+		es_amigo_de = new CollectionExpression("ORM_es_amigo_de", this);
 		gustaM = new CollectionExpression("ORM_gustaM", this);
 		gustaT = new CollectionExpression("ORM_gustaT", this);
 	}
@@ -76,6 +78,10 @@ public class UsuarioCriteria extends AbstractORMCriteria {
 	
 	public NotificacionesCriteria createTieneCriteria() {
 		return new NotificacionesCriteria(createCriteria("ORM_tiene"));
+	}
+	
+	public UsuarioCriteria createEs_amigo_deCriteria() {
+		return new UsuarioCriteria(createCriteria("ORM_es_amigo_de"));
 	}
 	
 	public MensajeCriteria createGustaMCriteria() {

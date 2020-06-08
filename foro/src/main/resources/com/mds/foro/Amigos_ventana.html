@@ -7,34 +7,134 @@
  </head>
  <body>
   <vaadin-panel size-full>
-   <vaadin-vertical-layout>
-    <vaadin-label plain-text :center>
-      Amigos 
-    </vaadin-label>
-    <vaadin-vertical-layout :center>
-     <vaadin-horizontal-layout width-full>
-      <vaadin-label plain-text :middle>
-        Usuario 
+   <vaadin-vertical-layout size-full _id="main">
+    <vaadin-vertical-layout _id="listaUsuarios" :center>
+     <vaadin-label plain-text _id="nombreLista">
+       Amigos 
+     </vaadin-label>
+     <vaadin-horizontal-layout visible="false" width-full _id="filaUsuario">
+      <vaadin-label plain-text _id="correoUsuario">
+        Label 
       </vaadin-label>
-      <vaadin-button icon="fonticon://Vaadin-Icons/e80b" plain-text :middle :right></vaadin-button>
+      <vaadin-horizontal-layout :right>
+       <vaadin-button plain-text _id="eliminarAmigo">
+         Eliminar amigo 
+       </vaadin-button>
+      </vaadin-horizontal-layout>
      </vaadin-horizontal-layout>
-     <vaadin-horizontal-layout width-full>
-      <vaadin-label plain-text :middle>
-        Usuario 
+     <vaadin-horizontal-layout visible="false" width-full _id="filaUsuario1">
+      <vaadin-label plain-text _id="correoUsuario1">
+        Label 
       </vaadin-label>
-      <vaadin-button icon="fonticon://Vaadin-Icons/e80b" plain-text :middle :right></vaadin-button>
+      <vaadin-horizontal-layout :right>
+       <vaadin-button plain-text _id="eliminarAmigo1">
+         Eliminar amigo 
+       </vaadin-button>
+      </vaadin-horizontal-layout>
      </vaadin-horizontal-layout>
-     <vaadin-horizontal-layout width-full>
-      <vaadin-label plain-text :middle>
-        Usuario 
+     <vaadin-horizontal-layout visible="false" width-full _id="filaUsuario2">
+      <vaadin-label plain-text _id="correoUsuario2">
+        Label 
       </vaadin-label>
-      <vaadin-button icon="fonticon://Vaadin-Icons/e80b" plain-text :middle :right></vaadin-button>
+      <vaadin-horizontal-layout :right>
+       <vaadin-button plain-text _id="eliminarAmigo2">
+         Eliminar amigo 
+       </vaadin-button>
+      </vaadin-horizontal-layout>
      </vaadin-horizontal-layout>
-     <vaadin-horizontal-layout width-full>
-      <vaadin-label plain-text :middle>
-        Usuario 
+     <vaadin-horizontal-layout visible="false" width-full _id="filaUsuario3">
+      <vaadin-label plain-text _id="correoUsuario3">
+        Label 
       </vaadin-label>
-      <vaadin-button icon="fonticon://Vaadin-Icons/e80b" plain-text :middle :right></vaadin-button>
+      <vaadin-horizontal-layout :right>
+       <vaadin-button plain-text _id="eliminarAmigo3">
+         Eliminar amigo 
+       </vaadin-button>
+      </vaadin-horizontal-layout>
+     </vaadin-horizontal-layout>
+     <vaadin-horizontal-layout visible="false" width-full _id="filaUsuario4">
+      <vaadin-label plain-text _id="correoUsuario4">
+        Label 
+      </vaadin-label>
+      <vaadin-horizontal-layout :right>
+       <vaadin-button plain-text _id="eliminarAmigo4">
+         Eliminar amigo 
+       </vaadin-button>
+      </vaadin-horizontal-layout>
+     </vaadin-horizontal-layout>
+     <vaadin-horizontal-layout visible="false" width-full _id="filaUsuario5">
+      <vaadin-label plain-text _id="correoUsuario5">
+        Label 
+      </vaadin-label>
+      <vaadin-horizontal-layout :right>
+       <vaadin-button plain-text _id="eliminarAmigo5">
+         Eliminar amigo 
+       </vaadin-button>
+      </vaadin-horizontal-layout>
+     </vaadin-horizontal-layout>
+     <vaadin-horizontal-layout visible="false" width-full _id="filaUsuario6">
+      <vaadin-label plain-text _id="correoUsuario6">
+        Label 
+      </vaadin-label>
+      <vaadin-horizontal-layout :right>
+       <vaadin-button plain-text _id="eliminarAmigo6">
+         Eliminar amigo 
+       </vaadin-button>
+      </vaadin-horizontal-layout>
+     </vaadin-horizontal-layout>
+     <vaadin-horizontal-layout visible="false" width-full _id="filaUsuario7">
+      <vaadin-label plain-text _id="correoUsuario7">
+        Label 
+      </vaadin-label>
+      <vaadin-horizontal-layout :right>
+       <vaadin-button plain-text _id="eliminarAmigo7">
+         Eliminar amigo 
+       </vaadin-button>
+      </vaadin-horizontal-layout>
+     </vaadin-horizontal-layout>
+     <vaadin-horizontal-layout visible="false" width-full _id="filaUsuario8">
+      <vaadin-label plain-text _id="correoUsuario8">
+        Label 
+      </vaadin-label>
+      <vaadin-horizontal-layout :right>
+       <vaadin-button plain-text _id="eliminarAmigo8">
+         Eliminar amigo 
+       </vaadin-button>
+      </vaadin-horizontal-layout>
+     </vaadin-horizontal-layout>
+     <vaadin-horizontal-layout visible="false" width-full _id="filaUsuario9">
+      <vaadin-label plain-text _id="correoUsuario9">
+        Label 
+      </vaadin-label>
+      <vaadin-horizontal-layout :right>
+       <vaadin-button plain-text _id="eliminarAmigo9">
+         Eliminar amigo 
+       </vaadin-button>
+      </vaadin-horizontal-layout>
+     </vaadin-horizontal-layout>
+     <vaadin-vertical-layout size-auto _id="cargaUsuario"></vaadin-vertical-layout>
+     <vaadin-horizontal-layout>
+      <vaadin-button visible="false" plain-text _id="cerrarVista">
+        Cerrar vista 
+      </vaadin-button>
+      <vaadin-button visible="false" plain-text _id="banear">
+        Banear 
+      </vaadin-button>
+      <vaadin-button visible="false" plain-text _id="desbanear">
+        Desbanear 
+      </vaadin-button>
+      <vaadin-button visible="false" plain-text _id="reportar">
+        Reportar 
+      </vaadin-button>
+      <vaadin-button visible="false" plain-text _id="quitarReporte">
+        Quitar reporte 
+      </vaadin-button>
+      <vaadin-button visible="false" plain-text _id="hacerModerador">
+        Hacer moderador 
+      </vaadin-button>
+      <vaadin-button visible="false" plain-text _id="quitarModerador">
+        Quitar Moderador 
+      </vaadin-button>
      </vaadin-horizontal-layout>
     </vaadin-vertical-layout>
    </vaadin-vertical-layout>

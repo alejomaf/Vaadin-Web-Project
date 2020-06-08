@@ -14,7 +14,6 @@ public class Mensaje {
 	private TextArea _texto;
 	public Mensajes _unnamed_Mensajes_;
 	public Mensajes _unnamed_Mensajes_2;
-	public Responder _unnamed_Responder_;
 	public Reportar_usuario_creador _unnamed_Reportar_usuario_creador_;
 
 	public void Dar_me_gusta() {

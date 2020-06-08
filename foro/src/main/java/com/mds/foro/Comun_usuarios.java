@@ -27,5 +27,6 @@ public class Comun_usuarios extends Comun_usuarios_ventana{
 				setContent(new Iniciar_Sesion());
 			}
 		});
+        
 	}
 }
