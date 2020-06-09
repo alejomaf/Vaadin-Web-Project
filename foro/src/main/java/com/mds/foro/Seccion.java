@@ -50,10 +50,64 @@ public class Seccion extends Seccion_ventana{
 		this.usu=usu;
 		this.sec=sec;
 		
+		if(usu==null) usuarioNoRegistrado();
+		
+		componentesPrincipales();
+		
+		if(usu!=null)
+		switch(modo) {
+		
+		case 0: 
+			inicializarBotones();
+			break;
+		case 1:
+			componentesModerador();
+			inicializarBotones();
+			break;
+		case 2:
+			componentesUsuario();
+			inicializarBotones();
+			break;
+		}
+
+		cargarTemas();
+	}
+	
+	public void usuarioNoRegistrado() {
+		componentesUsuario();
+		notificaciones.setVisible(false);
+		cerrarSesion.setVisible(false);
+		ajustes.setVisible(false);
+		iniciarSesion.setVisible(true);
+		registrarse.setVisible(true);
+		
+		iniciarSesion.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				setContent(new Iniciar_Sesion());
+			}
+		});
+		registrarse.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				setContent(new Registrarse());
+			}
+		});
+	}
+	
+	public void componentesPrincipales() {
+		foroLink.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				setContent(new Comun_registrados(usu));
+			}
+		});
+		seccion1.setValue(sec.getNombre());
+		
+		if(usu!=null)
 		if(usu.getORMID()==1) modo=0;
 		else if(usu.getModerador()==true) modo=1;
 		else modo=2;
 		
+		if(usu!=null)
 		nombreUsuario.setValue(usu.getEmail());		
 		seccion.setValue(sec.getNombre());
 		seccionLink.addLayoutClickListener(new LayoutClickListener() {
@@ -62,30 +116,12 @@ public class Seccion extends Seccion_ventana{
 				setContent(new Comun_registrados(usu));
 			}
 		});
-		
-		inicializarBotones();
-		switch(modo) {
-		
-		case 0: 
-			componentesAdministrador();
-			break;
-		}
-
-		cargarTemas();
-	}
-	
-	public void cerrarSesion() {
-		throw new UnsupportedOperationException();
-	}
-
-	public void buscar(String aBusqueda) {
-		throw new UnsupportedOperationException();
 	}
 	
 	public void inicializarBotones() {
 		cerrarSesion.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				setContent(new Comun_usuarios());
+				setContent(new Comun_registrados(null));
 			}
 		});
 		notificaciones.addClickListener(new Button.ClickListener() {
@@ -117,8 +153,21 @@ public class Seccion extends Seccion_ventana{
 		});
 	}
 	
-	public void componentesAdministrador() {
-		
+	public void componentesUsuario() {
+		cuadroTema.setVisible(false);
+		borrarTema.setVisible(false);
+		borrarTema1.setVisible(false);
+		borrarTema2.setVisible(false);
+		borrarTema3.setVisible(false);
+		borrarTema4.setVisible(false);
+	}
+	
+	public void componentesModerador() {
+		borrarTema.setVisible(false);
+		borrarTema1.setVisible(false);
+		borrarTema2.setVisible(false);
+		borrarTema3.setVisible(false);
+		borrarTema4.setVisible(false);
 	}
 	
 	public void crearTema() {
@@ -144,39 +193,24 @@ public class Seccion extends Seccion_ventana{
 	public void cargarPartes(int num) {
 		switch(num) {
 		case 0: 
-			tema1.setVisible(false);
-			tema2.setVisible(false);
-			tema3.setVisible(false);
-			tema4.setVisible(false);
-			tema5.setVisible(false);
 			break;
 		case 1:
 			tema1.setVisible(true);
-			tema2.setVisible(false);
-			tema3.setVisible(false);
-			tema4.setVisible(false);
-			tema5.setVisible(false);
 			break;
 		case 2:
 			tema1.setVisible(true);
 			tema2.setVisible(true);
-			tema3.setVisible(false);
-			tema4.setVisible(false);
-			tema5.setVisible(false);
 			break;
 		case 3:
 			tema1.setVisible(true);
 			tema2.setVisible(true);
 			tema3.setVisible(true);
-			tema4.setVisible(false);
-			tema5.setVisible(false);
 			break;
 		case 4:
 			tema1.setVisible(true);
 			tema2.setVisible(true);
 			tema3.setVisible(true);
 			tema4.setVisible(true);
-			tema5.setVisible(false);
 			break;
 		case 5:
 			tema1.setVisible(true);
@@ -282,16 +316,24 @@ public class Seccion extends Seccion_ventana{
 				setContent(new Tema(usu, sec, tem));
 			}
 		});
+		if(iadm.cargarMensajes(tem.getORMID())!=null) {
+			ultimoM.setValue(iadm.cargarMensajes(tem.getORMID())[0].getPertenece_a().getNombre_completo());
+			numeroC.setValue(""+iadm.cargarMensajes(tem.getORMID()).length);
+			diaEnviado.setValue(""+iadm.cargarMensajes(tem.getORMID())[0].getFechaMensaje());
+		}
+		else {
+			ultimoM.setValue("Nadie");
+			numeroC.setValue(""+0);
+			diaEnviado.setVisible(false);
+		}
 		nombreS.setValue(tem.getNombre());
 		usuC.setValue(tem.getCreado_por().getNombre_completo());
-//		fechaC.setValue(FECHA DE CREACION tema);
+		
 		borrarT.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				borrarTema(tem.getORMID());}
 		});
-//		ultimoM.setValue(Coger el último mensaje);
-//		diaEnviado.setValue(temas[primerTema].getFecha);
-//		numeroC.setValue(numero de comentarios);
-//		numeroL.setValue(numero de likes);
+		
+		numeroL.setValue(""+tem.getNum__likes());
 	}
 }

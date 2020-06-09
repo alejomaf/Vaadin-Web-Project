@@ -2,18 +2,18 @@
 <html>
  <head>
   <meta charset="UTF-8">
-  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;java&quot;,&quot;THEME&quot;:&quot;valo&quot;}">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
   <vaadin-panel responsive>
-   <vaadin-vertical-layout responsive size-full>
+   <vaadin-vertical-layout style-name="background" responsive size-full>
     <vaadin-horizontal-layout responsive width-full :center>
      <vaadin-horizontal-layout>
       <vaadin-image source="https://cdn.shortpixel.ai/client/to_webp,q_lossy,ret_img,w_501/https://clenguas.ual.es/wp-content/uploads/2018/11/logo_UAL.jpg" width="150px" _id="logo"></vaadin-image>
       <vaadin-label plain-text _id="nombreUsuario" :middle></vaadin-label>
      </vaadin-horizontal-layout>
-     <vaadin-horizontal-layout :middle :right>
+     <vaadin-horizontal-layout style-name="notificacion" :middle :right>
       <vaadin-button height="37px" plain-text _id="notificaciones">
         Notificaciones 
       </vaadin-button>
@@ -23,11 +23,17 @@
       <vaadin-button plain-text _id="cerrarSesion">
         Cerrar sesión 
       </vaadin-button>
+      <vaadin-button visible="false" plain-text _id="registrarse">
+        Registrarse 
+      </vaadin-button>
+      <vaadin-button visible="false" plain-text _id="iniciarSesion">
+        Iniciar sesión 
+      </vaadin-button>
      </vaadin-horizontal-layout>
     </vaadin-horizontal-layout>
     <vaadin-horizontal-layout width-full>
      <vaadin-vertical-layout :expand="4">
-      <vaadin-horizontal-layout>
+      <vaadin-horizontal-layout style-name="barra">
        <vaadin-label plain-text>
          Leyendo 
        </vaadin-label>
@@ -46,7 +52,7 @@
          Label 
        </vaadin-label>
       </vaadin-horizontal-layout>
-      <vaadin-horizontal-layout width-full>
+      <vaadin-horizontal-layout style-name="cuadro" width-full>
        <vaadin-vertical-layout size-auto :middle>
         <vaadin-image source="https://www.pngitem.com/pimgs/m/168-1689599_male-user-filled-icon-user-icon-100-x.png" width="80px" height="80px" _id="fotoTema" :middle :center></vaadin-image>
         <vaadin-label plain-text _id="usuarioTema" :middle :center>
@@ -55,7 +61,7 @@
        </vaadin-vertical-layout>
        <vaadin-vertical-layout :middle :expand="4">
         <vaadin-horizontal-layout width-full>
-         <vaadin-label plain-text _id="tituloTema">
+         <vaadin-label style-name="tituloP" plain-text _id="tituloTema">
            Título del tema 
          </vaadin-label>
          <vaadin-horizontal-layout :right>
@@ -67,11 +73,11 @@
           </vaadin-label>
          </vaadin-horizontal-layout>
         </vaadin-horizontal-layout>
-        <vaadin-label width-full plain-text _id="contenidoTema">
+        <vaadin-label style-name="barra" width-full plain-text _id="contenidoTema">
           Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. 
         </vaadin-label>
         <vaadin-horizontal-layout :bottom :right>
-         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" plain-text _id="borrarTema"></vaadin-button>
+         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" style-name="circle" plain-text _id="borrarTema"></vaadin-button>
          <vaadin-label plain-text>
            Número de comentarios: 
          </vaadin-label>
@@ -82,15 +88,17 @@
           <vaadin-label plain-text _id="numLikesTema" :middle :right>
             5 
           </vaadin-label>
-          <vaadin-image source="https://i.pinimg.com/originals/37/9f/00/379f00ceb97d6a0b0672933022755b3a.png" width="30px" :middle></vaadin-image>
+          <vaadin-button style-name="circle" plain-text _id="likeTema">
+            👍 
+          </vaadin-button>
          </vaadin-horizontal-layout>
         </vaadin-horizontal-layout>
        </vaadin-vertical-layout>
       </vaadin-horizontal-layout>
-      <vaadin-label plain-text>
+      <vaadin-label style-name="titulo" plain-text>
         Comentarios 
       </vaadin-label>
-      <vaadin-horizontal-layout width-full _id="mensaje">
+      <vaadin-horizontal-layout style-name="cuadro" width-full _id="mensaje">
        <vaadin-vertical-layout size-auto :middle>
         <vaadin-image source="https://www.pngitem.com/pimgs/m/168-1689599_male-user-filled-icon-user-icon-100-x.png" width="80px" height="80px" _id="fotoMensaje" :middle :center></vaadin-image>
         <vaadin-label plain-text _id="usuarioMensaje" :middle :center>
@@ -108,24 +116,26 @@
           </vaadin-label>
          </vaadin-horizontal-layout>
         </vaadin-horizontal-layout>
-        <vaadin-label width-full plain-text _id="contenidoMensaje">
+        <vaadin-label style-name="barra" width-full plain-text _id="contenidoMensaje">
           Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. 
         </vaadin-label>
         <vaadin-horizontal-layout :bottom :right>
-         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" plain-text _id="borrarMensaje"></vaadin-button>
-         <vaadin-button icon="fonticon://Vaadin-Icons/e792" plain-text _id="citarMensaje">
+         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" style-name="circle" plain-text _id="borrarMensaje"></vaadin-button>
+         <vaadin-button icon="fonticon://Vaadin-Icons/e792" style-name="boton" plain-text _id="citarMensaje">
            Citar 
          </vaadin-button>
          <vaadin-horizontal-layout spacing="false">
           <vaadin-label plain-text _id="numLikesMensaje" :middle :right>
             5 
           </vaadin-label>
-          <vaadin-image source="https://i.pinimg.com/originals/37/9f/00/379f00ceb97d6a0b0672933022755b3a.png" width="30px" :middle></vaadin-image>
+          <vaadin-button style-name="circle" plain-text _id="likeMensaje">
+            👍 
+          </vaadin-button>
          </vaadin-horizontal-layout>
         </vaadin-horizontal-layout>
        </vaadin-vertical-layout>
       </vaadin-horizontal-layout>
-      <vaadin-horizontal-layout width-full _id="mensaje1">
+      <vaadin-horizontal-layout style-name="cuadro" width-full _id="mensaje1">
        <vaadin-vertical-layout size-auto :middle>
         <vaadin-image source="https://www.pngitem.com/pimgs/m/168-1689599_male-user-filled-icon-user-icon-100-x.png" width="80px" height="80px" _id="fotoMensaje1" :middle :center></vaadin-image>
         <vaadin-label plain-text _id="usuarioMensaje1" :middle :center>
@@ -143,24 +153,26 @@
           </vaadin-label>
          </vaadin-horizontal-layout>
         </vaadin-horizontal-layout>
-        <vaadin-label width-full plain-text _id="contenidoMensaje1">
+        <vaadin-label style-name="barra" width-full plain-text _id="contenidoMensaje1">
           Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. 
         </vaadin-label>
         <vaadin-horizontal-layout :bottom :right>
-         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" plain-text _id="borrarMensaje1"></vaadin-button>
-         <vaadin-button icon="fonticon://Vaadin-Icons/e792" plain-text _id="citarMensaje1">
+         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" style-name="circle" plain-text _id="borrarMensaje1"></vaadin-button>
+         <vaadin-button icon="fonticon://Vaadin-Icons/e792" style-name="boton" plain-text _id="citarMensaje1">
            Citar 
          </vaadin-button>
          <vaadin-horizontal-layout spacing="false">
           <vaadin-label plain-text _id="numLikesMensaje1" :middle :right>
             5 
           </vaadin-label>
-          <vaadin-image source="https://i.pinimg.com/originals/37/9f/00/379f00ceb97d6a0b0672933022755b3a.png" width="30px" :middle></vaadin-image>
+          <vaadin-button style-name="circle" plain-text _id="likeMensaje1">
+            👍 
+          </vaadin-button>
          </vaadin-horizontal-layout>
         </vaadin-horizontal-layout>
        </vaadin-vertical-layout>
       </vaadin-horizontal-layout>
-      <vaadin-horizontal-layout width-full _id="mensaje2">
+      <vaadin-horizontal-layout style-name="cuadro" width-full _id="mensaje2">
        <vaadin-vertical-layout size-auto :middle>
         <vaadin-image source="https://www.pngitem.com/pimgs/m/168-1689599_male-user-filled-icon-user-icon-100-x.png" width="80px" height="80px" _id="fotoMensaje2" :middle :center></vaadin-image>
         <vaadin-label plain-text _id="usuarioMensaje2" :middle :center>
@@ -178,24 +190,26 @@
           </vaadin-label>
          </vaadin-horizontal-layout>
         </vaadin-horizontal-layout>
-        <vaadin-label width-full plain-text _id="contenidoMensaje2">
+        <vaadin-label style-name="barra" width-full plain-text _id="contenidoMensaje2">
           Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. 
         </vaadin-label>
         <vaadin-horizontal-layout :bottom :right>
-         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" plain-text _id="borrarMensaje2"></vaadin-button>
-         <vaadin-button icon="fonticon://Vaadin-Icons/e792" plain-text _id="citarMensaje2">
+         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" style-name="circle" plain-text _id="borrarMensaje2"></vaadin-button>
+         <vaadin-button icon="fonticon://Vaadin-Icons/e792" style-name="boton" plain-text _id="citarMensaje2">
            Citar 
          </vaadin-button>
          <vaadin-horizontal-layout spacing="false">
           <vaadin-label plain-text _id="numLikesMensaje2" :middle :right>
             5 
           </vaadin-label>
-          <vaadin-image source="https://i.pinimg.com/originals/37/9f/00/379f00ceb97d6a0b0672933022755b3a.png" width="30px" :middle></vaadin-image>
+          <vaadin-button style-name="circle" plain-text _id="likeMensaje2">
+            👍 
+          </vaadin-button>
          </vaadin-horizontal-layout>
         </vaadin-horizontal-layout>
        </vaadin-vertical-layout>
       </vaadin-horizontal-layout>
-      <vaadin-horizontal-layout spacing="false" width-full _id="mensaje3">
+      <vaadin-horizontal-layout style-name="cuadro" spacing="false" width-full _id="mensaje3">
        <vaadin-vertical-layout size-auto :middle>
         <vaadin-image source="https://www.pngitem.com/pimgs/m/168-1689599_male-user-filled-icon-user-icon-100-x.png" width="80px" height="80px" _id="fotoMensaje3" :middle :center></vaadin-image>
         <vaadin-label plain-text _id="usuarioMensaje3" :middle :center>
@@ -213,24 +227,26 @@
           </vaadin-label>
          </vaadin-horizontal-layout>
         </vaadin-horizontal-layout>
-        <vaadin-label width-full plain-text _id="contenidoMensaje3">
+        <vaadin-label style-name="barra" width-full plain-text _id="contenidoMensaje3">
           Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. 
         </vaadin-label>
         <vaadin-horizontal-layout :bottom :right>
-         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" plain-text _id="borrarMensaje3"></vaadin-button>
-         <vaadin-button icon="fonticon://Vaadin-Icons/e792" plain-text _id="citarMensaje3">
+         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" style-name="circle" plain-text _id="borrarMensaje3"></vaadin-button>
+         <vaadin-button icon="fonticon://Vaadin-Icons/e792" style-name="boton" plain-text _id="citarMensaje3">
            Citar 
          </vaadin-button>
          <vaadin-horizontal-layout spacing="false">
           <vaadin-label plain-text _id="numLikesMensaje3" :middle :right>
             5 
           </vaadin-label>
-          <vaadin-image source="https://i.pinimg.com/originals/37/9f/00/379f00ceb97d6a0b0672933022755b3a.png" width="30px" :middle></vaadin-image>
+          <vaadin-button style-name="circle" plain-text _id="likeMensaje3">
+            👍 
+          </vaadin-button>
          </vaadin-horizontal-layout>
         </vaadin-horizontal-layout>
        </vaadin-vertical-layout>
       </vaadin-horizontal-layout>
-      <vaadin-horizontal-layout width-full _id="mensaje4">
+      <vaadin-horizontal-layout style-name="cuadro" width-full _id="mensaje4">
        <vaadin-vertical-layout size-auto :middle>
         <vaadin-image source="https://www.pngitem.com/pimgs/m/168-1689599_male-user-filled-icon-user-icon-100-x.png" width="80px" height="80px" _id="fotoMensaje4" :middle :center></vaadin-image>
         <vaadin-label plain-text _id="usuarioMensaje4" :middle :center>
@@ -248,37 +264,39 @@
           </vaadin-label>
          </vaadin-horizontal-layout>
         </vaadin-horizontal-layout>
-        <vaadin-label width-full plain-text _id="contenidoMensaje4">
+        <vaadin-label style-name="barra" width-full plain-text _id="contenidoMensaje4">
           Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. 
         </vaadin-label>
         <vaadin-horizontal-layout :bottom :right>
-         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" plain-text _id="borrarMensaje4"></vaadin-button>
-         <vaadin-button icon="fonticon://Vaadin-Icons/e792" plain-text _id="citarMensaje4">
+         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" style-name="circle" plain-text _id="borrarMensaje4"></vaadin-button>
+         <vaadin-button icon="fonticon://Vaadin-Icons/e792" style-name="boton" plain-text _id="citarMensaje4">
            Citar 
          </vaadin-button>
          <vaadin-horizontal-layout spacing="false">
           <vaadin-label plain-text _id="numLikesMensaje4" :middle :right>
             5 
           </vaadin-label>
-          <vaadin-image source="https://i.pinimg.com/originals/37/9f/00/379f00ceb97d6a0b0672933022755b3a.png" width="30px" :middle></vaadin-image>
+          <vaadin-button style-name="circle" plain-text _id="likeMensaje4">
+            👍 
+          </vaadin-button>
          </vaadin-horizontal-layout>
         </vaadin-horizontal-layout>
        </vaadin-vertical-layout>
       </vaadin-horizontal-layout>
       <vaadin-horizontal-layout :middle :right>
-       <vaadin-button visible="false" plain-text _id="pagAtrMensaje">
+       <vaadin-button visible="false" style-name="boton" plain-text _id="pagAtrMensaje">
          Página anterior 
        </vaadin-button>
-       <vaadin-button plain-text _id="pagAdeMensaje">
+       <vaadin-button style-name="boton" plain-text _id="pagAdeMensaje">
          Siguiente página 
        </vaadin-button>
       </vaadin-horizontal-layout>
-      <vaadin-vertical-layout>
-       <vaadin-label plain-text>
+      <vaadin-vertical-layout style-name="cuadroI" _id="cuadroMensaje">
+       <vaadin-label style-name="titulo" plain-text>
          Escribir comentario 
        </vaadin-label>
        <vaadin-text-area width-full _id="contenidoComentario"></vaadin-text-area>
-       <vaadin-button plain-text _id="enviarComentario" :middle :right>
+       <vaadin-button style-name="boton" plain-text _id="enviarComentario" :middle :right>
          Enviar comentario 
        </vaadin-button>
       </vaadin-vertical-layout>

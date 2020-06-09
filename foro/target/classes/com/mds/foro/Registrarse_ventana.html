@@ -2,28 +2,30 @@
 <html>
  <head>
   <meta charset="UTF-8">
-  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;valo&quot;}">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
   <vaadin-panel size-full>
-   <vaadin-vertical-layout responsive width="352px">
-    <vaadin-native-button icon="fonticon://Vaadin-Icons/e750" plain-text _id="salir" :right></vaadin-native-button>
-    <vaadin-label caption="Registrarse" responsive plain-text _id="titulo" :middle :center :expand></vaadin-label>
-    <vaadin-text-field caption="Correo electrónico" responsive _id="email" :middle :center></vaadin-text-field>
-    <vaadin-password-field caption="Contraseña" responsive _id="contrasena" :middle :center :expand></vaadin-password-field>
-    <vaadin-password-field caption="Repetir contraseña" responsive _id="contrasena2" :middle :center></vaadin-password-field>
-    <vaadin-text-field caption="Nombre completo" responsive _id="nombreCompleto" :middle :center></vaadin-text-field>
-    <vaadin-text-field caption="Háblanos acerca de ti" responsive _id="descripcion" :middle :center></vaadin-text-field>
-    <vaadin-horizontal-layout responsive margin :center :expand="2">
-     <vaadin-label caption="Adjuntar foto de perfil" responsive plain-text></vaadin-label>
-     <vaadin-native-button responsive width="90px" plain-text _id="adjuntar" :middle :center :expand>
-       Adjuntar 
-     </vaadin-native-button>
-    </vaadin-horizontal-layout>
-    <vaadin-native-button responsive width="120px" plain-text _id="registrarse" :center>
-      Registrarse 
-    </vaadin-native-button>
+   <vaadin-vertical-layout>
+    <vaadin-vertical-layout responsive width="352px" :middle :center>
+     <vaadin-button icon="fonticon://Vaadin-Icons/e750" style-name="circle" plain-text _id="salir" :right></vaadin-button>
+     <vaadin-label style-name="tituloP" responsive plain-text _id="titulo" :middle :center :expand>
+       Registrarse 
+     </vaadin-label>
+     <vaadin-text-field caption="Correo electrónico" style-name="barra" responsive _id="email" :middle :center></vaadin-text-field>
+     <vaadin-password-field caption="Contraseña" style-name="barra" responsive _id="contrasena" :middle :center :expand></vaadin-password-field>
+     <vaadin-password-field caption="Repetir contraseña" style-name="barra" responsive _id="contrasena2" :middle :center></vaadin-password-field>
+     <vaadin-text-field caption="Nombre completo" style-name="barra" responsive _id="nombreCompleto" :middle :center></vaadin-text-field>
+     <vaadin-text-field caption="Háblanos acerca de ti" style-name="barra" responsive _id="descripcion" :middle :center></vaadin-text-field>
+     <vaadin-horizontal-layout style-name="barra" responsive margin :middle :center :expand="2">
+      <vaadin-label caption="Adjuntar foto de perfil" responsive plain-text></vaadin-label>
+      <vaadin-text-field _id="linkFoto"></vaadin-text-field>
+     </vaadin-horizontal-layout>
+     <vaadin-button style-name="boton" plain-text _id="registrarse" :center>
+       Registrarse 
+     </vaadin-button>
+    </vaadin-vertical-layout>
    </vaadin-vertical-layout>
   </vaadin-panel>
  </body>

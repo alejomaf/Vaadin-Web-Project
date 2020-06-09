@@ -39,4 +39,10 @@ public interface iAdministrador extends iUsuario_Registrado, iComun_privilegiado
 	public void borrarNotificacion(int aID);
 	
 	public com.mds.database.Temas cargarTema(int aID);
+	
+	public com.mds.database.Temas[] cargarTemasRecientes();
+	
+	public com.mds.database.Mensaje[] cargarMensajesRecientes();
+	
+	public void notificacionMensajeEnviado(int aIDU, int aIDT);
 }

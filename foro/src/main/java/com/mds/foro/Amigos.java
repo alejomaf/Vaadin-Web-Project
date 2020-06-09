@@ -1,11 +1,12 @@
 package com.mds.foro;
 
 import java.awt.List;
-
+import java.io.File;
 import java.util.Vector;
 
 import com.vaadin.event.LayoutEvents.LayoutClickEvent;
 import com.vaadin.event.LayoutEvents.LayoutClickListener;
+import com.vaadin.server.FileResource;
 import com.vaadin.ui.*;
 import com.vaadin.ui.Button.ClickEvent;
 import com.mds.foro.Amigo;
@@ -110,7 +111,8 @@ public class Amigos extends Amigos_ventana {
 		vlAux.nombreCompleto.setValue(usu.getNombre_completo());
 		vlAux.descripcion.setValue(usu.getDescripcion());
 		vlAux.email.setValue(usu.getEmail());
-		
+		FileResource resource = new FileResource(new File(usu.getFoto()));
+		vlAux.fotoUsuario.setSource(resource);
 		vl.addComponent(vlAux.informacionUsuario);
 		
 		configurarBoton(usu);

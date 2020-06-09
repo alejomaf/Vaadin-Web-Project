@@ -21,7 +21,6 @@ import com.vaadin.ui.declarative.Design;
 public class Modificar_perfil_ventana extends Panel {
 	protected TextField nombreCompleto;
 	protected TextField descripcion;
-	protected Button adjuntarFoto;
 	protected Button salir;
 	protected Button modificar;
 

@@ -8,12 +8,10 @@ public interface iComun_usuarios {
 
 	public void modificarPerfil(int aID, String aNombreCompleto, String aDescripcion);
 	
-	public void modificarFoto(String foto);
+	public void modificarFoto(int aID, String foto);
 
 	public void Enviar_solicitud_amistad(int aID);
 
 	public void Eliminar_amigos(int aID, int aID2);
-
-	public void Eliminar_notificacion(int aID);
 	
 }

@@ -10,10 +10,12 @@ import com.mds.database.SeccionesDAO;
 import com.mds.database.TemasDAO;
 import com.mds.interfaz.DB_Main;
 import com.mds.interfaz.iAdministrador;
+import com.mds.interfaz.iComun_privilegiados;
 import com.mds.interfaz.iComun_registrados;
 import com.mds.interfaz.iUsuario_No_Registrado;
 import com.vaadin.ui.NativeButton;
 import com.vaadin.ui.Notification;
+import com.vaadin.ui.VerticalLayout;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.event.LayoutEvents.LayoutClickEvent;
 import com.vaadin.event.LayoutEvents.LayoutClickListener;
@@ -37,6 +39,7 @@ public class Comun_registrados extends Comun_registrados_ventana implements Seri
 	public int secUltNot;
 	public int pagActNot=1;
 	iAdministrador iadm=new DB_Main();
+	iComun_privilegiados icp=new DB_Main();
 	com.mds.database.Notificaciones[] notis;
 	int primeraSeccion;
 	int primeraNotificacion;
@@ -46,27 +49,147 @@ public class Comun_registrados extends Comun_registrados_ventana implements Seri
 	public Comun_registrados(com.mds.database.Usuario usu) {
 		
 		this.usu=usu;
+		if(usu==null) {
+			usuarioNoRegistrado(); 
+			cargarSecciones();
+			cargarTemas();
+			cargarMensajes();
+			return;
+			}
 		if(usu.getORMID()==1) modo=0;
 		else if(usu.getModerador()==true) modo=1;
 		else modo=2;
 		
-		nombreUsuario.setValue(usu.getEmail());		
-		inicializarBotones();
+		nombreUsuario.setValue(usu.getEmail());
 		switch(modo) {
 		
-		case 0: 
-			componentesAdministrador();
+		case 0:
+			inicializarBotones();
+			break;
+		case 1:
+			inicializarBotones();
+			componentesUsuario();
+			break;
+		case 2:
+			inicializarBotones();
+			componentesUsuario();
 			break;
 		}
 
 		cargarSecciones();
-
+		cargarTemas();
+		cargarMensajes();
 	}
 	
+	public void usuarioNoRegistrado() {
+		componentesUsuario();
+		notificaciones.setVisible(false);
+		cerrarSesion.setVisible(false);
+		ajustes.setVisible(false);
+		iniciarSesion.setVisible(true);
+		registrarse.setVisible(true);
+		
+		iniciarSesion.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				setContent(new Iniciar_Sesion());
+			}
+		});
+		registrarse.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				setContent(new Registrarse());
+			}
+		});
+	}
+	
+	public void cargarTemas() {
+		com.mds.database.Temas[] tem=iadm.cargarTemasRecientes();
+		if(tem==null) return;
+		
+		if(tem.length>=3) {
+			cargarPartesTema(nombreTema, usuarioCreadorTema, borrarTema, ultimoMensaje, diaEnviado, numeroComentariosTema, numeroLikesTema, tem[0], tema1);
+			cargarPartesTema(nombreTema1, usuarioCreadorTema1, borrarTema1, ultimoMensaje1, diaEnviado1, numeroComentariosTema1, numeroLikesTema1, tem[1], tema2);
+			cargarPartesTema(nombreTema2, usuarioCreadorTema2, borrarTema2, ultimoMensaje2, diaEnviado2, numeroComentariosTema2, numeroLikesTema2, tem[2], tema3);
+		}else if (tem.length==2){
+			cargarPartesTema(nombreTema, usuarioCreadorTema, borrarTema, ultimoMensaje, diaEnviado, numeroComentariosTema, numeroLikesTema, tem[0], tema1);
+			cargarPartesTema(nombreTema1, usuarioCreadorTema1, borrarTema1, ultimoMensaje1, diaEnviado1, numeroComentariosTema1, numeroLikesTema1, tem[1], tema2);
+		}else if(tem.length==1) {
+			cargarPartesTema(nombreTema, usuarioCreadorTema, borrarTema, ultimoMensaje, diaEnviado, numeroComentariosTema, numeroLikesTema, tem[0], tema1);
+		}else {
+		}
+	}
+	
+	public void cargarMensajes() {
+		com.mds.database.Mensaje[] men=iadm.cargarMensajesRecientes();
+		if(men==null) return;
+		
+		if(men.length>=3) {
+			cargarPartesMensaje(contenidoInicial, usuarioCreadorMensaje, borrarMensaje, temaPerteneciente, horaYDiaMensaje, numLikesMensaje, men[0], mensaje1);
+			cargarPartesMensaje(contenidoInicial1, usuarioCreadorMensaje1, borrarMensaje1, temaPerteneciente1, horaYDiaMensaje1, numLikesMensaje1, men[1], mensaje2);
+			cargarPartesMensaje(contenidoInicial2, usuarioCreadorMensaje2, borrarMensaje2, temaPerteneciente2, horaYDiaMensaje2, numLikesMensaje2, men[2], mensaje3);
+		}else if(men.length==2) {
+			cargarPartesMensaje(contenidoInicial, usuarioCreadorMensaje, borrarMensaje, temaPerteneciente, horaYDiaMensaje, numLikesMensaje, men[0], mensaje1);
+			cargarPartesMensaje(contenidoInicial1, usuarioCreadorMensaje1, borrarMensaje1, temaPerteneciente1, horaYDiaMensaje1, numLikesMensaje1, men[1], mensaje2);
+		}else if(men.length==1) {
+			cargarPartesMensaje(contenidoInicial, usuarioCreadorMensaje, borrarMensaje, temaPerteneciente, horaYDiaMensaje, numLikesMensaje, men[0], mensaje1);
+		}else {
+			
+		}
+	}
+	
+	public void cargarPartesTema(Label nomT, Label usuC, Button borrarT, Label ultMen, Label diaT, Label numCom, Label numLikes, com.mds.database.Temas tem, HorizontalLayout tema) {
+		tema.setVisible(true);
+		tema.addLayoutClickListener(new LayoutClickListener() {
+			@Override
+			public void layoutClick(LayoutClickEvent event) {
+				setContent(new Tema(usu, tem.getPertenece_a(), tem));
+			}
+		});
+		com.mds.database.Temas temaAux=tem;
+		nomT.setValue(temaAux.getNombre());
+		usuC.setValue(temaAux.getCreado_por().getNombre_completo());
+		borrarT.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				icp.Eliminar_tema(temaAux.getORMID());
+				setContent(new Comun_registrados(usu));
+			}
+		});
+		if(iadm.cargarMensajes(temaAux.getORMID())!=null) {
+			ultMen.setValue(iadm.cargarMensajes(temaAux.getORMID())[0].getPertenece_a().getNombre_completo());
+			numCom.setValue(""+iadm.cargarMensajes(temaAux.getORMID()).length);
+			diaT.setValue(""+iadm.cargarMensajes(temaAux.getORMID())[0].getFechaMensaje());
+		}
+		else {
+			ultMen.setValue("Nadie");
+			numCom.setValue(""+0);
+			diaT.setVisible(false);
+		}
+		numLikes.setValue(""+temaAux.getNum__likes());
+	}
+	
+	public void cargarPartesMensaje(Label contI, Label usuC, Button borrarMensaje, Label temaPertenece, Label diaM, Label numLikes, com.mds.database.Mensaje men, HorizontalLayout mensaje1) {
+		mensaje1.setVisible(true);
+		com.mds.database.Mensaje mensajeAux=men;
+		
+		if(mensajeAux.getContenido().length()>=15) contI.setValue(mensajeAux.getContenido().substring(0, 15));
+		else contI.setValue(mensajeAux.getContenido());
+		
+		usuC.setValue(mensajeAux.getPertenece_a().getNombre_completo());
+		
+		borrarMensaje.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				icp.Eliminar_mensaje(mensajeAux.getORMID());
+				setContent(new Comun_registrados(usu));
+			}
+		});
+		temaPertenece.setValue(mensajeAux.getSon_de().getNombre());
+		diaM.setValue(""+mensajeAux.getFechaMensaje());
+		numLikes.setValue(""+mensajeAux.getNum_likes());
+	}
+
 	public void inicializarBotones() {
 		cerrarSesion.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				setContent(new Comun_usuarios());
+				setContent(new Comun_registrados(null));
 			}
 		});
 		notificaciones.addClickListener(new Button.ClickListener() {
@@ -96,10 +219,33 @@ public class Comun_registrados extends Comun_registrados_ventana implements Seri
 				setContent(new Ajustes(usu, 1));
 			}
 		});
-	}
-	
-	public void componentesAdministrador() {
 		
+		notificacionAdelante.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				pagAdelanteNot();
+			}
+		});
+		
+		notificacionAtras.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				pagAtrasNot();
+			}
+		});
+	}
+	public void componentesUsuario() {
+		cuadroSeccion.setVisible(false);
+		
+		borrarSeccion.setVisible(false);
+		borrarSeccion1.setVisible(false);
+		borrarSeccion2.setVisible(false);
+		
+		borrarTema.setVisible(false);
+		borrarTema1.setVisible(false);
+		borrarTema2.setVisible(false);
+		
+		borrarMensaje.setVisible(false);
+		borrarMensaje1.setVisible(false);
+		borrarMensaje2.setVisible(false);
 	}
 	
 	public void crearSeccion() {
@@ -184,18 +330,18 @@ public class Comun_registrados extends Comun_registrados_ventana implements Seri
 		
 		if(num<3) {
 			if(num==2) {
-				asignarValores(nombreSeccion1, fechaCreacionSeccion, borrarSeccion, numeroTemas, numeroMensajesEnSeccion, seccion1);		
+				asignarValores(nombreSeccion1, fechaCreacionSeccion, borrarSeccion, numeroTemas, seccion1);		
 				primeraSeccion++;
-				asignarValores(nombreSeccion2, fechaCreacionSeccion1, borrarSeccion1, numeroTemas1, numeroMensajesEnSeccion1, seccion2);
+				asignarValores(nombreSeccion2, fechaCreacionSeccion1, borrarSeccion1, numeroTemas1, seccion2);
 			}
-			else asignarValores(nombreSeccion1, fechaCreacionSeccion, borrarSeccion, numeroTemas, numeroMensajesEnSeccion, seccion1);
+			else asignarValores(nombreSeccion1, fechaCreacionSeccion, borrarSeccion, numeroTemas, seccion1);
 		}
 		else {
-			asignarValores(nombreSeccion1, fechaCreacionSeccion, borrarSeccion, numeroTemas, numeroMensajesEnSeccion, seccion1);	
+			asignarValores(nombreSeccion1, fechaCreacionSeccion, borrarSeccion, numeroTemas, seccion1);	
 			primeraSeccion++;	
-			asignarValores(nombreSeccion2, fechaCreacionSeccion1, borrarSeccion1, numeroTemas1, numeroMensajesEnSeccion1, seccion2);
+			asignarValores(nombreSeccion2, fechaCreacionSeccion1, borrarSeccion1, numeroTemas1, seccion2);
 			primeraSeccion++;
-			asignarValores(nombreSeccion3, fechaCreacionSeccion2, borrarSeccion2, numeroTemas2, numeroMensajesEnSeccion2, seccion3);
+			asignarValores(nombreSeccion3, fechaCreacionSeccion2, borrarSeccion2, numeroTemas2, seccion3);
 		}
 		
 	}
@@ -215,7 +361,7 @@ public class Comun_registrados extends Comun_registrados_ventana implements Seri
 		setContent(new Comun_registrados(usu));
 	}
 	
-	public void asignarValores(Label nombreS, Label fechaC, Button borrarS, Label numeroT, Label numeroM, HorizontalLayout seccion) {
+	public void asignarValores(Label nombreS, Label fechaC, Button borrarS, Label numeroT, HorizontalLayout seccion) {
 		com.mds.database.Secciones secAux=secciones[primeraSeccion];
 		seccion.addLayoutClickListener(new LayoutClickListener() {
 			public void layoutClick(LayoutClickEvent event) {
@@ -223,13 +369,14 @@ public class Comun_registrados extends Comun_registrados_ventana implements Seri
 			}
 		});
 		nombreS.setValue(secAux.getNombre());
-//		fechaC.setValue(secciones[primeraSeccion].cogerFecha);
+		fechaC.setValue("Creado el: "+secAux.getFechaSeccion());
 		borrarS.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				borrarSeccion();				}
 		});
-//		numeroT.setValue(Metodo para cargar numero de temas);
-//		numeroM.setValue(Metodo para cargar numero de mensajes);
+		if(iadm.cargarTema(secAux)==null) numeroT.setValue(""+0);
+		else numeroT.setValue(""+iadm.cargarTema(secAux).length);
+		
 	}
 	
 	public void cargaNotificaciones() {
@@ -328,7 +475,7 @@ public class Comun_registrados extends Comun_registrados_ventana implements Seri
 	}
 	
 	public void pagAtrasNot() {
-		pagAct--;
+		pagActNot--;
 		cargarPagNot();
 	}
 	
@@ -356,7 +503,7 @@ public class Comun_registrados extends Comun_registrados_ventana implements Seri
 				}
 			});
 		}else {
-			tituloN.setValue(descom[0]);
+			tituloN.setValue(descom[0]+" en: "+iadm.cargarTema(Integer.parseInt(descom[1])).getNombre());
 			elimN.setVisible(true);
 			elimN.addClickListener(new Button.ClickListener() {
 				public void buttonClick(ClickEvent event) {

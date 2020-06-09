@@ -12,8 +12,16 @@ public class BD_Secciones implements Serializable{
 	public BD_Pincipal _bD_Pincipal;
 	public Vector<Secciones> _unnamed_Secciones_ = new Vector<Secciones>();
 
-	public void buscarSeccion(String aBusqueda) {
-		throw new UnsupportedOperationException();
+	public Secciones[] buscarSeccion(String aBusqueda) throws PersistentException{
+		com.mds.database.Secciones[] sec=null;
+		PersistentTransaction t= CUPersistentManager.instance().getSession().beginTransaction();
+		try {
+			sec=SeccionesDAO.listSeccionesByQuery("Nombre = \'"+aBusqueda+"\'", null);
+		}catch (Exception e) {
+			t.rollback();
+		}
+		CUPersistentManager.instance().disposePersistentManager();
+		return sec;
 	}
 
 	public com.mds.database.Secciones[] cargarSecciones() throws PersistentException {
@@ -34,7 +42,7 @@ public class BD_Secciones implements Serializable{
 		try {
 			com.mds.database.Secciones sec = SeccionesDAO.createSecciones();
 			sec.setNombre(titulo);
-			
+			sec.setFechaSeccion(new java.util.Date());
 			SeccionesDAO.save(sec);
 			t.commit();
 			

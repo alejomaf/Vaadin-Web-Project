@@ -7,6 +7,8 @@ import com.mds.interfaz.iComun_privilegiados;
 import com.mds.interfaz.iComun_registrados;
 import com.vaadin.event.LayoutEvents.LayoutClickEvent;
 import com.vaadin.event.LayoutEvents.LayoutClickListener;
+import com.vaadin.sass.internal.parser.function.DarkenFunctionGenerator;
+import com.vaadin.server.FileResource;
 import com.vaadin.server.Resource;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
@@ -14,6 +16,10 @@ import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Button.ClickEvent;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.orm.PersistentException;
 
@@ -46,6 +52,7 @@ public class Tema extends Tema_ventana{
 		
 		idRespuesta=0;
 		
+		if(usu!=null)
 		if(usu.getORMID()==1) modo=0;
 		else if(usu.getModerador()==true) modo=1;
 		else modo=2;
@@ -53,7 +60,31 @@ public class Tema extends Tema_ventana{
 		/*
 		 * Adding configuration to the header
 		 */
+		componentesPrincipales();
 		
+		
+		switch(modo) {
+		
+		case 0: 
+			inicializarBotones();
+			break;
+		case 1:
+			inicializarBotones();
+			break;
+		case 2:
+			inicializarBotones();
+			componentesUsuario();
+		}
+
+		cargarMensajes();
+		if(usu==null) usuarioNoRegistrado();
+	}
+	
+	
+	
+	
+	public void componentesPrincipales() {
+		if(usu!=null)
 		nombreUsuario.setValue(usu.getEmail());		
 		seccion.setValue(sec.getNombre());
 		tema.setValue(tem.getNombre());
@@ -75,37 +106,75 @@ public class Tema extends Tema_ventana{
 		 *  Charging the own theme of the page
 		 */
 		
-//		fotoTema.setSource(CONFIGURANDO FOTO);
+		FileResource resource = new FileResource(new File(tem.getCreado_por().getFoto()));
+		fotoTema.setSource(resource);
 		usuarioTema.setValue(tem.getCreado_por().getNombre_completo());
 		tituloTema.setValue(tem.getNombre());
 		contenidoTema.setValue(tem.getContenido());
 		fechaTema.setValue("el "+tem.getFechaTema());
 		numLikesTema.setValue(""+tem.getNum__likes());
 		
-		inicializarBotones();
 		
-		switch(modo) {
-		
-		case 0: 
-			componentesAdministrador();
-			break;
+		if(usu!=null)
+		if(icr.leGustaTema(tem.getORMID(), usu.getORMID())) likeTema.setEnabled(false);
+		else {
+			likeTema.setDisableOnClick(true);
+		likeTema.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				icr.Dar_me_gusta_tema(tem.getId_tema(), usu.getId_usuario());
+				numLikesTema.setValue(""+(Integer.parseInt(numLikesTema.getValue())+1));
+			}
+		});
 		}
-
-		cargarMensajes();
 	}
 	
-	public void cerrarSesion() {
-		throw new UnsupportedOperationException();
+	public void componentesUsuario() {
+		borrarTema.setVisible(false);
+		borrarMensaje.setVisible(false);
+		borrarMensaje1.setVisible(false);
+		borrarMensaje2.setVisible(false);
+		borrarMensaje3.setVisible(false);
+		borrarMensaje4.setVisible(false);
 	}
-
-	public void buscar(String aBusqueda) {
-		throw new UnsupportedOperationException();
+	
+	public void usuarioNoRegistrado() {
+		likeTema.setEnabled(false);
+		citarMensaje.setVisible(false);
+		citarMensaje1.setVisible(false);
+		citarMensaje2.setVisible(false);
+		citarMensaje3.setVisible(false);
+		citarMensaje4.setVisible(false);
+		likeMensaje.setEnabled(false);
+		likeMensaje1.setEnabled(false);
+		likeMensaje2.setEnabled(false);
+		likeMensaje3.setEnabled(false);
+		likeMensaje4.setEnabled(false);
+		componentesUsuario();
+		cuadroMensaje.setVisible(false);
+		notificaciones.setVisible(false);
+		cerrarSesion.setVisible(false);
+		ajustes.setVisible(false);
+		iniciarSesion.setVisible(true);
+		registrarse.setVisible(true);
+		cargarMensajes();
+		
+		iniciarSesion.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				setContent(new Iniciar_Sesion());
+			}
+		});
+		registrarse.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				setContent(new Registrarse());
+			}
+		});
 	}
+	
 	
 	public void inicializarBotones() {
 		cerrarSesion.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				setContent(new Comun_usuarios());
+				setContent(new Comun_registrados(null));
 			}
 		});
 		notificaciones.addClickListener(new Button.ClickListener() {
@@ -138,14 +207,20 @@ public class Tema extends Tema_ventana{
 		});
 	}
 	
-	public void componentesAdministrador() {
-		
-		
-		
-	}
 	
 	public void crearMensaje() {
-		if(!contenidoComentario.getValue().isEmpty())	icr.crearMensaje(usu.getORMID(), idRespuesta, tem.getORMID(), contenidoComentario.getValue());
+		if(!contenidoComentario.getValue().isEmpty())	{
+			if(iadm.cargarMensajes(tem.getORMID())!=null) {
+				ArrayList<com.mds.database.Mensaje> lista=new ArrayList<com.mds.database.Mensaje>(Arrays.asList(iadm.cargarMensajes(tem.getORMID())));
+				ArrayList<com.mds.database.Usuario> usuarios=new ArrayList<com.mds.database.Usuario>();
+				
+				for(com.mds.database.Mensaje menAux: lista) if(!usuarios.contains(menAux.getPertenece_a())) usuarios.add(menAux.getPertenece_a());
+				for(com.mds.database.Usuario usAux: usuarios) {
+					iadm.notificacionMensajeEnviado(usAux.getORMID(), tem.getORMID());
+				}
+			}
+			icr.crearMensaje(usu.getORMID(), idRespuesta, tem.getORMID(), contenidoComentario.getValue());
+		}
 		else Notification.show("Ingrese un título y contenido del tema","",Notification.TYPE_ERROR_MESSAGE);
 
 		cargarMensajes();
@@ -249,38 +324,38 @@ public class Tema extends Tema_ventana{
 		primerMensaje=5*(pag-1);
 		if(num<5) {
 			if(num==4) {
-				asignarValores(fotoMensaje, usuarioMensaje, contenidoMensaje, fechaMensaje, borrarMensaje, citarMensaje, numLikesMensaje);
+				asignarValores(fotoMensaje, usuarioMensaje, contenidoMensaje, fechaMensaje, borrarMensaje, citarMensaje, numLikesMensaje, likeMensaje);
 				primerMensaje++;
-				asignarValores(fotoMensaje1, usuarioMensaje1, contenidoMensaje1, fechaMensaje1, borrarMensaje1, citarMensaje1, numLikesMensaje1);
+				asignarValores(fotoMensaje1, usuarioMensaje1, contenidoMensaje1, fechaMensaje1, borrarMensaje1, citarMensaje1, numLikesMensaje1, likeMensaje1);
 				primerMensaje++;
-				asignarValores(fotoMensaje2, usuarioMensaje2, contenidoMensaje2, fechaMensaje2, borrarMensaje2, citarMensaje2, numLikesMensaje2);
+				asignarValores(fotoMensaje2, usuarioMensaje2, contenidoMensaje2, fechaMensaje2, borrarMensaje2, citarMensaje2, numLikesMensaje2, likeMensaje2);
 				primerMensaje++;
-				asignarValores(fotoMensaje3, usuarioMensaje3, contenidoMensaje3, fechaMensaje3, borrarMensaje3, citarMensaje3, numLikesMensaje3);
+				asignarValores(fotoMensaje3, usuarioMensaje3, contenidoMensaje3, fechaMensaje3, borrarMensaje3, citarMensaje3, numLikesMensaje3, likeMensaje3);
 			}
 			else if (num==3){
-				asignarValores(fotoMensaje, usuarioMensaje, contenidoMensaje, fechaMensaje, borrarMensaje, citarMensaje, numLikesMensaje);
+				asignarValores(fotoMensaje, usuarioMensaje, contenidoMensaje, fechaMensaje, borrarMensaje, citarMensaje, numLikesMensaje, likeMensaje);
 				primerMensaje++;
-				asignarValores(fotoMensaje1, usuarioMensaje1, contenidoMensaje1, fechaMensaje1, borrarMensaje1, citarMensaje1, numLikesMensaje1);
+				asignarValores(fotoMensaje1, usuarioMensaje1, contenidoMensaje1, fechaMensaje1, borrarMensaje1, citarMensaje1, numLikesMensaje1, likeMensaje1);
 				primerMensaje++;
-				asignarValores(fotoMensaje2, usuarioMensaje2, contenidoMensaje2, fechaMensaje2, borrarMensaje2, citarMensaje2, numLikesMensaje2);
+				asignarValores(fotoMensaje2, usuarioMensaje2, contenidoMensaje2, fechaMensaje2, borrarMensaje2, citarMensaje2, numLikesMensaje2, likeMensaje2);
 			}
 			else if (num==2) {
-				asignarValores(fotoMensaje, usuarioMensaje, contenidoMensaje, fechaMensaje, borrarMensaje, citarMensaje, numLikesMensaje);
+				asignarValores(fotoMensaje, usuarioMensaje, contenidoMensaje, fechaMensaje, borrarMensaje, citarMensaje, numLikesMensaje, likeMensaje);
 				primerMensaje++;
-				asignarValores(fotoMensaje1, usuarioMensaje1, contenidoMensaje1, fechaMensaje1, borrarMensaje1, citarMensaje1, numLikesMensaje1);
+				asignarValores(fotoMensaje1, usuarioMensaje1, contenidoMensaje1, fechaMensaje1, borrarMensaje1, citarMensaje1, numLikesMensaje1, likeMensaje1);
 			}
-			else asignarValores(fotoMensaje, usuarioMensaje, contenidoMensaje, fechaMensaje, borrarMensaje, citarMensaje, numLikesMensaje);
+			else asignarValores(fotoMensaje, usuarioMensaje, contenidoMensaje, fechaMensaje, borrarMensaje, citarMensaje, numLikesMensaje, likeMensaje);
 		}
 		else {
-			asignarValores(fotoMensaje, usuarioMensaje, contenidoMensaje, fechaMensaje, borrarMensaje, citarMensaje, numLikesMensaje);
+			asignarValores(fotoMensaje, usuarioMensaje, contenidoMensaje, fechaMensaje, borrarMensaje, citarMensaje, numLikesMensaje, likeMensaje);
 			primerMensaje++;
-			asignarValores(fotoMensaje1, usuarioMensaje1, contenidoMensaje1, fechaMensaje1, borrarMensaje1, citarMensaje1, numLikesMensaje1);
+			asignarValores(fotoMensaje1, usuarioMensaje1, contenidoMensaje1, fechaMensaje1, borrarMensaje1, citarMensaje1, numLikesMensaje1, likeMensaje1);
 			primerMensaje++;
-			asignarValores(fotoMensaje2, usuarioMensaje2, contenidoMensaje2, fechaMensaje2, borrarMensaje2, citarMensaje2, numLikesMensaje2);
+			asignarValores(fotoMensaje2, usuarioMensaje2, contenidoMensaje2, fechaMensaje2, borrarMensaje2, citarMensaje2, numLikesMensaje2, likeMensaje2);
 			primerMensaje++;
-			asignarValores(fotoMensaje3, usuarioMensaje3, contenidoMensaje3, fechaMensaje3, borrarMensaje3, citarMensaje3, numLikesMensaje3);
+			asignarValores(fotoMensaje3, usuarioMensaje3, contenidoMensaje3, fechaMensaje3, borrarMensaje3, citarMensaje3, numLikesMensaje3, likeMensaje3);
 			primerMensaje++;
-			asignarValores(fotoMensaje4, usuarioMensaje4, contenidoMensaje4, fechaMensaje4, borrarMensaje4, citarMensaje4, numLikesMensaje4);
+			asignarValores(fotoMensaje4, usuarioMensaje4, contenidoMensaje4, fechaMensaje4, borrarMensaje4, citarMensaje4, numLikesMensaje4, likeMensaje4);
 		}
 	}
 	
@@ -299,10 +374,10 @@ public class Tema extends Tema_ventana{
 		setContent(new Tema(usu, sec, tem));
 	}
 	
-	public void asignarValores(Image fotoM, Label usuM, Label conM, Label fechaM, Button borrarM, Button citarM, Label numL) {
+	public void asignarValores(Image fotoM, Label usuM, Label conM, Label fechaM, Button borrarM, Button citarM, Label numL, Button likeM) {
 		com.mds.database.Mensaje men=mensajes[primerMensaje];
-		
-//		fotoT.setSource(new Resource(UsuarioDAO.getUsuarioByORMID(men.getPertenece_a().getORMID()).getFoto())); ARREGLAR MANEJO DE FOTOS
+		FileResource resource = new FileResource(new File(men.getPertenece_a().getFoto()));
+		fotoM.setSource(resource);
 		try {
 			usuM.setValue(UsuarioDAO.getUsuarioByORMID(men.getPertenece_a().getORMID()).getNombre_completo());
 		} catch (PersistentException e) {
@@ -310,7 +385,7 @@ public class Tema extends Tema_ventana{
 			e.printStackTrace();
 		}
 		conM.setValue(men.getContenido());
-//		fechaM.setValue(CONFIGURAR FECHAS DE CREACION);
+		fechaM.setValue(""+men.getFechaMensaje());
 		borrarM.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				borrarMensaje(men.getORMID());}
@@ -319,6 +394,17 @@ public class Tema extends Tema_ventana{
 			public void buttonClick(ClickEvent event) {
 				idRespuesta=men.getORMID();}
 		});
+		if(usu!=null)
+		if(icr.leGustaMensaje(men.getORMID(), usu.getORMID())) likeM.setEnabled(false);
+		else {
+			likeM.setDisableOnClick(true);
+		likeM.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				icr.Dar_me_gusta(men.getORMID(), usu.getORMID());
+				numL.setValue(""+(Integer.parseInt(numL.getValue())+1));
+			}
+		});
+		}
 		numL.setValue(""+men.getNum_likes());
 	}
 }

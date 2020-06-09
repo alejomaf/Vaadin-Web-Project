@@ -1,5 +1,6 @@
 package com.mds.foro;
 
+import java.io.File;
 import java.util.Vector;
 
 import com.mds.interfaz.DB_Main;
@@ -9,6 +10,7 @@ import com.mds.interfaz.iUsuario_No_Registrado;
 import com.mds.interfaz.iUsuario_Registrado;
 import com.vaadin.event.LayoutEvents.LayoutClickEvent;
 import com.vaadin.event.LayoutEvents.LayoutClickListener;
+import com.vaadin.server.FileResource;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
@@ -111,6 +113,8 @@ public class UsuariosAdm extends UsuariosAdm_ventana{
 		vlAux.nombreCompleto.setValue(usu.getNombre_completo());
 		vlAux.descripcion.setValue(usu.getDescripcion());
 		vlAux.email.setValue(usu.getEmail());
+		FileResource resource = new FileResource(new File(usu.getFoto()));
+		vlAux.fotoUsuario.setSource(resource);
 		
 		vl.addComponent(vlAux.informacionUsuario);
 		

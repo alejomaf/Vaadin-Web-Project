@@ -14779,3 +14779,62 @@ div.v-layout.v-horizontal.v-widget {
 	width: 19px;
 	overflow: hidden;
 }
+
+.mytheme .barra {
+	color: black;
+	border-color: black;
+	background-color: #F0F8FF;
+	cursor: pointer;
+	border-style: groove;
+	border-width: 2px;
+	border-radius: 7%;
+}
+
+.mytheme .circle {
+	border-radius: 50%;
+}
+
+.mytheme .boton {
+	border-radius: 23%;
+}
+
+.mytheme .cuadro {
+	background-color: #008080;
+	border-radius: 20%;
+	border-color: black;
+	border-style: groove;
+	border-width: 1px;
+}
+
+.mytheme .tituloP {
+	text-shadow: 2px 2px;
+	text-decoration: underline;
+	font-size: xx-large;
+}
+
+.mytheme .titulo {
+	text-decoration: underline;
+	font-size: large;
+}
+
+.mytheme .cuadroI {
+	background-color: #FFE4C4;
+	border-radius: 20%;
+}
+
+.mytheme .background {
+	background-color: #00CED1;
+}
+
+.mytheme .barraSuperior {
+	background-color: #00FFFF;
+}
+
+.mytheme .notificaciones {
+	background-color: #00FFFF;
+	border-color: #DC143C;
+	border-style: groove;
+	border-width: 2px;
+	border-radius: 20%;
+	padding: 30px 30px 30px 30px;
+}

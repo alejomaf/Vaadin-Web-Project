@@ -1,6 +1,7 @@
 package com.mds.interfaz;
 import com.mds.database.*;
 import com.mds.database.Administrador;
+import com.mds.database.Mensaje;
 import com.mds.database.Moderador;
 import com.mds.database.Notificaciones;
 import com.mds.database.Usuario;
@@ -35,7 +36,11 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 	}
 
 	public void Privatizar_tema(int aID) {
-		throw new UnsupportedOperationException();
+		try {
+			tem.Privatizar_tema(aID);
+		}catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void Banear(int aID) {
@@ -58,7 +63,6 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 		try {
 			return sec.cargarSecciones();
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -68,7 +72,6 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 		try {
 			return not.cargarNotificaciones(aID);
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -78,7 +81,6 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 		try {
 			return men.cargarMensajes(aID);
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -140,12 +142,12 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 		}
 	}
 
-	public void Eliminar_notificacion(int aID) {
-		throw new UnsupportedOperationException();
-	}
-
-	public void Dar_me_gusta(int aID) {
-		throw new UnsupportedOperationException();
+	public void Dar_me_gusta(int aID, int aIDU) {
+		try {
+			men.Dar_me_gusta(aID, aIDU);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void Eliminar_mensaje(int aID) {
@@ -164,8 +166,12 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 		}
 	}
 
-	public void Dar_me_gusta_tema(int aID) {
-		throw new UnsupportedOperationException();
+	public void Dar_me_gusta_tema(int aID, int aIDU) {
+		try {
+			tem.Dar_me_gusta(aID, aIDU);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void Eliminar_tema(int aID) {
@@ -184,8 +190,13 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 		}
 	}
 
-	public void buscarSeccion(String aBusqueda) {
-		throw new UnsupportedOperationException();
+	public Secciones[] buscarSeccion(String aBusqueda) {
+		try {
+			return sec.buscarSeccion(aBusqueda);
+		}catch(PersistentException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public com.mds.database.Usuario iniciarSesion(String aUsuario, String aContrasena) {
@@ -213,42 +224,6 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 		}
 	}
 
-	public Correo get_Correo() {
-		throw new UnsupportedOperationException();
-	}
-
-	public Administrador get_Administrador() {
-		throw new UnsupportedOperationException();
-	}
-
-	public Usuario_Registrado get_Usuario_Registrado() {
-		throw new UnsupportedOperationException();
-	}
-
-	public Comun_usuarios get_Comun_usuarios() {
-		throw new UnsupportedOperationException();
-	}
-
-	public Usuario_propietario_mensaje get_Usuario_propietario_mensaje() {
-		throw new UnsupportedOperationException();
-	}
-
-	public Comun_registrados get_Comun_registrados() {
-		throw new UnsupportedOperationException();
-	}
-
-	public Comun_privilegiados get_Comun_privilegiados() {
-		throw new UnsupportedOperationException();
-	}
-
-	public Usuario_No_Registrado get_Usuario_No_Registrado() {
-		throw new UnsupportedOperationException();
-	}
-
-	public Moderador get_Moderador() {
-		throw new UnsupportedOperationException();
-	}
-
 	public void registrarse(String aContrasena, String aNombreCompleto, String aDescripcion,
 			String aFotoPerfil, String email) {
 		try {
@@ -258,67 +233,56 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 		}
 	}
 
-	@Override
 	public void crearSeccion(String titulo) {
 		try {
 			sec.crearSeccion(titulo);
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	@Override
 	public void borrarSeccion(int aID) {
 		try {
 			sec.borrarSecion(aID);;
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	@Override
 	public com.mds.database.Temas[] cargarTema(Secciones sec) {
 		try {
 			return tem.cargarTema(sec);
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
 
-	@Override
-	public void modificarFoto(String foto) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void anadirAmigo(Usuario usu, Usuario usu2) {
-		// TODO Auto-generated method stub
+	public void modificarFoto(int aID, String foto) {
 		try {
-			not.anadirAmigo(usu, usu2);
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
+			usu.modificarFoto(aID, foto);
+		}catch (PersistentException e) {
 			e.printStackTrace();
 		}
 	}
 
-	@Override
+	public void anadirAmigo(Usuario usu, Usuario usu2) {
+		try {
+			not.anadirAmigo(usu, usu2);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public Usuario[] cargarUsuarios(int aID) {
-		// TODO Auto-generated method stub
 				try {
 					return usu.cargarUsuarios(aID);
 				} catch (PersistentException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				return null;
 	}
-
-	@Override
+	
 	public void borrarNotificacion(int aID) {
 		try {
 			not.borrarNotificacion(aID);
@@ -327,7 +291,6 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 		}
 	}
 
-	@Override
 	public void aceptarSolicitud(Usuario usu, int aID) {
 		try {
 			not.aceptarSolicitud(usu, aID);
@@ -335,8 +298,7 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 			e.printStackTrace();
 		}
 	}
-
-	@Override
+	
 	public Temas cargarTema(int aID) {
 		try {
 			return tem.cargarUnTema(aID);
@@ -344,6 +306,65 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public boolean leGustaTema(int aID, int aIDU) {
+		try {
+			return tem.leGustaTema(aID, aIDU);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean leGustaMensaje(int aID, int aIDU) {
+		try {
+			return men.leGustaMensaje(aID, aIDU);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public Temas[] cargarTemasRecientes() {
+		try {
+			return tem.cargarTemasRecientes();
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public Mensaje[] cargarMensajesRecientes() {
+		try {
+			return men.cargarMensajesRecientes();
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public boolean existeUsuario(String aUsuario) {
+		try {
+			return usu.existeUsuario(aUsuario);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public void notificacionMensajeEnviado(int aIDU, int aIDT) {
+		try {
+			not.notificacionMensajeEnviado(aIDU, aIDT);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

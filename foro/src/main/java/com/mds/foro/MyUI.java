@@ -29,8 +29,8 @@ public class MyUI extends UI {
     @Override
     protected void init(VaadinRequest vaadinRequest) {
     	
-        Comun_usuarios comun = new Comun_usuarios();
-        setContent(comun);
+        Comun_registrados creg=new Comun_registrados(null);
+        setContent(creg);
         
     }
 

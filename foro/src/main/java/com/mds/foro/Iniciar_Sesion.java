@@ -11,6 +11,7 @@ import com.vaadin.ui.NativeButton;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.declarative.Design;
 
 public class Iniciar_Sesion extends Iniciar_Sesion_ventana {
@@ -38,7 +39,7 @@ public class Iniciar_Sesion extends Iniciar_Sesion_ventana {
 	public Iniciar_Sesion() {
 		salir.addClickListener(new NativeButton.ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				setContent(new Comun_usuarios());
+				setContent(new Comun_registrados(null));
 			}
 		});
 		iniciar.addClickListener(new NativeButton.ClickListener() {
@@ -52,10 +53,6 @@ public class Iniciar_Sesion extends Iniciar_Sesion_ventana {
 
 	public com.mds.database.Usuario iniciarSesion() {
 		return  iuno.iniciarSesion(nombre.getValue(), contrasena.getValue());
-	}
-
-	public void recordarContrasena() {
-		throw new UnsupportedOperationException();
 	}
 	
 	public void login(com.mds.database.Usuario usu) {

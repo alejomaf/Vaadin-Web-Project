@@ -2,18 +2,18 @@
 <html>
  <head>
   <meta charset="UTF-8">
-  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;java&quot;,&quot;THEME&quot;:&quot;valo&quot;}">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
   <vaadin-panel responsive>
-   <vaadin-vertical-layout responsive size-full>
+   <vaadin-vertical-layout responsive size-full _id="background">
     <vaadin-horizontal-layout responsive width-full :center>
      <vaadin-horizontal-layout>
       <vaadin-image source="https://cdn.shortpixel.ai/client/to_webp,q_lossy,ret_img,w_501/https://clenguas.ual.es/wp-content/uploads/2018/11/logo_UAL.jpg" width="150px" _id="logo"></vaadin-image>
       <vaadin-label plain-text _id="nombreUsuario" :middle></vaadin-label>
      </vaadin-horizontal-layout>
-     <vaadin-horizontal-layout :middle :right>
+     <vaadin-horizontal-layout style-name="notificacion" :middle :right>
       <vaadin-button height="37px" plain-text _id="notificaciones">
         Notificaciones 
       </vaadin-button>
@@ -23,20 +23,39 @@
       <vaadin-button plain-text _id="cerrarSesion">
         Cerrar sesión 
       </vaadin-button>
+      <vaadin-button visible="false" plain-text _id="registrarse">
+        Registrarse 
+      </vaadin-button>
+      <vaadin-button visible="false" plain-text _id="iniciarSesion">
+        Iniciar sesión 
+      </vaadin-button>
      </vaadin-horizontal-layout>
     </vaadin-horizontal-layout>
     <vaadin-horizontal-layout width-full>
      <vaadin-vertical-layout :expand="4">
-      <vaadin-vertical-layout>
-       <vaadin-horizontal-layout>
+      <vaadin-horizontal-layout style-name="barra">
+       <vaadin-label plain-text>
+         Leyendo 
+       </vaadin-label>
+       <vaadin-horizontal-layout _id="foroLink">
         <vaadin-label plain-text>
+          Foro &gt; 
+        </vaadin-label>
+       </vaadin-horizontal-layout>
+       <vaadin-horizontal-layout _id="seccionLink1">
+        <vaadin-label plain-text _id="seccion1"></vaadin-label>
+       </vaadin-horizontal-layout>
+      </vaadin-horizontal-layout>
+      <vaadin-vertical-layout style-name="cuadro">
+       <vaadin-horizontal-layout>
+        <vaadin-label style-name="tituloP" plain-text>
           Temas de 
         </vaadin-label>
         <vaadin-horizontal-layout _id="seccionLink">
-         <vaadin-label plain-text _id="seccion"></vaadin-label>
+         <vaadin-label style-name="tituloP" plain-text _id="seccion"></vaadin-label>
         </vaadin-horizontal-layout>
        </vaadin-horizontal-layout>
-       <vaadin-horizontal-layout width-full _id="tema1">
+       <vaadin-horizontal-layout visible="false" style-name="barra" width-full _id="tema1">
         <vaadin-vertical-layout spacing="false" size-auto margin="false">
          <vaadin-label plain-text _id="nombreTema">
            Nombre del tema 
@@ -51,7 +70,7 @@
          </vaadin-horizontal-layout>
         </vaadin-vertical-layout>
         <vaadin-horizontal-layout :middle :right>
-         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" plain-text _id="borrarTema"></vaadin-button>
+         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" style-name="circle" plain-text _id="borrarTema"></vaadin-button>
          <vaadin-vertical-layout spacing="false" size-auto margin="false">
           <vaadin-horizontal-layout>
            <vaadin-label plain-text>
@@ -81,7 +100,7 @@
          </vaadin-horizontal-layout>
         </vaadin-horizontal-layout>
        </vaadin-horizontal-layout>
-       <vaadin-horizontal-layout width-full _id="tema2">
+       <vaadin-horizontal-layout visible="false" style-name="barra" width-full _id="tema2">
         <vaadin-vertical-layout spacing="false" size-auto margin="false">
          <vaadin-label plain-text _id="nombreTema1">
            Nombre del tema 
@@ -96,7 +115,7 @@
          </vaadin-horizontal-layout>
         </vaadin-vertical-layout>
         <vaadin-horizontal-layout :middle :right>
-         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" plain-text _id="borrarTema1"></vaadin-button>
+         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" style-name="circle" plain-text _id="borrarTema1"></vaadin-button>
          <vaadin-vertical-layout spacing="false" size-auto margin="false">
           <vaadin-horizontal-layout>
            <vaadin-label plain-text>
@@ -126,7 +145,7 @@
          </vaadin-horizontal-layout>
         </vaadin-horizontal-layout>
        </vaadin-horizontal-layout>
-       <vaadin-horizontal-layout width-full _id="tema3">
+       <vaadin-horizontal-layout visible="false" style-name="barra" width-full _id="tema3">
         <vaadin-vertical-layout spacing="false" size-auto margin="false">
          <vaadin-label plain-text _id="nombreTema2">
            Nombre del tema 
@@ -141,7 +160,7 @@
          </vaadin-horizontal-layout>
         </vaadin-vertical-layout>
         <vaadin-horizontal-layout :middle :right>
-         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" plain-text _id="borrarTema2"></vaadin-button>
+         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" style-name="circle" plain-text _id="borrarTema2"></vaadin-button>
          <vaadin-vertical-layout spacing="false" size-auto margin="false">
           <vaadin-horizontal-layout>
            <vaadin-label plain-text>
@@ -171,7 +190,7 @@
          </vaadin-horizontal-layout>
         </vaadin-horizontal-layout>
        </vaadin-horizontal-layout>
-       <vaadin-horizontal-layout width-full _id="tema4">
+       <vaadin-horizontal-layout visible="false" style-name="barra" width-full _id="tema4">
         <vaadin-vertical-layout spacing="false" size-auto margin="false">
          <vaadin-label plain-text _id="nombreTema3">
            Nombre del tema 
@@ -186,7 +205,7 @@
          </vaadin-horizontal-layout>
         </vaadin-vertical-layout>
         <vaadin-horizontal-layout :middle :right>
-         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" plain-text _id="borrarTema3"></vaadin-button>
+         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" style-name="circle" plain-text _id="borrarTema3"></vaadin-button>
          <vaadin-vertical-layout spacing="false" size-auto margin="false">
           <vaadin-horizontal-layout>
            <vaadin-label plain-text>
@@ -216,7 +235,7 @@
          </vaadin-horizontal-layout>
         </vaadin-horizontal-layout>
        </vaadin-horizontal-layout>
-       <vaadin-horizontal-layout width-full _id="tema5">
+       <vaadin-horizontal-layout visible="false" style-name="barra" width-full _id="tema5">
         <vaadin-vertical-layout spacing="false" size-auto margin="false">
          <vaadin-label plain-text _id="nombreTema4">
            Nombre del tema 
@@ -231,7 +250,7 @@
          </vaadin-horizontal-layout>
         </vaadin-vertical-layout>
         <vaadin-horizontal-layout :middle :right>
-         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" plain-text _id="borrarTema4"></vaadin-button>
+         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" style-name="circle" plain-text _id="borrarTema4"></vaadin-button>
          <vaadin-vertical-layout spacing="false" size-auto margin="false">
           <vaadin-horizontal-layout>
            <vaadin-label plain-text>
@@ -262,43 +281,18 @@
         </vaadin-horizontal-layout>
        </vaadin-horizontal-layout>
        <vaadin-horizontal-layout :right>
-        <vaadin-button visible="false" plain-text _id="pagAtrTema">
+        <vaadin-button visible="false" style-name="boton" plain-text _id="pagAtrTema">
           Página anterior 
         </vaadin-button>
-        <vaadin-button plain-text _id="pagAdeTema">
+        <vaadin-button style-name="boton" plain-text _id="pagAdeTema">
           Siguiente página 
         </vaadin-button>
        </vaadin-horizontal-layout>
       </vaadin-vertical-layout>
      </vaadin-vertical-layout>
-     <vaadin-vertical-layout size-auto :right :expand>
-      <vaadin-label plain-text>
-        Usuarios conectados 
-      </vaadin-label>
-      <vaadin-vertical-layout size-auto>
-       <vaadin-label plain-text>
-         Usuario 
-       </vaadin-label>
-       <vaadin-label plain-text>
-         Usuario 
-       </vaadin-label>
-       <vaadin-label plain-text>
-         Usuario 
-       </vaadin-label>
-       <vaadin-label plain-text>
-         Usuario 
-       </vaadin-label>
-       <vaadin-label plain-text>
-         Usuario 
-       </vaadin-label>
-       <vaadin-label plain-text>
-         Usuario 
-       </vaadin-label>
-      </vaadin-vertical-layout>
-     </vaadin-vertical-layout>
     </vaadin-horizontal-layout>
-    <vaadin-vertical-layout>
-     <vaadin-label plain-text>
+    <vaadin-vertical-layout style-name="cuadroI" _id="cuadroTema">
+     <vaadin-label style-name="titulo" plain-text>
        Crear tema 
      </vaadin-label>
      <vaadin-horizontal-layout width-full>
@@ -313,7 +307,7 @@
       </vaadin-label>
       <vaadin-text-area width-full _id="contenidoTema" :expand="2"></vaadin-text-area>
      </vaadin-horizontal-layout>
-     <vaadin-button plain-text _id="crearTema" :right>
+     <vaadin-button style-name="boton" plain-text _id="crearTema" :right>
        Crear tema 
      </vaadin-button>
     </vaadin-vertical-layout>

@@ -1,5 +1,7 @@
 package com.mds.foro;
 
+import java.io.File;
+
 import com.mds.interfaz.DB_Main;
 import com.mds.interfaz.iAdministrador;
 import com.mds.interfaz.iComun_registrados;
@@ -7,25 +9,10 @@ import com.mds.interfaz.iComun_usuarios;
 import com.mds.interfaz.iUsuario_No_Registrado;
 import com.vaadin.event.LayoutEvents.LayoutClickEvent;
 import com.vaadin.event.LayoutEvents.LayoutClickListener;
+import com.vaadin.server.FileResource;
 import com.vaadin.ui.*;
 import com.vaadin.ui.Button.ClickEvent;
 public class Ajustes extends Ajustes_ventana{
-	private Label _nombreUsuarioTituloL;
-	private Label _nombreUsuarioL;
-	private Label _nombreCompletoTituloL;
-	private Label _nombreCompletoL;
-	private Label _descripcionTituloL;
-	private Label _descripcionL;
-	private Label _fotoPerfilL;
-	private Image _fotoPerfil;
-	private Label _perfilPublicoL;
-	//private Switch _perfilPublicoS;
-	private Label _notificacionesCorreoL;
-	//private Switch _notificacionesCorreoS;
-	private Label _modificarContrasenaL;
-	private Button _modificarContrasenaB;
-	private Label _modificarPerfilL;
-	private Button _modificarPerfilB;
 	public Modificar_perfil _unnamed_Modificar_perfil_;
 	public Modificar_contrasena _unnamed_Modificar_contrasena_;
 	public Amigos _unnamed_Amigos_;
@@ -77,7 +64,6 @@ public class Ajustes extends Ajustes_ventana{
 		switch(modo) {
 		
 		case 0: 
-			componentesAdministrador();
 			break;
 		case 1:
 			componentesModerador();
@@ -89,9 +75,14 @@ public class Ajustes extends Ajustes_ventana{
 }
 	
 	public void inicializarBotones() {
+		inicio.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				setContent(new Comun_registrados(usu));
+			}
+		});
 		cerrarSesion.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				setContent(new Comun_usuarios());
+				setContent(new Comun_registrados(null));
 			}
 		});
 		notificaciones.addClickListener(new Button.ClickListener() {
@@ -141,22 +132,13 @@ public class Ajustes extends Ajustes_ventana{
 		});
 	}
 	
-	public void componentesAdministrador() {
-		
-		ajustes.addClickListener(new Button.ClickListener() {
-			public void buttonClick(ClickEvent event) {
-				setContent(new Ajustes(usu,1));
-			}
-		});
-		
-	}
-	
 	public void componentesModerador() {
-		
+		usuariosBaneados.setVisible(false);
 	}
 	
 	public void componentesUsuario() {
-		
+		usuariosBaneados.setVisible(false);
+		usuariosReportados.setVisible(false);
 	}
 	
 	public void perfil() {
@@ -165,9 +147,11 @@ public class Ajustes extends Ajustes_ventana{
 		listaUsuarios.setVisible(false);
 		perfil.setEnabled(false);
 		nombreCompleto.setValue(usu.getNombre_completo());
-		if(!usu.getDescripcion().isEmpty()) descripcion.setValue("No hay descripción");
+		if(usu.getDescripcion().isEmpty()) descripcion.setValue("No hay descripción");
 		else descripcion.setValue(usu.getDescripcion());
 		
+		FileResource resource = new FileResource(new File(usu.getFoto()));
+		fotoUsuario.setSource(resource);
 		
 		/*
 		 * Método modificar contraseña

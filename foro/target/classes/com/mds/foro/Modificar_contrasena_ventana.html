@@ -2,22 +2,24 @@
 <html>
  <head>
   <meta charset="UTF-8">
-  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;valo&quot;}">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
   <vaadin-panel size-full>
    <vaadin-vertical-layout size-full>
-    <vaadin-vertical-layout responsive size-auto :middle :center>
-     <vaadin-label caption="Modificar contraseña" responsive plain-text :bottom :center :expand></vaadin-label>
-     <vaadin-password-field caption="Contraseña antigua" responsive _id="contrasenaAntigua" :bottom :center></vaadin-password-field>
-     <vaadin-password-field caption="Nueva contraseña" responsive _id="contrasenaNueva" :center :expand></vaadin-password-field>
-     <vaadin-password-field caption="Confirmar nueva contraseña" responsive _id="contrasenaNueva2" :center></vaadin-password-field>
-     <vaadin-horizontal-layout>
-      <vaadin-button plain-text _id="salir">
+    <vaadin-vertical-layout style-name="cuadro" responsive size-auto :middle :center>
+     <vaadin-label style-name="tituloP" responsive plain-text :bottom :center :expand>
+       Modificar contraseña 
+     </vaadin-label>
+     <vaadin-password-field caption="Contraseña antigua" style-name="barra" responsive _id="contrasenaAntigua" :bottom :center></vaadin-password-field>
+     <vaadin-password-field caption="Nueva contraseña" style-name="barra" responsive _id="contrasenaNueva" :center :expand></vaadin-password-field>
+     <vaadin-password-field caption="Confirmar nueva contraseña" style-name="barra" responsive _id="contrasenaNueva2" :center></vaadin-password-field>
+     <vaadin-horizontal-layout :middle :center>
+      <vaadin-button style-name="boton" plain-text _id="salir">
         Volver 
       </vaadin-button>
-      <vaadin-button plain-text _id="modificar">
+      <vaadin-button style-name="boton" plain-text _id="modificar">
         Modificar 
       </vaadin-button>
      </vaadin-horizontal-layout>

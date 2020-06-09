@@ -2,7 +2,7 @@
 <html>
  <head>
   <meta charset="UTF-8">
-  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;valo&quot;}">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
@@ -13,12 +13,12 @@
       <vaadin-image source="https://cdn.shortpixel.ai/client/to_webp,q_lossy,ret_img,w_501/https://clenguas.ual.es/wp-content/uploads/2018/11/logo_UAL.jpg" width="150px" _id="logo"></vaadin-image>
       <vaadin-label plain-text _id="nombreUsuario" :middle></vaadin-label>
      </vaadin-horizontal-layout>
-     <vaadin-horizontal-layout :middle :right>
+     <vaadin-horizontal-layout style-name="notficaciones" :middle :right>
+      <vaadin-button plain-text _id="inicio">
+        Inicio 
+      </vaadin-button>
       <vaadin-button height="37px" plain-text _id="notificaciones">
         Notificaciones 
-      </vaadin-button>
-      <vaadin-button plain-text _id="ajustes">
-        Ajustes 
       </vaadin-button>
       <vaadin-button plain-text _id="cerrarSesion">
         Cerrar sesión 
@@ -26,31 +26,31 @@
      </vaadin-horizontal-layout>
     </vaadin-horizontal-layout>
     <vaadin-horizontal-layout width-full :center>
-     <vaadin-vertical-layout :expand>
-      <vaadin-button width-full plain-text _id="perfil">
+     <vaadin-vertical-layout style-name="cuadro" :expand>
+      <vaadin-button style-name="boton" width-full plain-text _id="perfil">
         Perfil 
       </vaadin-button>
-      <vaadin-button width-full plain-text _id="usuariosB">
+      <vaadin-button style-name="boton" width-full plain-text _id="usuariosB">
         Lista de usuarios 
       </vaadin-button>
-      <vaadin-button width-full plain-text _id="amigos">
+      <vaadin-button style-name="boton" width-full plain-text _id="amigos">
         Amigos 
       </vaadin-button>
-      <vaadin-button width-full plain-text _id="usuariosReportados">
+      <vaadin-button style-name="boton" width-full plain-text _id="usuariosReportados">
         Usuarios reportados 
       </vaadin-button>
-      <vaadin-button width-full plain-text _id="usuariosBaneados">
+      <vaadin-button style-name="boton" width-full plain-text _id="usuariosBaneados">
         Usuarios baneados 
       </vaadin-button>
      </vaadin-vertical-layout>
      <vaadin-vertical-layout _id="main2" :expand="4">
-      <vaadin-vertical-layout _id="datosPerfil">
+      <vaadin-vertical-layout style-name="cuadro" _id="datosPerfil">
        <vaadin-horizontal-layout _id="informacionUsuario">
         <vaadin-vertical-layout size-auto>
          <vaadin-image source="https://www.pngitem.com/pimgs/m/168-1689599_male-user-filled-icon-user-icon-100-x.png" width="80px" height="80px" _id="fotoUsuario" :middle :center></vaadin-image>
         </vaadin-vertical-layout>
         <vaadin-vertical-layout size-auto>
-         <vaadin-horizontal-layout>
+         <vaadin-horizontal-layout style-name="barra">
           <vaadin-label plain-text>
             Nombre de completo: 
           </vaadin-label>
@@ -58,7 +58,7 @@
             NOMBRE USUARIO 
           </vaadin-label>
          </vaadin-horizontal-layout>
-         <vaadin-horizontal-layout>
+         <vaadin-horizontal-layout style-name="barra">
           <vaadin-label plain-text>
             Correo electrónico: 
           </vaadin-label>
@@ -66,7 +66,7 @@
             CORREO ELECTRÓNICO 
           </vaadin-label>
          </vaadin-horizontal-layout>
-         <vaadin-horizontal-layout>
+         <vaadin-horizontal-layout style-name="barra">
           <vaadin-label plain-text>
             Descripción: 
           </vaadin-label>
@@ -86,10 +86,10 @@
          </vaadin-horizontal-layout>
         </vaadin-vertical-layout>
         <vaadin-horizontal-layout :middle :right>
-         <vaadin-button plain-text _id="modificarContrasena">
+         <vaadin-button style-name="boton" plain-text _id="modificarContrasena">
            Modificar contraseña 
          </vaadin-button>
-         <vaadin-button plain-text _id="modificarPerfil">
+         <vaadin-button style-name="boton" plain-text _id="modificarPerfil">
            Modificar perfil 
          </vaadin-button>
         </vaadin-horizontal-layout>

@@ -46,6 +46,8 @@ public class Comun_registrados_ventana extends Panel {
 	protected Button notificaciones;
 	protected Button ajustes;
 	protected Button cerrarSesion;
+	protected Button registrarse;
+	protected Button iniciarSesion;
 	protected VerticalLayout cuadroPrincipal;
 	protected VerticalLayout secciones;
 	protected Label seccionesLabel;
@@ -54,19 +56,16 @@ public class Comun_registrados_ventana extends Panel {
 	protected Label fechaCreacionSeccion;
 	protected Button borrarSeccion;
 	protected Label numeroTemas;
-	protected Label numeroMensajesEnSeccion;
 	protected HorizontalLayout seccion2;
 	protected Label nombreSeccion2;
 	protected Label fechaCreacionSeccion1;
 	protected Button borrarSeccion1;
 	protected Label numeroTemas1;
-	protected Label numeroMensajesEnSeccion1;
 	protected HorizontalLayout seccion3;
 	protected Label nombreSeccion3;
 	protected Label fechaCreacionSeccion2;
 	protected Button borrarSeccion2;
 	protected Label numeroTemas2;
-	protected Label numeroMensajesEnSeccion2;
 	protected Button pagAtraSecciones;
 	protected Button pagAdeSecciones;
 	protected VerticalLayout temasRecientes;
@@ -117,6 +116,7 @@ public class Comun_registrados_ventana extends Panel {
 	protected Label temaPerteneciente2;
 	protected Label horaYDiaMensaje2;
 	protected Label numLikesMensaje2;
+	protected VerticalLayout cuadroSeccion;
 	protected TextField nombreSeccion;
 	protected Button crearSeccion;
 

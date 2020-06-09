@@ -2,6 +2,7 @@ package com.mds.database;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Arrays;
 import java.util.Vector;
 
 import org.orm.PersistentException;
@@ -37,12 +38,31 @@ public class BD_Temas implements Serializable {
 		CUPersistentManager.instance().disposePersistentManager();
 	}
 
-	public void Privatizar_tema(int aID) {
-		throw new UnsupportedOperationException();
+	public void Privatizar_tema(int aID) throws PersistentException{
+		PersistentTransaction t= CUPersistentManager.instance().getSession().beginTransaction();
+		try {
+			com.mds.database.Temas tem=TemasDAO.loadTemasByORMID(aID);
+			tem.setPublico(false);
+			TemasDAO.save(tem);
+			t.commit();
+		}catch (Exception e) {
+			t.rollback();
+		}
+		CUPersistentManager.instance().disposePersistentManager();
 	}
 
-	public void Dar_me_gusta(int aID) {
-		throw new UnsupportedOperationException();
+	public void Dar_me_gusta(int aID, int aIDU) throws PersistentException {
+		PersistentTransaction t= CUPersistentManager.instance().getSession().beginTransaction();
+		try {
+			com.mds.database.Temas tem = TemasDAO.loadTemasByORMID(aID);
+			tem.leGustaTema.add(UsuarioDAO.loadUsuarioByORMID(aIDU));
+			tem.setNum__likes(tem.getNum__likes()+1);
+			TemasDAO.save(tem);
+			t.commit();
+		}catch (Exception e) {
+			t.rollback();
+		}
+		CUPersistentManager.instance().disposePersistentManager();
 	}
 
 	public void Crear_tema(String titulo, String contenido, Usuario usu, Secciones sec) throws PersistentException{
@@ -55,8 +75,7 @@ public class BD_Temas implements Serializable {
 			tem.setContenido(contenido);
 			tem.setPertenece_a(SeccionesDAO.loadSeccionesByORMID(sec.getORMID()));
 			tem.setPublico(true);
-			tem.setFechaTema(new Date(0));
-			
+			tem.setFechaTema(new java.util.Date());
 			TemasDAO.save(tem);
 			t.commit();
 			
@@ -88,6 +107,33 @@ public class BD_Temas implements Serializable {
 			t.rollback();
 		}
 		CUPersistentManager.instance().disposePersistentManager();
+		return tem;
+	}
+
+	public boolean leGustaTema(int aID, int aIDU) throws PersistentException {
+		PersistentTransaction t= CUPersistentManager.instance().getSession().beginTransaction();
+		try {
+			com.mds.database.Temas tem= TemasDAO.loadTemasByORMID(aID);
+			if(tem.leGustaTema.contains(UsuarioDAO.loadUsuarioByORMID(aIDU))) return true;
+		}catch (Exception e) {
+			t.rollback();
+			return false;
+		}
+		CUPersistentManager.instance().disposePersistentManager();
+		return false;
+	}
+
+	public Temas[] cargarTemasRecientes() throws PersistentException{
+		com.mds.database.Temas[] tem=null;
+		PersistentTransaction t= CUPersistentManager.instance().getSession().beginTransaction();
+		try {
+			tem = TemasDAO.listTemasByQuery(null, null);
+			if(tem.length==0) { CUPersistentManager.instance().disposePersistentManager(); return null;}
+		}catch (Exception e) {
+			t.rollback();
+		}
+		CUPersistentManager.instance().disposePersistentManager();
+		if(tem.length>3) return Arrays.copyOfRange(tem, 0, 2);
 		return tem;
 	}
 }

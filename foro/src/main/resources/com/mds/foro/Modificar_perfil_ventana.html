@@ -2,24 +2,23 @@
 <html>
  <head>
   <meta charset="UTF-8">
-  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;valo&quot;}">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
   <vaadin-panel size-full>
    <vaadin-vertical-layout size-full>
-    <vaadin-vertical-layout responsive size-auto :middle :center>
-     <vaadin-label caption="Modificar información" responsive plain-text :bottom :center :expand></vaadin-label>
-     <vaadin-text-field caption="Nombre completo" width-full _id="nombreCompleto" :center></vaadin-text-field>
-     <vaadin-text-field caption="Háblanos acerca de ti" width-full _id="descripcion" :center></vaadin-text-field>
-     <vaadin-button icon="fonticon://Vaadin-Icons/e80d" plain-text _id="adjuntarFoto" :center>
-       Adjuntar foto de perfil 
-     </vaadin-button>
+    <vaadin-vertical-layout style-name="cuadro" responsive size-auto :middle :center>
+     <vaadin-label style-name="tituloP" responsive plain-text :bottom :center :expand>
+       Modificar información 
+     </vaadin-label>
+     <vaadin-text-field caption="Nombre completo" style-name="barra" width-full _id="nombreCompleto" :center></vaadin-text-field>
+     <vaadin-text-field caption="Háblanos acerca de ti" style-name="barra" width-full _id="descripcion" :center></vaadin-text-field>
      <vaadin-horizontal-layout :center>
-      <vaadin-button plain-text _id="salir">
+      <vaadin-button style-name="boton" plain-text _id="salir">
         Volver 
       </vaadin-button>
-      <vaadin-button plain-text _id="modificar">
+      <vaadin-button style-name="boton" plain-text _id="modificar">
         Modificar 
       </vaadin-button>
      </vaadin-horizontal-layout>

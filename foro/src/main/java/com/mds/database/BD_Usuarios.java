@@ -10,16 +10,14 @@ public class BD_Usuarios implements Serializable {
 	public BD_Pincipal _bD_Pincipal;
 	public Vector<Usuario> _unnamed_Usuario_ = new Vector<Usuario>();
 
-	public void Enviar_solicitud_amistad(int aID) {
-		throw new UnsupportedOperationException();
-	}
 
 	public void Eliminar_amigo(int aID, int aID2) throws PersistentException{
 		PersistentTransaction t=UsuarioDAO.loadUsuarioByORMID(aID).amigo_de.getPersistentManager().getSession().beginTransaction();
 		try {
 			com.mds.database.Usuario usuario=UsuarioDAO.loadUsuarioByORMID(aID);
-			usuario.amigo_de.remove(UsuarioDAO.loadUsuarioByORMID(aID2));
-			usuario.es_amigo_de.remove(UsuarioDAO.loadUsuarioByORMID(aID2));
+			com.mds.database.Usuario usuario2=UsuarioDAO.loadUsuarioByORMID(aID2);
+			usuario.amigo_de.remove(usuario2);
+			usuario2.amigo_de.remove(usuario);
 			UsuarioDAO.save(usuario);
 			t.commit();
 		}catch (Exception e) {
@@ -227,12 +225,39 @@ public class BD_Usuarios implements Serializable {
 		com.mds.database.Usuario[] usu=null;
 		PersistentTransaction t= CUPersistentManager.instance().getSession().beginTransaction();
 		try {
-			usu = UsuarioDAO.listUsuarioByQuery("Id_usuario != \'"+aID+"\'", null);
+			usu = UsuarioDAO.listUsuarioByQuery("Id_usuario != \'"+aID+"\' AND Reportado = \'"+0+"\' AND Eliminado = \'"+0+"\'", null);
 			if(usu.length==0) { CUPersistentManager.instance().disposePersistentManager(); return null;}
 		}catch (Exception e) {
 			t.rollback();
 		}
 		CUPersistentManager.instance().disposePersistentManager();
 		return usu;
+	}
+
+	public void modificarFoto(int aID, String foto)throws PersistentException{
+		PersistentTransaction t= CUPersistentManager.instance().getSession().beginTransaction();
+		try {
+			com.mds.database.Usuario usu=UsuarioDAO.loadUsuarioByORMID(aID);
+			usu.setFoto(foto);
+			UsuarioDAO.save(usu);
+			t.commit();
+		}catch (Exception e) {
+			t.rollback();
+		}
+		CUPersistentManager.instance().disposePersistentManager();
+	}
+
+	public boolean existeUsuario(String aUsuario) throws PersistentException{
+		com.mds.database.Usuario[] usu=null;
+		PersistentTransaction t= CUPersistentManager.instance().getSession().beginTransaction();
+		try {
+			usu = UsuarioDAO.listUsuarioByQuery("Email = \'"+aUsuario+"\'", null);
+			if(usu.length==0) { CUPersistentManager.instance().disposePersistentManager(); return false;}
+			else { CUPersistentManager.instance().disposePersistentManager(); return true; }
+		}catch (Exception e) {
+			t.rollback();
+		}
+		CUPersistentManager.instance().disposePersistentManager();
+		return false;
 	}
 }

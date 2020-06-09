@@ -26,8 +26,8 @@ public class Ajustes_ventana extends Panel {
 	protected VerticalLayout main;
 	protected Image logo;
 	protected Label nombreUsuario;
+	protected Button inicio;
 	protected Button notificaciones;
-	protected Button ajustes;
 	protected Button cerrarSesion;
 	protected Button perfil;
 	protected Button usuariosB;
