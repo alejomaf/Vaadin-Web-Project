@@ -45,4 +45,6 @@ public interface iAdministrador extends iUsuario_Registrado, iComun_privilegiado
 	public com.mds.database.Mensaje[] cargarMensajesRecientes();
 	
 	public void notificacionMensajeEnviado(int aIDU, int aIDT);
+	
+	public com.mds.database.Mensaje getMensaje(int aIDU);
 }

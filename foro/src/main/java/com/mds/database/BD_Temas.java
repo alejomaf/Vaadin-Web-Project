@@ -55,9 +55,11 @@ public class BD_Temas implements Serializable {
 		PersistentTransaction t= CUPersistentManager.instance().getSession().beginTransaction();
 		try {
 			com.mds.database.Temas tem = TemasDAO.loadTemasByORMID(aID);
-			tem.leGustaTema.add(UsuarioDAO.loadUsuarioByORMID(aIDU));
+			com.mds.database.Usuario usu=UsuarioDAO.loadUsuarioByORMID(aIDU);
+			usu.gustaT.add(tem);
 			tem.setNum__likes(tem.getNum__likes()+1);
 			TemasDAO.save(tem);
+			UsuarioDAO.save(usu);
 			t.commit();
 		}catch (Exception e) {
 			t.rollback();

@@ -18,8 +18,10 @@ public class BD_Mensajes implements Serializable{
 		PersistentTransaction t= CUPersistentManager.instance().getSession().beginTransaction();
 		try {
 			com.mds.database.Mensaje men = MensajeDAO.loadMensajeByORMID(aID);
-			men.es_gustado.add(UsuarioDAO.loadUsuarioByORMID(aIDU));
+			com.mds.database.Usuario usu= UsuarioDAO.loadUsuarioByORMID(aIDU);
+			usu.gustaM.add(men);
 			men.setNum_likes(men.getNum_likes()+1);
+			UsuarioDAO.save(usu);
 			MensajeDAO.save(men);
 			t.commit();
 		}catch (Exception e) {
@@ -98,6 +100,18 @@ public class BD_Mensajes implements Serializable{
 		}
 		CUPersistentManager.instance().disposePersistentManager();
 		if(men.length>3) return Arrays.copyOfRange(men, 0, 2);
+		return men;
+	}
+
+	public Mensaje getMensaje(int aIDU) throws PersistentException {
+		com.mds.database.Mensaje men=null;
+		PersistentTransaction t= CUPersistentManager.instance().getSession().beginTransaction();
+		try {
+			men = MensajeDAO.loadMensajeByORMID(aIDU);
+		}catch (Exception e) {
+			t.rollback();
+		}
+		CUPersistentManager.instance().disposePersistentManager();
 		return men;
 	}
 }

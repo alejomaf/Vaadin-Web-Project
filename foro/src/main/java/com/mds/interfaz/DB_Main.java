@@ -291,7 +291,7 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 		}
 	}
 
-	public void aceptarSolicitud(Usuario usu, int aID) {
+	public void aceptarSolicitud(int usu, int aID) {
 		try {
 			not.aceptarSolicitud(usu, aID);
 		} catch (PersistentException e) {
@@ -365,6 +365,16 @@ public class DB_Main implements iCorreo, iAdministrador, iUsuario_Registrado, iC
 		} catch (PersistentException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public Mensaje getMensaje(int aIDU) {
+		try {
+			return men.getMensaje(aIDU);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

@@ -13,9 +13,6 @@ import com.vaadin.server.FileResource;
 import com.vaadin.ui.*;
 import com.vaadin.ui.Button.ClickEvent;
 public class Ajustes extends Ajustes_ventana{
-	public Modificar_perfil _unnamed_Modificar_perfil_;
-	public Modificar_contrasena _unnamed_Modificar_contrasena_;
-	public Amigos _unnamed_Amigos_;
 
 	iAdministrador iadm=new DB_Main();
 	public iComun_usuarios icu=new DB_Main();
@@ -28,6 +25,11 @@ public class Ajustes extends Ajustes_ventana{
 	public int maxPag;
 	public int numEleUltPos;
 	public int tipoLista;
+	public int pagActNot=1;
+	com.mds.database.Notificaciones[] notis;
+	int primeraNotificacion;
+	public int maxPagNot;
+	public int secUltNot;
 	
 	
 	public Ajustes(com.mds.database.Usuario usu, int vis) {
@@ -87,7 +89,7 @@ public class Ajustes extends Ajustes_ventana{
 		});
 		notificaciones.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				
+				cargaNotificaciones();
 			}
 		});
 		
@@ -128,6 +130,17 @@ public class Ajustes extends Ajustes_ventana{
 		usuariosBaneados.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				setContent(new Ajustes(usu,5));
+			}
+		});
+		notificacionAdelante.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				pagAdelanteNot();
+			}
+		});
+		
+		notificacionAtras.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				pagAtrasNot();
 			}
 		});
 	}
@@ -326,6 +339,146 @@ public class Ajustes extends Ajustes_ventana{
 		}
 	}
 	
+	public void cargaNotificaciones() {
+		notis=iadm.cargarNotificaciones(usu.getORMID());
+		if(listaNotificaciones.isVisible()) {
+			listaNotificaciones.setVisible(false);
+		}else {
+			if(notis==null) return;
+			listaNotificaciones.setVisible(true);
+			cargarListaNotificaciones();
+		}
+	}
+	public void cargarListaNotificaciones() {
+		configuracionNot();
+		cargarPagNot();
+	}
 	
+	public void cargarPartesNotificaciones(int num) {
+		notificacion1.setVisible(false);
+		notificacion2.setVisible(false);
+		notificacion3.setVisible(false);
+		switch(num) {
+		case 0: 
+			break;
+		case 1:
+			notificacion1.setVisible(true);
+			break;
+		case 2:
+			notificacion1.setVisible(true);
+			notificacion2.setVisible(true);
+			break;
+		case 3:
+			notificacion1.setVisible(true);
+			notificacion2.setVisible(true);
+			notificacion3.setVisible(true);
+			break;
+		}
+	}
+	
+	public void configuracionNot() {
+		if(notis==null||notis.length<=3) {
+			maxPagNot=1;
+			if(notis==null) secUltNot=0;
+			else secUltNot=notis.length;
+		}
+		else if(notis.length%3==0) {
+			maxPagNot=(notis.length/3);
+			secUltNot=3;
+		}else {
+			maxPagNot=((notis.length/3)+1);
+			secUltNot=notis.length%3;
+		}
+	}
+	
+	public void cargarPagNot() {
+		if(pagActNot==maxPagNot) {
+			cargarPartesNotificaciones(secUltNot);
+			escrituraNot(pagActNot, secUltNot);
+			notificacionAdelante.setVisible(false);
+			if (pagActNot!=1) notificacionAtras.setVisible(true);
+		}
+		else {
+			if(pagActNot!=1) notificacionAtras.setVisible(true);
+			else notificacionAtras.setVisible(false);
+			notificacionAdelante.setVisible(true);
+			cargarPartesNotificaciones(3);
+			escrituraNot(pagActNot, 3);
+		}
+	}
+	
+	public void escrituraNot(int pag, int num){
+		//Formula optimizada para calcular la posicion de la seccion
+		primeraNotificacion=3*(pag-1);
+		
+		if(num<3) {
+			if(num==2) {
+				asignarValoresNotificaciones(tituloNotificacion, eliminarNotificacion, aceptarNotificacion, visualizarNotificacion, notificacion1);		
+				primeraNotificacion++;
+				asignarValoresNotificaciones(tituloNotificacion1, eliminarNotificacion1, aceptarNotificacion1, visualizarNotificacion1, notificacion2);	
+			}	
+			else asignarValoresNotificaciones(tituloNotificacion, eliminarNotificacion, aceptarNotificacion, visualizarNotificacion, notificacion1);	
+		}
+		else {
+			asignarValoresNotificaciones(tituloNotificacion, eliminarNotificacion, aceptarNotificacion, visualizarNotificacion, notificacion1);		
+			primeraNotificacion++;
+			asignarValoresNotificaciones(tituloNotificacion1, eliminarNotificacion1, aceptarNotificacion1, visualizarNotificacion1, notificacion2);
+			primeraNotificacion++;
+			asignarValoresNotificaciones(tituloNotificacion2, eliminarNotificacion2, aceptarNotificacion2, visualizarNotificacion2, notificacion3);		
+		}
+		
+	}
+	
+	public void pagAdelanteNot() {
+		pagActNot++;
+		cargarPagNot();
+	}
+	
+	public void pagAtrasNot() {
+		pagActNot--;
+		cargarPagNot();
+	}
+	
+	public void asignarValoresNotificaciones(Label tituloN, Button elimN, Button acepN, Button visuN, HorizontalLayout barra) {
+		com.mds.database.Notificaciones not=notis[primeraNotificacion];
+		barra.setVisible(true);
+		
+		String[] descom=not.getTitulo().split(",");
+		
+		if(not.getEnlace().equals("amistad")) {
+			tituloN.setValue(descom[0]);
+			elimN.setVisible(true);
+			elimN.addClickListener(new Button.ClickListener() {
+				public void buttonClick(ClickEvent event) {
+					iadm.borrarNotificacion(not.getORMID());
+					cargaNotificaciones();
+				}
+			});
+			acepN.setVisible(true);
+			acepN.addClickListener(new Button.ClickListener() {
+				public void buttonClick(ClickEvent event) {
+					iadm.aceptarSolicitud(usu.getORMID(), Integer.parseInt(descom[1]));
+					cargaNotificaciones();
+				}
+			});
+		}else {
+			tituloN.setValue(descom[0]+" en: "+iadm.cargarTema(Integer.parseInt(descom[1])).getNombre());
+			elimN.setVisible(true);
+			elimN.addClickListener(new Button.ClickListener() {
+				public void buttonClick(ClickEvent event) {
+					iadm.borrarNotificacion(not.getORMID());
+					cargarListaNotificaciones();
+				}
+			});
+			visuN.setVisible(true);
+			visuN.addClickListener(new Button.ClickListener() {
+				public void buttonClick(ClickEvent event) {
+					setContent(new Tema(usu, iadm.cargarTema(Integer.parseInt(descom[1])).getPertenece_a() , iadm.cargarTema(Integer.parseInt(descom[1]))));
+					iadm.borrarNotificacion(not.getORMID());
+				}
+			});
+		}
+		
+	}
 	
 }

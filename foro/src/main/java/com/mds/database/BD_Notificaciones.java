@@ -56,10 +56,10 @@ public class BD_Notificaciones implements Serializable{
 		CUPersistentManager.instance().disposePersistentManager();
 	}
 
-	public void aceptarSolicitud(Usuario usu, int aID) throws PersistentException{
+	public void aceptarSolicitud(int usu, int aID) throws PersistentException{
 		PersistentTransaction t=CUPersistentManager.instance().getSession().beginTransaction();
 		try {
-			com.mds.database.Usuario usuario=UsuarioDAO.loadUsuarioByORMID(usu.getORMID());
+			com.mds.database.Usuario usuario=UsuarioDAO.loadUsuarioByORMID(usu);
 			com.mds.database.Usuario usuario2=UsuarioDAO.loadUsuarioByORMID(aID);
 			usuario.amigo_de.add(usuario2);
 			usuario2.amigo_de.add(usuario);

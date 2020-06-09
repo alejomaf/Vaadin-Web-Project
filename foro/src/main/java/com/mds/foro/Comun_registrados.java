@@ -35,14 +35,14 @@ public class Comun_registrados extends Comun_registrados_ventana implements Seri
 	public int pagAct=1;
 	public int maxPag;
 	public int secUlt;
-	public int maxPagNot;
-	public int secUltNot;
-	public int pagActNot=1;
+	int primeraSeccion;
 	iAdministrador iadm=new DB_Main();
 	iComun_privilegiados icp=new DB_Main();
+	public int pagActNot=1;
 	com.mds.database.Notificaciones[] notis;
-	int primeraSeccion;
 	int primeraNotificacion;
+	public int maxPagNot;
+	public int secUltNot;
 	
 	public int modo;
 	
@@ -497,8 +497,7 @@ public class Comun_registrados extends Comun_registrados_ventana implements Seri
 			acepN.setVisible(true);
 			acepN.addClickListener(new Button.ClickListener() {
 				public void buttonClick(ClickEvent event) {
-					iadm.aceptarSolicitud(usu, Integer.parseInt(descom[1]));
-					iadm.borrarNotificacion(not.getORMID());
+					iadm.aceptarSolicitud(usu.getORMID(), Integer.parseInt(descom[1]));
 					cargaNotificaciones();
 				}
 			});

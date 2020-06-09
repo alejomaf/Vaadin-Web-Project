@@ -13,22 +13,70 @@
       <vaadin-image source="https://cdn.shortpixel.ai/client/to_webp,q_lossy,ret_img,w_501/https://clenguas.ual.es/wp-content/uploads/2018/11/logo_UAL.jpg" width="150px" _id="logo"></vaadin-image>
       <vaadin-label plain-text _id="nombreUsuario" :middle></vaadin-label>
      </vaadin-horizontal-layout>
-     <vaadin-horizontal-layout style-name="notificacion" :middle :right>
-      <vaadin-button height="37px" plain-text _id="notificaciones">
-        Notificaciones 
-      </vaadin-button>
-      <vaadin-button plain-text _id="ajustes">
-        Ajustes 
-      </vaadin-button>
-      <vaadin-button plain-text _id="cerrarSesion">
-        Cerrar sesión 
-      </vaadin-button>
-      <vaadin-button visible="false" plain-text _id="registrarse">
-        Registrarse 
-      </vaadin-button>
-      <vaadin-button visible="false" plain-text _id="iniciarSesion">
-        Iniciar sesión 
-      </vaadin-button>
+     <vaadin-horizontal-layout :middle :right>
+      <vaadin-vertical-layout visible="false" style-name="notificaciones" spacing="false" size-auto margin="false" _id="listaNotificaciones">
+       <vaadin-horizontal-layout visible="false" style-name="barra" _id="notificacion1">
+        <vaadin-label plain-text _id="tituloNotificacion" :middle :center>
+          Notificación de ejemplo 
+        </vaadin-label>
+        <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" plain-text _id="eliminarNotificacion" :middle :center></vaadin-button>
+        <vaadin-button visible="false" plain-text _id="aceptarNotificacion">
+          ✔ 
+        </vaadin-button>
+        <vaadin-button visible="false" plain-text _id="visualizarNotificacion">
+          👁️ 
+        </vaadin-button>
+       </vaadin-horizontal-layout>
+       <vaadin-horizontal-layout visible="false" style-name="barra" _id="notificacion2">
+        <vaadin-label plain-text _id="tituloNotificacion1" :middle :center>
+          Notificación de ejemplo 
+        </vaadin-label>
+        <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" plain-text _id="eliminarNotificacion1" :middle :center></vaadin-button>
+        <vaadin-button visible="false" plain-text _id="aceptarNotificacion1">
+          ✔ 
+        </vaadin-button>
+        <vaadin-button visible="false" plain-text _id="visualizarNotificacion1">
+          👁️ 
+        </vaadin-button>
+       </vaadin-horizontal-layout>
+       <vaadin-horizontal-layout visible="false" style-name="barra" _id="notificacion3">
+        <vaadin-label plain-text _id="tituloNotificacion2" :middle :center>
+          Notificación de ejemplo 
+        </vaadin-label>
+        <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" plain-text _id="eliminarNotificacion2" :middle :center></vaadin-button>
+        <vaadin-button visible="false" plain-text _id="aceptarNotificacion2">
+          ✔ 
+        </vaadin-button>
+        <vaadin-button visible="false" plain-text _id="visualizarNotificacion2">
+          👁️ 
+        </vaadin-button>
+       </vaadin-horizontal-layout>
+       <vaadin-horizontal-layout :right>
+        <vaadin-button visible="false" style-name="barra" plain-text _id="notificacionAtras">
+          &lt; 
+        </vaadin-button>
+        <vaadin-button visible="false" style-name="barra" plain-text _id="notificacionAdelante">
+          &gt; 
+        </vaadin-button>
+       </vaadin-horizontal-layout>
+      </vaadin-vertical-layout>
+      <vaadin-horizontal-layout style-name="barraSuperior">
+       <vaadin-button height="37px" plain-text _id="notificaciones">
+         Notificaciones 
+       </vaadin-button>
+       <vaadin-button plain-text _id="ajustes">
+         Ajustes 
+       </vaadin-button>
+       <vaadin-button plain-text _id="cerrarSesion">
+         Cerrar sesión 
+       </vaadin-button>
+       <vaadin-button visible="false" plain-text _id="registrarse">
+         Registrarse 
+       </vaadin-button>
+       <vaadin-button visible="false" plain-text _id="iniciarSesion">
+         Iniciar sesión 
+       </vaadin-button>
+      </vaadin-horizontal-layout>
      </vaadin-horizontal-layout>
     </vaadin-horizontal-layout>
     <vaadin-horizontal-layout width-full>

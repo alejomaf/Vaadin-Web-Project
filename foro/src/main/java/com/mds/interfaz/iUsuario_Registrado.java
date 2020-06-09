@@ -6,5 +6,5 @@ public interface iUsuario_Registrado extends iComun_usuarios, iUsuario_propietar
 	
 	public void anadirAmigo(Usuario usu, Usuario usu2);
 
-	public void aceptarSolicitud(Usuario usu, int aID);
+	public void aceptarSolicitud(int usu, int aID);
 }
