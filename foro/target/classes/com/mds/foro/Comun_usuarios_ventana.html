@@ -2,274 +2,65 @@
 <html>
  <head>
   <meta charset="UTF-8">
-  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;valo&quot;}">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
   <vaadin-panel responsive>
-   <vaadin-vertical-layout responsive size-full>
-    <vaadin-horizontal-layout responsive width-full _id="encabezado" :center>
-     <vaadin-image source="https://cdn.shortpixel.ai/client/to_webp,q_lossy,ret_img,w_501/https://clenguas.ual.es/wp-content/uploads/2018/11/logo_UAL.jpg" width="150px"></vaadin-image>
-     <vaadin-horizontal-layout _id="barraSuperior" :middle :right>
-      <vaadin-native-button responsive id="registrarse" width="100px" plain-text _id="registrar">
-        Registrarse 
-      </vaadin-native-button>
-      <vaadin-native-button responsive id="iniciar" width="130px" plain-text _id="iniciar">
-        Iniciar sesión 
-      </vaadin-native-button>
+   <vaadin-vertical-layout style-name="background" responsive size-full>
+    <vaadin-horizontal-layout responsive width-full :center>
+     <vaadin-horizontal-layout>
+      <vaadin-image source="https://cdn.shortpixel.ai/client/to_webp,q_lossy,ret_img,w_501/https://clenguas.ual.es/wp-content/uploads/2018/11/logo_UAL.jpg" width="150px" _id="logo"></vaadin-image>
+      <vaadin-label plain-text _id="nombreUsuario" :middle></vaadin-label>
      </vaadin-horizontal-layout>
+     <vaadin-horizontal-layout _id="tipoUsuario" :middle :right></vaadin-horizontal-layout>
     </vaadin-horizontal-layout>
     <vaadin-horizontal-layout width-full>
      <vaadin-vertical-layout _id="cuadroPrincipal" :expand="4">
-      <vaadin-vertical-layout>
-       <vaadin-label plain-text>
+      <vaadin-vertical-layout style-name="cuadro">
+       <vaadin-label style-name="tituloP" plain-text _id="seccionesLabel">
          Secciones 
        </vaadin-label>
-       <vaadin-horizontal-layout width-full>
-        <vaadin-label plain-text :middle>
-          Nombre de la sección 
-        </vaadin-label>
-        <vaadin-horizontal-layout :middle :right>
-         <vaadin-label plain-text>
-           Creado el 10/03/2020 
-         </vaadin-label>
-         <vaadin-horizontal-layout>
-          <vaadin-label plain-text>
-            Número de temas: 
-          </vaadin-label>
-          <vaadin-label plain-text>
-            x 
-          </vaadin-label>
-         </vaadin-horizontal-layout>
-         <vaadin-horizontal-layout>
-          <vaadin-label plain-text>
-            Número de comentarios: 
-          </vaadin-label>
-          <vaadin-label plain-text>
-            x 
-          </vaadin-label>
-         </vaadin-horizontal-layout>
-        </vaadin-horizontal-layout>
-       </vaadin-horizontal-layout>
-       <vaadin-horizontal-layout width-full>
-        <vaadin-label plain-text>
-          Nombre de la sección 
-        </vaadin-label>
-        <vaadin-horizontal-layout :middle :right>
-         <vaadin-label plain-text>
-           Creado el 10/03/2020 
-         </vaadin-label>
-         <vaadin-horizontal-layout>
-          <vaadin-label plain-text>
-            Número de temas: 
-          </vaadin-label>
-          <vaadin-label plain-text>
-            x 
-          </vaadin-label>
-         </vaadin-horizontal-layout>
-         <vaadin-horizontal-layout>
-          <vaadin-label plain-text>
-            Número de comentarios: 
-          </vaadin-label>
-          <vaadin-label plain-text>
-            x 
-          </vaadin-label>
-         </vaadin-horizontal-layout>
-        </vaadin-horizontal-layout>
-       </vaadin-horizontal-layout>
-       <vaadin-horizontal-layout width-full>
-        <vaadin-label plain-text>
-          Nombre de la sección 
-        </vaadin-label>
-        <vaadin-horizontal-layout :middle :right>
-         <vaadin-label plain-text>
-           Creado el 10/03/2020 
-         </vaadin-label>
-         <vaadin-horizontal-layout>
-          <vaadin-label plain-text>
-            Número de temas: 
-          </vaadin-label>
-          <vaadin-label plain-text>
-            x 
-          </vaadin-label>
-         </vaadin-horizontal-layout>
-         <vaadin-horizontal-layout>
-          <vaadin-label plain-text>
-            Número de comentarios: 
-          </vaadin-label>
-          <vaadin-label plain-text>
-            x 
-          </vaadin-label>
-         </vaadin-horizontal-layout>
-        </vaadin-horizontal-layout>
+       <vaadin-vertical-layout _id="listaDeSecciones"></vaadin-vertical-layout>
+       <vaadin-horizontal-layout :right>
+        <vaadin-button visible="false" plain-text _id="pagAtraSecciones">
+          Página anterior 
+        </vaadin-button>
+        <vaadin-button style-name="boton" plain-text _id="pagAdeSecciones">
+          Siguiente pagina 
+        </vaadin-button>
        </vaadin-horizontal-layout>
       </vaadin-vertical-layout>
-      <vaadin-vertical-layout>
-       <vaadin-label plain-text>
-         Mensajes recientes 
-       </vaadin-label>
-       <vaadin-horizontal-layout width-full>
-        <vaadin-vertical-layout spacing="false" size-auto margin="false">
-         <vaadin-label plain-text>
-           Contenido inicial del mensaje 
-         </vaadin-label>
-         <vaadin-horizontal-layout>
-          <vaadin-label plain-text>
-            Creado por: 
-          </vaadin-label>
-          <vaadin-label plain-text>
-            USUARIO 
-          </vaadin-label>
-         </vaadin-horizontal-layout>
-        </vaadin-vertical-layout>
-        <vaadin-horizontal-layout :middle :right>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false" :middle :center>
-          <vaadin-horizontal-layout>
-           <vaadin-label plain-text>
-             Escrito en: 
-           </vaadin-label>
-           <vaadin-label plain-text>
-             TEMA 
-           </vaadin-label>
-          </vaadin-horizontal-layout>
-          <vaadin-label plain-text :middle :center>
-            a las 15:00 el 10/03/2020 
-          </vaadin-label>
-         </vaadin-vertical-layout>
-         <vaadin-horizontal-layout spacing="false" :middle :right>
-          <vaadin-label plain-text>
-            Número de comentarios: 
-          </vaadin-label>
-          <vaadin-label plain-text>
-            x 
-          </vaadin-label>
-         </vaadin-horizontal-layout>
-         <vaadin-horizontal-layout spacing="false" :middle :right>
-          <vaadin-label plain-text :middle :right>
-            5 
-          </vaadin-label>
-          <vaadin-image source="https://i.pinimg.com/originals/37/9f/00/379f00ceb97d6a0b0672933022755b3a.png" width="30px" :middle></vaadin-image>
-         </vaadin-horizontal-layout>
-        </vaadin-horizontal-layout>
-       </vaadin-horizontal-layout>
-       <vaadin-horizontal-layout width-full>
-        <vaadin-vertical-layout spacing="false" size-auto margin="false">
-         <vaadin-label plain-text>
-           Contenido inicial del mensaje 
-         </vaadin-label>
-         <vaadin-horizontal-layout>
-          <vaadin-label plain-text>
-            Creado por: 
-          </vaadin-label>
-          <vaadin-label plain-text>
-            USUARIO 
-          </vaadin-label>
-         </vaadin-horizontal-layout>
-        </vaadin-vertical-layout>
-        <vaadin-horizontal-layout :middle :right>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false" :middle :center>
-          <vaadin-horizontal-layout>
-           <vaadin-label plain-text>
-             Escrito en: 
-           </vaadin-label>
-           <vaadin-label plain-text>
-             TEMA 
-           </vaadin-label>
-          </vaadin-horizontal-layout>
-          <vaadin-label plain-text :middle :center>
-            a las 15:00 el 10/03/2020 
-          </vaadin-label>
-         </vaadin-vertical-layout>
-         <vaadin-horizontal-layout spacing="false" :middle :right>
-          <vaadin-label plain-text>
-            Número de comentarios: 
-          </vaadin-label>
-          <vaadin-label plain-text>
-            x 
-          </vaadin-label>
-         </vaadin-horizontal-layout>
-         <vaadin-horizontal-layout spacing="false" :middle :right>
-          <vaadin-label plain-text :middle :right>
-            5 
-          </vaadin-label>
-          <vaadin-image source="https://i.pinimg.com/originals/37/9f/00/379f00ceb97d6a0b0672933022755b3a.png" width="30px" :middle></vaadin-image>
-         </vaadin-horizontal-layout>
-        </vaadin-horizontal-layout>
-       </vaadin-horizontal-layout>
-       <vaadin-horizontal-layout width-full>
-        <vaadin-vertical-layout spacing="false" size-auto margin="false">
-         <vaadin-label plain-text>
-           Contenido inicial del mensaje 
-         </vaadin-label>
-         <vaadin-horizontal-layout>
-          <vaadin-label plain-text>
-            Creado por: 
-          </vaadin-label>
-          <vaadin-label plain-text>
-            USUARIO 
-          </vaadin-label>
-         </vaadin-horizontal-layout>
-        </vaadin-vertical-layout>
-        <vaadin-horizontal-layout :middle :right>
-         <vaadin-vertical-layout spacing="false" size-auto margin="false" :middle :center>
-          <vaadin-horizontal-layout>
-           <vaadin-label plain-text>
-             Escrito en: 
-           </vaadin-label>
-           <vaadin-label plain-text>
-             TEMA 
-           </vaadin-label>
-          </vaadin-horizontal-layout>
-          <vaadin-label plain-text :middle :center>
-            a las 15:00 el 10/03/2020 
-          </vaadin-label>
-         </vaadin-vertical-layout>
-         <vaadin-horizontal-layout spacing="false" :middle :right>
-          <vaadin-label plain-text>
-            Número de comentarios: 
-          </vaadin-label>
-          <vaadin-label plain-text>
-            x 
-          </vaadin-label>
-         </vaadin-horizontal-layout>
-         <vaadin-horizontal-layout spacing="false" :middle :right>
-          <vaadin-label plain-text :middle :right>
-            5 
-          </vaadin-label>
-          <vaadin-image source="https://i.pinimg.com/originals/37/9f/00/379f00ceb97d6a0b0672933022755b3a.png" width="30px" :middle></vaadin-image>
-         </vaadin-horizontal-layout>
-        </vaadin-horizontal-layout>
-       </vaadin-horizontal-layout>
-      </vaadin-vertical-layout>
-      <vaadin-vertical-layout>
-       <vaadin-label plain-text>
+      <vaadin-vertical-layout style-name="cuadro" _id="temasRecientes">
+       <vaadin-label style-name="tituloP" plain-text _id="temasLabel">
          Temas recientes 
        </vaadin-label>
-       <vaadin-horizontal-layout width-full :center>
+       <vaadin-horizontal-layout visible="false" style-name="barra" width-full _id="tema1">
         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-         <vaadin-label plain-text>
+         <vaadin-label plain-text _id="nombreTema">
            Nombre del tema 
          </vaadin-label>
          <vaadin-horizontal-layout>
           <vaadin-label plain-text>
             Creado por: 
           </vaadin-label>
-          <vaadin-label plain-text>
+          <vaadin-label plain-text _id="usuarioCreadorTema">
             USUARIO CREADOR 
           </vaadin-label>
          </vaadin-horizontal-layout>
         </vaadin-vertical-layout>
         <vaadin-horizontal-layout :middle :right>
+         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" style-name="circle" plain-text _id="borrarTema"></vaadin-button>
          <vaadin-vertical-layout spacing="false" size-auto margin="false">
           <vaadin-horizontal-layout>
            <vaadin-label plain-text>
              Último mensaje de: 
            </vaadin-label>
-           <vaadin-label plain-text>
+           <vaadin-label plain-text _id="ultimoMensaje">
              USUARIO 
            </vaadin-label>
           </vaadin-horizontal-layout>
-          <vaadin-label plain-text :middle :center>
+          <vaadin-label plain-text _id="diaEnviado" :middle :center>
             Enviado el 10/03/2020 
           </vaadin-label>
          </vaadin-vertical-layout>
@@ -277,43 +68,44 @@
           <vaadin-label plain-text>
             Número de comentarios: 
           </vaadin-label>
-          <vaadin-label plain-text>
+          <vaadin-label plain-text _id="numeroComentariosTema">
             x 
           </vaadin-label>
          </vaadin-horizontal-layout>
          <vaadin-horizontal-layout spacing="false" :middle :right>
-          <vaadin-label plain-text :middle :right>
+          <vaadin-label plain-text _id="numeroLikesTema" :middle :right>
             5 
           </vaadin-label>
           <vaadin-image source="https://i.pinimg.com/originals/37/9f/00/379f00ceb97d6a0b0672933022755b3a.png" width="30px" :middle></vaadin-image>
          </vaadin-horizontal-layout>
         </vaadin-horizontal-layout>
        </vaadin-horizontal-layout>
-       <vaadin-horizontal-layout width-full>
+       <vaadin-horizontal-layout visible="false" style-name="barra" width-full _id="tema2">
         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-         <vaadin-label plain-text>
+         <vaadin-label plain-text _id="nombreTema1">
            Nombre del tema 
          </vaadin-label>
          <vaadin-horizontal-layout>
           <vaadin-label plain-text>
             Creado por: 
           </vaadin-label>
-          <vaadin-label plain-text>
+          <vaadin-label plain-text _id="usuarioCreadorTema1">
             USUARIO CREADOR 
           </vaadin-label>
          </vaadin-horizontal-layout>
         </vaadin-vertical-layout>
         <vaadin-horizontal-layout :middle :right>
+         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" style-name="circle" plain-text _id="borrarTema1"></vaadin-button>
          <vaadin-vertical-layout spacing="false" size-auto margin="false">
           <vaadin-horizontal-layout>
            <vaadin-label plain-text>
              Último mensaje de: 
            </vaadin-label>
-           <vaadin-label plain-text>
+           <vaadin-label plain-text _id="ultimoMensaje1">
              USUARIO 
            </vaadin-label>
           </vaadin-horizontal-layout>
-          <vaadin-label plain-text :middle :center>
+          <vaadin-label plain-text _id="diaEnviado1" :middle :center>
             Enviado el 10/03/2020 
           </vaadin-label>
          </vaadin-vertical-layout>
@@ -321,43 +113,44 @@
           <vaadin-label plain-text>
             Número de comentarios: 
           </vaadin-label>
-          <vaadin-label plain-text>
+          <vaadin-label plain-text _id="numeroComentariosTema1">
             x 
           </vaadin-label>
          </vaadin-horizontal-layout>
          <vaadin-horizontal-layout spacing="false" :middle :right>
-          <vaadin-label plain-text :middle :right>
+          <vaadin-label plain-text _id="numeroLikesTema1" :middle :right>
             5 
           </vaadin-label>
           <vaadin-image source="https://i.pinimg.com/originals/37/9f/00/379f00ceb97d6a0b0672933022755b3a.png" width="30px" :middle></vaadin-image>
          </vaadin-horizontal-layout>
         </vaadin-horizontal-layout>
        </vaadin-horizontal-layout>
-       <vaadin-horizontal-layout width-full>
+       <vaadin-horizontal-layout visible="false" style-name="barra" width-full _id="tema3">
         <vaadin-vertical-layout spacing="false" size-auto margin="false">
-         <vaadin-label plain-text>
+         <vaadin-label plain-text _id="nombreTema2">
            Nombre del tema 
          </vaadin-label>
          <vaadin-horizontal-layout>
           <vaadin-label plain-text>
             Creado por: 
           </vaadin-label>
-          <vaadin-label plain-text>
+          <vaadin-label plain-text _id="usuarioCreadorTema2">
             USUARIO CREADOR 
           </vaadin-label>
          </vaadin-horizontal-layout>
         </vaadin-vertical-layout>
         <vaadin-horizontal-layout :middle :right>
+         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" style-name="circle" plain-text _id="borrarTema2"></vaadin-button>
          <vaadin-vertical-layout spacing="false" size-auto margin="false">
           <vaadin-horizontal-layout>
            <vaadin-label plain-text>
              Último mensaje de: 
            </vaadin-label>
-           <vaadin-label plain-text>
+           <vaadin-label plain-text _id="ultimoMensaje2">
              USUARIO 
            </vaadin-label>
           </vaadin-horizontal-layout>
-          <vaadin-label plain-text :middle :center>
+          <vaadin-label plain-text _id="diaEnviado2" :middle :center>
             Enviado el 10/03/2020 
           </vaadin-label>
          </vaadin-vertical-layout>
@@ -365,12 +158,12 @@
           <vaadin-label plain-text>
             Número de comentarios: 
           </vaadin-label>
-          <vaadin-label plain-text>
+          <vaadin-label plain-text _id="numeroComentariosTema2">
             x 
           </vaadin-label>
          </vaadin-horizontal-layout>
          <vaadin-horizontal-layout spacing="false" :middle :right>
-          <vaadin-label plain-text :middle :right>
+          <vaadin-label plain-text _id="numeroLikesTema2" :middle :right>
             5 
           </vaadin-label>
           <vaadin-image source="https://i.pinimg.com/originals/37/9f/00/379f00ceb97d6a0b0672933022755b3a.png" width="30px" :middle></vaadin-image>
@@ -378,33 +171,141 @@
         </vaadin-horizontal-layout>
        </vaadin-horizontal-layout>
       </vaadin-vertical-layout>
-     </vaadin-vertical-layout>
-     <vaadin-vertical-layout size-auto :right :expand>
-      <vaadin-label plain-text>
-        Usuarios conectados 
-      </vaadin-label>
-      <vaadin-vertical-layout size-auto>
-       <vaadin-label plain-text>
-         Usuario 
+      <vaadin-vertical-layout style-name="cuadro" _id="mensajesRecientes">
+       <vaadin-label style-name="tituloP" plain-text>
+         Mensajes recientes 
        </vaadin-label>
-       <vaadin-label plain-text>
-         Usuario 
-       </vaadin-label>
-       <vaadin-label plain-text>
-         Usuario 
-       </vaadin-label>
-       <vaadin-label plain-text>
-         Usuario 
-       </vaadin-label>
-       <vaadin-label plain-text>
-         Usuario 
-       </vaadin-label>
-       <vaadin-label plain-text>
-         Usuario 
-       </vaadin-label>
+       <vaadin-horizontal-layout visible="false" style-name="barra" width-full _id="mensaje1">
+        <vaadin-vertical-layout spacing="false" size-auto margin="false">
+         <vaadin-label plain-text _id="contenidoInicial">
+           Contenido inicial del mensaje 
+         </vaadin-label>
+         <vaadin-horizontal-layout>
+          <vaadin-label plain-text>
+            Creado por: 
+          </vaadin-label>
+          <vaadin-label plain-text _id="usuarioCreadorMensaje">
+            USUARIO 
+          </vaadin-label>
+         </vaadin-horizontal-layout>
+        </vaadin-vertical-layout>
+        <vaadin-horizontal-layout :middle :right>
+         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" style-name="circle" plain-text _id="borrarMensaje"></vaadin-button>
+         <vaadin-vertical-layout spacing="false" size-auto margin="false" :middle :center>
+          <vaadin-horizontal-layout>
+           <vaadin-label plain-text>
+             Escrito en: 
+           </vaadin-label>
+           <vaadin-label plain-text _id="temaPerteneciente">
+             TEMA 
+           </vaadin-label>
+          </vaadin-horizontal-layout>
+          <vaadin-label plain-text _id="horaYDiaMensaje" :middle :center>
+            a las 15:00 el 10/03/2020 
+          </vaadin-label>
+         </vaadin-vertical-layout>
+         <vaadin-horizontal-layout spacing="false" :middle :right></vaadin-horizontal-layout>
+         <vaadin-horizontal-layout spacing="false" :middle :right>
+          <vaadin-label plain-text _id="numLikesMensaje" :middle :right>
+            5 
+          </vaadin-label>
+          <vaadin-image source="https://i.pinimg.com/originals/37/9f/00/379f00ceb97d6a0b0672933022755b3a.png" width="30px" :middle></vaadin-image>
+         </vaadin-horizontal-layout>
+        </vaadin-horizontal-layout>
+       </vaadin-horizontal-layout>
+       <vaadin-horizontal-layout visible="false" style-name="barra" width-full _id="mensaje2">
+        <vaadin-vertical-layout spacing="false" size-auto margin="false">
+         <vaadin-label plain-text _id="contenidoInicial1">
+           Contenido inicial del mensaje 
+         </vaadin-label>
+         <vaadin-horizontal-layout>
+          <vaadin-label plain-text>
+            Creado por: 
+          </vaadin-label>
+          <vaadin-label plain-text _id="usuarioCreadorMensaje1">
+            USUARIO 
+          </vaadin-label>
+         </vaadin-horizontal-layout>
+        </vaadin-vertical-layout>
+        <vaadin-horizontal-layout :middle :right>
+         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" style-name="circle" plain-text _id="borrarMensaje1"></vaadin-button>
+         <vaadin-vertical-layout spacing="false" size-auto margin="false" :middle :center>
+          <vaadin-horizontal-layout>
+           <vaadin-label plain-text>
+             Escrito en: 
+           </vaadin-label>
+           <vaadin-label plain-text _id="temaPerteneciente1">
+             TEMA 
+           </vaadin-label>
+          </vaadin-horizontal-layout>
+          <vaadin-label plain-text _id="horaYDiaMensaje1" :middle :center>
+            a las 15:00 el 10/03/2020 
+          </vaadin-label>
+         </vaadin-vertical-layout>
+         <vaadin-horizontal-layout spacing="false" :middle :right></vaadin-horizontal-layout>
+         <vaadin-horizontal-layout spacing="false" :middle :right>
+          <vaadin-label plain-text _id="numLikesMensaje1" :middle :right>
+            5 
+          </vaadin-label>
+          <vaadin-image source="https://i.pinimg.com/originals/37/9f/00/379f00ceb97d6a0b0672933022755b3a.png" width="30px" :middle></vaadin-image>
+         </vaadin-horizontal-layout>
+        </vaadin-horizontal-layout>
+       </vaadin-horizontal-layout>
+       <vaadin-horizontal-layout visible="false" style-name="barra" width-full _id="mensaje3">
+        <vaadin-vertical-layout spacing="false" size-auto margin="false">
+         <vaadin-label plain-text _id="contenidoInicial2">
+           Contenido inicial del mensaje 
+         </vaadin-label>
+         <vaadin-horizontal-layout>
+          <vaadin-label plain-text>
+            Creado por: 
+          </vaadin-label>
+          <vaadin-label plain-text _id="usuarioCreadorMensaje2">
+            USUARIO 
+          </vaadin-label>
+         </vaadin-horizontal-layout>
+        </vaadin-vertical-layout>
+        <vaadin-horizontal-layout :middle :right>
+         <vaadin-button icon="fonticon://Vaadin-Icons/e80b" style-name="circle" plain-text _id="borrarMensaje2"></vaadin-button>
+         <vaadin-vertical-layout spacing="false" size-auto margin="false" :middle :center>
+          <vaadin-horizontal-layout>
+           <vaadin-label plain-text>
+             Escrito en: 
+           </vaadin-label>
+           <vaadin-label plain-text _id="temaPerteneciente2">
+             TEMA 
+           </vaadin-label>
+          </vaadin-horizontal-layout>
+          <vaadin-label plain-text _id="horaYDiaMensaje2" :middle :center>
+            a las 15:00 el 10/03/2020 
+          </vaadin-label>
+         </vaadin-vertical-layout>
+         <vaadin-horizontal-layout spacing="false" :middle :right></vaadin-horizontal-layout>
+         <vaadin-horizontal-layout spacing="false" :middle :right>
+          <vaadin-label plain-text _id="numLikesMensaje2" :middle :right>
+            5 
+          </vaadin-label>
+          <vaadin-image source="https://i.pinimg.com/originals/37/9f/00/379f00ceb97d6a0b0672933022755b3a.png" width="30px" :middle></vaadin-image>
+         </vaadin-horizontal-layout>
+        </vaadin-horizontal-layout>
+       </vaadin-horizontal-layout>
       </vaadin-vertical-layout>
      </vaadin-vertical-layout>
     </vaadin-horizontal-layout>
+    <vaadin-vertical-layout visible="false" style-name="cuadroI" _id="cuadroSeccion">
+     <vaadin-label style-name="titulo" plain-text>
+       Crear sección 
+     </vaadin-label>
+     <vaadin-horizontal-layout width-full>
+      <vaadin-label plain-text>
+        Nombre de la sección 
+      </vaadin-label>
+      <vaadin-text-field width-full _id="nombreSeccion" :expand="2"></vaadin-text-field>
+     </vaadin-horizontal-layout>
+     <vaadin-button style-name="boton" plain-text _id="crearSeccion" :right>
+       Crear 
+     </vaadin-button>
+    </vaadin-vertical-layout>
    </vaadin-vertical-layout>
   </vaadin-panel>
  </body>

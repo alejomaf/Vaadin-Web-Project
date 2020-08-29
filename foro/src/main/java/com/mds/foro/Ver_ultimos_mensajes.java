@@ -2,7 +2,6 @@ package com.mds.foro;
 
 import java.awt.List;
 import java.util.Vector;
-import com.mds.foro.Mensaje_No_Interaccion;
 
 public class Ver_ultimos_mensajes {
 	private List _mensajes;

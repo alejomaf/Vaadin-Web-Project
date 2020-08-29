@@ -6,27 +6,23 @@
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
-  <vaadin-absolute-layout>
-   <vaadin-vertical-layout size-auto>
+  <vaadin-horizontal-layout>
+   <vaadin-vertical-layout size-auto :middle :center>
+    <vaadin-vertical-layout visible="false" style-name="notificaciones" spacing="false" size-auto margin="false" _id="listaNotificaciones"></vaadin-vertical-layout>
     <vaadin-horizontal-layout>
-     <vaadin-label plain-text :middle :center>
-       Notificación de ejemplo 
-     </vaadin-label>
-     <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" plain-text :middle :center></vaadin-button>
-    </vaadin-horizontal-layout>
-    <vaadin-horizontal-layout>
-     <vaadin-label plain-text :middle :center>
-       Notificación de ejemplo 
-     </vaadin-label>
-     <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" plain-text :middle :center></vaadin-button>
-    </vaadin-horizontal-layout>
-    <vaadin-horizontal-layout>
-     <vaadin-label plain-text :middle :center>
-       Notificación de ejemplo 
-     </vaadin-label>
-     <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" plain-text :middle :center></vaadin-button>
+     <vaadin-button visible="false" style-name="barra" plain-text _id="notificacionAtras">
+       &lt; 
+     </vaadin-button>
+     <vaadin-button visible="false" style-name="barra" plain-text _id="notificacionAdelante">
+       &gt; 
+     </vaadin-button>
     </vaadin-horizontal-layout>
    </vaadin-vertical-layout>
-  </vaadin-absolute-layout>
+   <vaadin-horizontal-layout _id="barraBotones" :middle :center>
+    <vaadin-button height="37px" plain-text _id="notificaciones" :middle :center>
+      Notificaciones 
+    </vaadin-button>
+   </vaadin-horizontal-layout>
+  </vaadin-horizontal-layout>
  </body>
 </html>

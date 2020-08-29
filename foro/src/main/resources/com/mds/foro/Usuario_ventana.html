@@ -6,6 +6,87 @@
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
-  <vaadin-vertical-layout size-full></vaadin-vertical-layout>
+  <vaadin-vertical-layout size-full>
+   <vaadin-vertical-layout _id="componentes">
+    <vaadin-horizontal-layout width-full _id="datosPerfil">
+     <vaadin-vertical-layout size-auto>
+      <vaadin-image source="https://www.pngitem.com/pimgs/m/168-1689599_male-user-filled-icon-user-icon-100-x.png" width="80px" height="80px" _id="fotoUsuario" :middle :center></vaadin-image>
+     </vaadin-vertical-layout>
+     <vaadin-vertical-layout size-auto>
+      <vaadin-horizontal-layout style-name="barra">
+       <vaadin-label plain-text>
+         Nombre de completo: 
+       </vaadin-label>
+       <vaadin-label plain-text _id="nombreCompleto">
+         NOMBRE USUARIO 
+       </vaadin-label>
+      </vaadin-horizontal-layout>
+      <vaadin-horizontal-layout style-name="barra">
+       <vaadin-label plain-text>
+         Correo electrónico: 
+       </vaadin-label>
+       <vaadin-label plain-text _id="email">
+         CORREO ELECTRÓNICO 
+       </vaadin-label>
+      </vaadin-horizontal-layout>
+      <vaadin-horizontal-layout style-name="barra">
+       <vaadin-label plain-text>
+         Descripción: 
+       </vaadin-label>
+       <vaadin-label plain-text _id="descripcion">
+         DESCRIPCIÓN 
+       </vaadin-label>
+      </vaadin-horizontal-layout>
+     </vaadin-vertical-layout>
+    </vaadin-horizontal-layout>
+   </vaadin-vertical-layout>
+   <vaadin-horizontal-layout>
+    <vaadin-button visible="false" plain-text _id="desbanear">
+      Desbanear 
+    </vaadin-button>
+    <vaadin-button visible="false" plain-text _id="banear">
+      Banear 
+    </vaadin-button>
+    <vaadin-button visible="false" plain-text _id="quitarReporte">
+      Quitar reporte 
+    </vaadin-button>
+    <vaadin-button visible="false" plain-text _id="reportar">
+      Reportar 
+    </vaadin-button>
+    <vaadin-button visible="false" plain-text _id="hacerModerador">
+      Hacer moderador 
+    </vaadin-button>
+    <vaadin-button visible="false" plain-text _id="quitarModerador">
+      Quitar moderador 
+    </vaadin-button>
+    <vaadin-button visible="false" plain-text _id="enviarSolicitud">
+      Enviar solicitud de amistad 
+    </vaadin-button>
+    <vaadin-button visible="false" plain-text _id="eliminarAmigo">
+      Eliminar amigo 
+    </vaadin-button>
+    <vaadin-button visible="false" plain-text _id="cerrarVista">
+      Cerrar vista 
+    </vaadin-button>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout visible="false" width-full _id="configuracionUsuario">
+    <vaadin-vertical-layout size-auto>
+     <vaadin-horizontal-layout>
+      <vaadin-label plain-text>
+        Notificaciones por correo 
+      </vaadin-label>
+      <vaadin-check-box height="19px" _id="notificacionesPorCorreo"></vaadin-check-box>
+     </vaadin-horizontal-layout>
+    </vaadin-vertical-layout>
+    <vaadin-horizontal-layout :middle :right>
+     <vaadin-button style-name="boton" plain-text _id="modificarContrasena">
+       Modificar contraseña 
+     </vaadin-button>
+     <vaadin-button style-name="boton" plain-text _id="modificarPerfil">
+       Modificar perfil 
+     </vaadin-button>
+    </vaadin-horizontal-layout>
+   </vaadin-horizontal-layout>
+  </vaadin-vertical-layout>
  </body>
 </html>

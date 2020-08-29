@@ -14806,6 +14806,14 @@ div.v-layout.v-horizontal.v-widget {
 	border-width: 1px;
 }
 
+.mytheme .cuadroPropio {
+	background-color: #B6C1D4;
+	border-radius: 20%;
+	border-color: black;
+	border-style: groove;
+	border-width: 1px;
+}
+
 .mytheme .tituloP {
 	text-shadow: 2px 2px;
 	text-decoration: underline;

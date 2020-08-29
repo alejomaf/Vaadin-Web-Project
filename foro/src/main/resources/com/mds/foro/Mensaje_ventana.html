@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.1.5">
+ </head>
+ <body>
+  <vaadin-horizontal-layout style-name="cuadro" width-full>
+   <vaadin-vertical-layout size-auto :middle>
+    <vaadin-image source="https://www.pngitem.com/pimgs/m/168-1689599_male-user-filled-icon-user-icon-100-x.png" width="80px" height="80px" _id="fotoMensaje" :middle :center></vaadin-image>
+    <vaadin-label plain-text _id="usuarioMensaje" :middle :center>
+      Usuario creador 
+    </vaadin-label>
+   </vaadin-vertical-layout>
+   <vaadin-vertical-layout :middle :expand="4">
+    <vaadin-horizontal-layout width-full>
+     <vaadin-horizontal-layout :right>
+      <vaadin-label plain-text>
+        Escrito 
+      </vaadin-label>
+      <vaadin-label plain-text _id="fechaMensaje">
+        a las 15:00 el 10/03/2020 
+      </vaadin-label>
+     </vaadin-horizontal-layout>
+    </vaadin-horizontal-layout>
+    <vaadin-label style-name="barra" width-full plain-text _id="contenidoMensaje">
+      Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. Esto es un texto de ejemplo. 
+    </vaadin-label>
+    <vaadin-horizontal-layout :bottom :right>
+     <vaadin-button icon="fonticon://Vaadin-Icons/e80b" style-name="circle" plain-text _id="borrarMensaje"></vaadin-button>
+     <vaadin-button icon="fonticon://Vaadin-Icons/e792" style-name="boton" plain-text _id="citarMensaje">
+       Citar 
+     </vaadin-button>
+     <vaadin-horizontal-layout spacing="false">
+      <vaadin-label plain-text _id="numLikesMensaje" :middle :right>
+        5 
+      </vaadin-label>
+      <vaadin-button style-name="circle" plain-text _id="likeMensaje">
+        👍 
+      </vaadin-button>
+     </vaadin-horizontal-layout>
+    </vaadin-horizontal-layout>
+   </vaadin-vertical-layout>
+  </vaadin-horizontal-layout>
+ </body>
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.1.5">
+ </head>
+ <body>
+  <vaadin-panel responsive>
+   <vaadin-vertical-layout responsive size-full _id="background">
+    <vaadin-horizontal-layout responsive width-full :center>
+     <vaadin-horizontal-layout>
+      <vaadin-image source="https://cdn.shortpixel.ai/client/to_webp,q_lossy,ret_img,w_501/https://clenguas.ual.es/wp-content/uploads/2018/11/logo_UAL.jpg" width="150px" _id="logo"></vaadin-image>
+      <vaadin-label plain-text _id="nombreUsuario" :middle></vaadin-label>
+     </vaadin-horizontal-layout>
+     <vaadin-horizontal-layout :middle :right>
+      <vaadin-vertical-layout visible="false" style-name="notificaciones" spacing="false" size-auto margin="false" _id="listaNotificaciones">
+       <vaadin-horizontal-layout visible="false" style-name="barra" _id="notificacion1">
+        <vaadin-label plain-text _id="tituloNotificacion" :middle :center>
+          Notificación de ejemplo 
+        </vaadin-label>
+        <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" plain-text _id="eliminarNotificacion" :middle :center></vaadin-button>
+        <vaadin-button visible="false" plain-text _id="aceptarNotificacion">
+          ✔ 
+        </vaadin-button>
+        <vaadin-button visible="false" plain-text _id="visualizarNotificacion">
+          👁️ 
+        </vaadin-button>
+       </vaadin-horizontal-layout>
+       <vaadin-horizontal-layout visible="false" style-name="barra" _id="notificacion2">
+        <vaadin-label plain-text _id="tituloNotificacion1" :middle :center>
+          Notificación de ejemplo 
+        </vaadin-label>
+        <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" plain-text _id="eliminarNotificacion1" :middle :center></vaadin-button>
+        <vaadin-button visible="false" plain-text _id="aceptarNotificacion1">
+          ✔ 
+        </vaadin-button>
+        <vaadin-button visible="false" plain-text _id="visualizarNotificacion1">
+          👁️ 
+        </vaadin-button>
+       </vaadin-horizontal-layout>
+       <vaadin-horizontal-layout visible="false" style-name="barra" _id="notificacion3">
+        <vaadin-label plain-text _id="tituloNotificacion2" :middle :center>
+          Notificación de ejemplo 
+        </vaadin-label>
+        <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" plain-text _id="eliminarNotificacion2" :middle :center></vaadin-button>
+        <vaadin-button visible="false" plain-text _id="aceptarNotificacion2">
+          ✔ 
+        </vaadin-button>
+        <vaadin-button visible="false" plain-text _id="visualizarNotificacion2">
+          👁️ 
+        </vaadin-button>
+       </vaadin-horizontal-layout>
+       <vaadin-horizontal-layout :right>
+        <vaadin-button visible="false" style-name="barra" plain-text _id="notificacionAtras">
+          &lt; 
+        </vaadin-button>
+        <vaadin-button visible="false" style-name="barra" plain-text _id="notificacionAdelante">
+          &gt; 
+        </vaadin-button>
+       </vaadin-horizontal-layout>
+      </vaadin-vertical-layout>
+      <vaadin-horizontal-layout _id="tipoUsuario"></vaadin-horizontal-layout>
+     </vaadin-horizontal-layout>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout width-full>
+     <vaadin-vertical-layout :expand="4">
+      <vaadin-horizontal-layout style-name="barra">
+       <vaadin-label plain-text>
+         Leyendo 
+       </vaadin-label>
+       <vaadin-horizontal-layout _id="foroLink">
+        <vaadin-label plain-text>
+          Foro &gt; 
+        </vaadin-label>
+       </vaadin-horizontal-layout>
+       <vaadin-horizontal-layout _id="seccionLink1">
+        <vaadin-label plain-text _id="seccion1"></vaadin-label>
+       </vaadin-horizontal-layout>
+      </vaadin-horizontal-layout>
+      <vaadin-vertical-layout style-name="cuadro">
+       <vaadin-horizontal-layout>
+        <vaadin-label style-name="tituloP" plain-text>
+          Temas de 
+        </vaadin-label>
+        <vaadin-horizontal-layout _id="seccionLink">
+         <vaadin-label style-name="tituloP" plain-text _id="seccion"></vaadin-label>
+        </vaadin-horizontal-layout>
+       </vaadin-horizontal-layout>
+       <vaadin-vertical-layout _id="listaTemas"></vaadin-vertical-layout>
+       <vaadin-horizontal-layout :right>
+        <vaadin-button visible="false" style-name="boton" plain-text _id="pagAtrTema">
+          Página anterior 
+        </vaadin-button>
+        <vaadin-button style-name="boton" plain-text _id="pagAdeTema">
+          Siguiente página 
+        </vaadin-button>
+       </vaadin-horizontal-layout>
+      </vaadin-vertical-layout>
+     </vaadin-vertical-layout>
+    </vaadin-horizontal-layout>
+   </vaadin-vertical-layout>
+  </vaadin-panel>
+ </body>
+</html>

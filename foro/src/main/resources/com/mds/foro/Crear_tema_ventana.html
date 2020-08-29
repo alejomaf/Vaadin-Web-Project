@@ -2,23 +2,27 @@
 <html>
  <head>
   <meta charset="UTF-8">
-  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;java&quot;,&quot;THEME&quot;:&quot;valo&quot;}">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
-  <vaadin-vertical-layout>
-   <vaadin7-label size-auto plain-text>
+  <vaadin-vertical-layout style-name="cuadroI" _id="cuadroTema">
+   <vaadin-label style-name="titulo" plain-text>
      Crear tema 
-   </vaadin7-label>
-   <vaadin-label plain-text>
-     Título 
    </vaadin-label>
-   <vaadin-text-field width-full></vaadin-text-field>
-   <vaadin-label plain-text>
-     Subtítulo 
-   </vaadin-label>
-   <vaadin-text-area width-full></vaadin-text-area>
-   <vaadin-button plain-text :middle :right>
+   <vaadin-horizontal-layout width-full>
+    <vaadin-label plain-text :expand>
+      Título del tema 
+    </vaadin-label>
+    <vaadin-text-field width-full _id="tituloTema" :expand="2"></vaadin-text-field>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width-full>
+    <vaadin-label plain-text :expand>
+      Introducción del tema 
+    </vaadin-label>
+    <vaadin-text-area width-full _id="contenidoTema" :expand="2"></vaadin-text-area>
+   </vaadin-horizontal-layout>
+   <vaadin-button style-name="boton" plain-text _id="crearTema" :right>
      Crear tema 
    </vaadin-button>
   </vaadin-vertical-layout>

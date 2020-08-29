@@ -6,98 +6,10 @@
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
-  <vaadin-panel responsive>
-   <vaadin-vertical-layout responsive size-full>
-    <vaadin-horizontal-layout responsive width-full :center>
-     <vaadin-image source="https://cdn.shortpixel.ai/client/to_webp,q_lossy,ret_img,w_501/https://clenguas.ual.es/wp-content/uploads/2018/11/logo_UAL.jpg" width="150px"></vaadin-image>
-     <vaadin-horizontal-layout :middle :right>
-      <vaadin-native-button responsive width-full plain-text>
-        Notificaciones 
-      </vaadin-native-button>
-      <vaadin-native-button responsive width-full plain-text>
-        Ajustes 
-      </vaadin-native-button>
-      <vaadin-native-button responsive width-full plain-text>
-        Cerrar sesión 
-      </vaadin-native-button>
-     </vaadin-horizontal-layout>
-    </vaadin-horizontal-layout>
-    <vaadin-horizontal-layout width-full>
-     <vaadin-vertical-layout :expand>
-      <vaadin-button width-full plain-text>
-        Perfil 
-      </vaadin-button>
-      <vaadin-button width-full plain-text>
-        Lista de usuarios 
-      </vaadin-button>
-      <vaadin-button width-full plain-text>
-        Amigos 
-      </vaadin-button>
-      <vaadin-button width-full plain-text>
-        Usuarios reportados 
-      </vaadin-button>
-     </vaadin-vertical-layout>
-     <vaadin-vertical-layout :middle :right :expand="4">
-      <vaadin-label plain-text>
-        Datos del usuario 
-      </vaadin-label>
-      <vaadin-horizontal-layout>
-       <vaadin-label plain-text>
-         Nombre de usuario: 
-       </vaadin-label>
-       <vaadin-label plain-text>
-         NOMBRE USUARIO 
-       </vaadin-label>
-      </vaadin-horizontal-layout>
-      <vaadin-horizontal-layout>
-       <vaadin-label plain-text>
-         Nombre completo: 
-       </vaadin-label>
-       <vaadin-label plain-text>
-         NOMBRE COMPLETO 
-       </vaadin-label>
-      </vaadin-horizontal-layout>
-      <vaadin-horizontal-layout>
-       <vaadin-label plain-text>
-         Acerca de ti: 
-       </vaadin-label>
-       <vaadin-label plain-text>
-         Texto acerca del usuario 
-       </vaadin-label>
-      </vaadin-horizontal-layout>
-      <vaadin-horizontal-layout>
-       <vaadin-label plain-text :middle :center>
-         Foto de perfil: 
-       </vaadin-label>
-       <vaadin-image source="https://www.stickpng.com/assets/images/585e4beacb11b227491c3399.png" width="100px" :middle :center></vaadin-image>
-      </vaadin-horizontal-layout>
-      <vaadin-horizontal-layout width-full>
-       <vaadin-vertical-layout size-auto>
-        <vaadin-horizontal-layout>
-         <vaadin-label plain-text>
-           Perfil público 
-         </vaadin-label>
-         <vaadin-check-box></vaadin-check-box>
-        </vaadin-horizontal-layout>
-        <vaadin-horizontal-layout>
-         <vaadin-label plain-text>
-           Notificaciones por correo 
-         </vaadin-label>
-         <vaadin-check-box></vaadin-check-box>
-        </vaadin-horizontal-layout>
-       </vaadin-vertical-layout>
-       <vaadin-horizontal-layout :middle :right>
-        <vaadin-native-button plain-text>
-          Modificar contraseña 
-        </vaadin-native-button>
-        <vaadin-native-button plain-text>
-          Modificar perfil 
-        </vaadin-native-button>
-       </vaadin-horizontal-layout>
-      </vaadin-horizontal-layout>
-     </vaadin-vertical-layout>
-    </vaadin-horizontal-layout>
-   </vaadin-vertical-layout>
-  </vaadin-panel>
+  <vaadin-vertical-layout style-name="cuadro">
+   <vaadin-button style-name="boton" width-full plain-text _id="usuariosReportados">
+     Usuarios reportados 
+   </vaadin-button>
+  </vaadin-vertical-layout>
  </body>
 </html>

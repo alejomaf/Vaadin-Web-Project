@@ -6,11 +6,17 @@
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
-  <vaadin-horizontal-layout>
-   <vaadin-label plain-text :middle :center>
+  <vaadin-horizontal-layout style-name="barra" _id="notificacion1">
+   <vaadin-label plain-text _id="tituloNotificacion" :middle :center>
      Notificación de ejemplo 
    </vaadin-label>
-   <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" plain-text :middle :center></vaadin-button>
+   <vaadin-button icon="fonticon://Vaadin-Icons/e7ad" plain-text _id="eliminarNotificacion" :middle :center></vaadin-button>
+   <vaadin-button visible="false" plain-text _id="aceptarNotificacion">
+     ✔ 
+   </vaadin-button>
+   <vaadin-button visible="false" plain-text _id="visualizarNotificacion">
+     👁️ 
+   </vaadin-button>
   </vaadin-horizontal-layout>
  </body>
 </html>
