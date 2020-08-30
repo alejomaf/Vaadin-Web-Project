@@ -6,6 +6,7 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Link;
 import com.vaadin.ui.declarative.Design;
 
 /** 
@@ -24,6 +25,8 @@ public class Mensaje_ventana extends HorizontalLayout {
 	protected Label usuarioMensaje;
 	protected Label fechaMensaje;
 	protected Label contenidoMensaje;
+	protected Image imagen;
+	protected Link videoAdjunto;
 	protected Button borrarMensaje;
 	protected Button citarMensaje;
 	protected Label numLikesMensaje;

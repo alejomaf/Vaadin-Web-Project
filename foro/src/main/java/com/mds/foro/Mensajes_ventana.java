@@ -35,6 +35,8 @@ public class Mensajes_ventana extends Panel {
 	protected Label tituloTema;
 	protected Label fechaTema;
 	protected Label contenidoTema;
+	protected Button ocultarTema;
+	protected Button mostrarTema;
 	protected Button borrarTema;
 	protected Label numComentariosTema;
 	protected Label numLikesTema;

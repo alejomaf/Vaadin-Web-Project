@@ -37,6 +37,7 @@ public class Usuario_ventana extends VerticalLayout {
 	protected Button enviarSolicitud;
 	protected Button eliminarAmigo;
 	protected Button cerrarVista;
+	protected Button verUltimosMensajes;
 	protected HorizontalLayout configuracionUsuario;
 	protected CheckBox notificacionesPorCorreo;
 	protected Button modificarContrasena;

@@ -9,14 +9,14 @@
   <vaadin-vertical-layout size-full>
    <vaadin-vertical-layout responsive size-auto :middle :center>
     <vaadin-label caption="Recordar contraseña" responsive plain-text :bottom :center :expand></vaadin-label>
-    <vaadin-text-field caption="Correo electrónico" responsive :bottom :center :expand></vaadin-text-field>
+    <vaadin-text-field caption="Correo electrónico" responsive _id="correoElectronico" :bottom :center :expand></vaadin-text-field>
     <vaadin-horizontal-layout :center>
-     <vaadin-native-button responsive width="140px" plain-text>
+     <vaadin-button plain-text _id="iniciarSesion">
        Iniciar sesión 
-     </vaadin-native-button>
-     <vaadin-native-button responsive width="140px" plain-text>
+     </vaadin-button>
+     <vaadin-button plain-text _id="recuperar">
        Recuperar 
-     </vaadin-native-button>
+     </vaadin-button>
     </vaadin-horizontal-layout>
    </vaadin-vertical-layout>
   </vaadin-vertical-layout>

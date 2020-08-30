@@ -6,11 +6,13 @@
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
-  <vaadin-vertical-layout style-name="cuadroI" _id="cuadroMensaje">
+  <vaadin-vertical-layout style-name="cuadroI">
    <vaadin-label style-name="titulo" plain-text>
      Escribir comentario 
    </vaadin-label>
    <vaadin-text-area width-full _id="contenidoComentario"></vaadin-text-area>
+   <vaadin-text-field caption="Adjuntar imagen" width-full _id="adjuntarImagen"></vaadin-text-field>
+   <vaadin-text-field caption="Adjuntar video" width-full _id="adjuntarVideo"></vaadin-text-field>
    <vaadin-button style-name="boton" plain-text _id="enviarComentario" :middle :right>
      Enviar comentario 
    </vaadin-button>

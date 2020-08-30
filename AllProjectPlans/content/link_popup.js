@@ -346,7 +346,7 @@ function resetPopupForReference() {
 
 		var row = popup.insertRow(popup.rows.length)
 		var imgPopupCell = row.insertCell(0);
-		imgPopupCell.innerHTML="<div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/FileReference.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/FileReference.png'); background-repeat: no-repeat;\"></div>&nbsp;"+name;
+		imgPopupCell.innerHTML="<div style=\"display: flex; align-items: center;\"><div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/FileReference.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/FileReference.png'); background-repeat: no-repeat;\"></div>&nbsp;"+name+"</div>";
 		imgPopupCell.valign="middle";
 		if (url == null) {
 			imgPopupCell.className="PopupMenuRowNonSelectable";
@@ -369,7 +369,7 @@ function resetPopupForReference() {
 
 		var row = popup.insertRow(popup.rows.length)
 		var imgPopupCell = row.insertCell(0);
-		imgPopupCell.innerHTML="<div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/FolderReference.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/FolderReference.png'); background-repeat: no-repeat;\"></div>&nbsp;"+name;
+		imgPopupCell.innerHTML="<div style=\"display: flex; align-items: center;\"><div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/FolderReference.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/FolderReference.png'); background-repeat: no-repeat;\"></div>&nbsp;"+name+"</div>";
 		imgPopupCell.valign="middle";
 		if (url == null) {
 			imgPopupCell.className="PopupMenuRowNonSelectable";
@@ -392,7 +392,7 @@ function resetPopupForReference() {
 		if (name == null || name == '') {
 			name = destination;
 		}
-		imgPopupCell.innerHTML="<div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UrlReference.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UrlReference.png'); background-repeat: no-repeat;\"></div>&nbsp;"+name
+		imgPopupCell.innerHTML="<div style=\"display: flex; align-items: center;\"><div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UrlReference.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UrlReference.png'); background-repeat: no-repeat;\"></div>&nbsp;"+name+"</div>";
 		imgPopupCell.valign="middle"
 		imgPopupCell.destination=destination;
 		imgPopupCell.className="PopupMenuRowDeselected";
@@ -411,7 +411,7 @@ function resetPopupForReference() {
 							
 		var row = popup.insertRow(popup.rows.length)
 		var imgPopupCell = row.insertCell(0);
-		imgPopupCell.innerHTML="<div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(" + imgSrc + ") !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "'); background-repeat: no-repeat;\"></div>&nbsp;"+name
+		imgPopupCell.innerHTML="<div style=\"display: flex; align-items: center;\"><div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(" + imgSrc + ") !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "'); background-repeat: no-repeat;\"></div>&nbsp;"+name+"</div>";
 		imgPopupCell.valign="middle"
 		imgPopupCell.className="PopupMenuRowDeselected";
 		imgPopupCell.onmouseover= function onmouseover(event) { this.className="PopupMenuRowSelected"; };
@@ -439,7 +439,7 @@ function resetPopupForReference() {
 		var row = popup.insertRow(popup.rows.length)
 		var row = popup.insertRow(popup.rows.length)
 		var imgPopupCell = row.insertCell(0);
-		imgPopupCell.innerHTML="<div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(" + imgSrc + ") !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "'); background-repeat: no-repeat;\"></div>&nbsp;"+name
+		imgPopupCell.innerHTML="<div style=\"display: flex; align-items: center;\"><div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(" + imgSrc + ") !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "'); background-repeat: no-repeat;\"></div>&nbsp;"+name+"</div>";
 		imgPopupCell.valign="middle"
 		imgPopupCell.destination=url
 		imgPopupCell.className="PopupMenuRowDeselected";
@@ -461,7 +461,7 @@ function resetPopupForReference() {
 		var row = popup.insertRow(popup.rows.length)
 		var row = popup.insertRow(popup.rows.length)
 		var imgPopupCell = row.insertCell(0);
-		imgPopupCell.innerHTML="<div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(" + imgSrc + ") !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "'); background-repeat: no-repeat;\"></div>&nbsp;"+name
+		imgPopupCell.innerHTML="<div style=\"display: flex; align-items: center;\"><div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(" + imgSrc + ") !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "'); background-repeat: no-repeat;\"></div>&nbsp;"+name+"</div>";
 		imgPopupCell.valign="middle"
 		imgPopupCell.destination=url
 		imgPopupCell.className="PopupMenuRowDeselected";
@@ -489,7 +489,7 @@ function resetPopupForSubdiagram() {
 		
 		var row = popup.insertRow(popup.rows.length)
 		var imgPopupCell = row.insertCell(0);
-		imgPopupCell.innerHTML="<div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(" + imgSrc + ") !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "'); background-repeat: no-repeat;\"></div>&nbsp;"+name
+		imgPopupCell.innerHTML="<div style=\"display: flex; align-items: center;\"><div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(" + imgSrc + ") !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "'); background-repeat: no-repeat;\"></div>&nbsp;"+name+"</div>";
 		imgPopupCell.valign="middle"
 		imgPopupCell.destination=url
 		imgPopupCell.className="PopupMenuRowDeselected";
@@ -583,6 +583,42 @@ function adjustPopupPositionForSpotLightTable() {
 	movePopupPositionToSpecificPosition(cursorX,cursorY);
 }
 
+function showTermsPopup(imageId, event, terms) {
+	clearLinkPopupContent();
+	
+	movePopupPositionToCursorPosition(imageId, event);
+
+	var popup = document.getElementById("linkPopupMenuTable");
+	
+	// terms
+	for (j = 0 ; j < terms.length ; j++) {
+		var term = terms[j].split("/");
+		var name = term[0];
+		var iconName = term[1];
+		var imgSrc = '../images/icons/'+iconName+'.png';
+		
+		var row = popup.insertRow(popup.rows.length)
+		var imgPopupCell = row.insertCell(0);
+		imgPopupCell.innerHTML="<div style=\"display: flex; align-items: center;\"><div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(" + imgSrc + ") !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "'); background-repeat: no-repeat;\"></div>&nbsp;"+name+"</div>";
+		imgPopupCell.valign="middle";
+		imgPopupCell.className="PopupMenuRowDeselected";
+		imgPopupCell.onmouseover= function onmouseover(event) { this.className="PopupMenuRowSelected"; };
+		imgPopupCell.onmouseout= function onmouseover(event) { this.className="PopupMenuRowDeselected"; };
+		
+		var href = term[2];
+		imgPopupCell['data-href'] = href;
+		
+		if (term.length > 4 && term[3] === 'action' && term[4] === 'popupTerm') {
+			imgPopupCell.onclick= function onclick(event) { popupTerm(this['data-termHref']);hideLinkPopup(); };
+		}
+		else {
+			imgPopupCell.onclick= function onclick(event) { window.open(this['data-href'],'_self');hideLinkPopup(); };
+		}
+	}
+	
+	showLinkPopup();
+}
+
 function showLinkPopup(){
 	
 	hideVpLink();
@@ -644,7 +680,7 @@ function addPopupItem(popup, shapeUrlNameType) {
 						
 	var row = popup.insertRow(popup.rows.length)
 	var imgPopupCell = row.insertCell(0);
-	imgPopupCell.innerHTML="<div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(" + imgSrc + ") !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "'); background-repeat: no-repeat;\"></div>&nbsp;"+name
+	imgPopupCell.innerHTML="<div style=\"display: flex; align-items: center;\"><div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(" + imgSrc + ") !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "'); background-repeat: no-repeat;\"></div>&nbsp;"+name+"</div>";
 	imgPopupCell.valign="middle";
 	imgPopupCell.destination=url;
 	imgPopupCell.className="PopupMenuRowDeselected";
@@ -685,7 +721,7 @@ function resetPopupForZachmanCellDiagrams(lCellId, lValues) {
 		
 		var row = popup.insertRow(popup.rows.length);
 		var imgPopupCell = row.insertCell(0);
-		imgPopupCell.innerHTML="<div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(" + imgSrc + ") !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "'); background-repeat: no-repeat;\"></div>&nbsp;"+name;
+		imgPopupCell.innerHTML="<div style=\"display: flex; align-items: center;\"><div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(" + imgSrc + ") !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "'); background-repeat: no-repeat;\"></div>&nbsp;"+name+"</div>";
 		imgPopupCell.valign="middle";
 		imgPopupCell.destination=url;
 		imgPopupCell.className="PopupMenuRowDeselected";
@@ -1034,7 +1070,7 @@ function showReferencedBys(invokerId, refByDiagrams, refByModels) {
 									
 				var row = popup.insertRow(popup.rows.length)
 				var imgPopupCell = row.insertCell(0);
-				imgPopupCell.innerHTML="<div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(" + imgSrc + ") !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "'); background-repeat: no-repeat;\"></div>&nbsp;"+name
+				imgPopupCell.innerHTML="<div style=\"display: flex; align-items: center;\"><div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(" + imgSrc + ") !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "'); background-repeat: no-repeat;\"></div>&nbsp;"+name+"</div>";
 				imgPopupCell.valign="middle"
 				imgPopupCell.className="PopupMenuRowDeselected";
 				imgPopupCell.onmouseover= function onmouseover(event) { this.className="PopupMenuRowSelected"; };
@@ -1062,7 +1098,7 @@ function showReferencedBys(invokerId, refByDiagrams, refByModels) {
 				var row = popup.insertRow(popup.rows.length)
 				var row = popup.insertRow(popup.rows.length)
 				var imgPopupCell = row.insertCell(0);
-				imgPopupCell.innerHTML="<div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(" + imgSrc + ") !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "'); background-repeat: no-repeat;\"></div>&nbsp;"+name
+				imgPopupCell.innerHTML="<div style=\"display: flex; align-items: center;\"><div style=\"float: left; width: 18px !important;height: 18px !important;background-image:url(" + imgSrc + ") !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + imgSrc + "'); background-repeat: no-repeat;\"></div>&nbsp;"+name+"</div>";
 				imgPopupCell.valign="middle"
 				imgPopupCell.destination=url
 				imgPopupCell.className="PopupMenuRowDeselected";

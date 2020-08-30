@@ -42,6 +42,7 @@ public class MyUI extends UI {
 		navigator.addView(MAINVIEW, new Comun_usuarios());
 		navigator.addView("login", new Iniciar_Sesion());
 		navigator.addView("register", new Registrarse());
+		navigator.addView("recordarContrasena", new Recordar_contrasena());
 		
 		cargarPaginas();
 	}
@@ -53,7 +54,7 @@ public class MyUI extends UI {
 		if(sec!=null) {
 			for(com.mds.database.Secciones secAux: sec) {
 				navigator.addView("seccion/"+secAux.getORMID(), new com.mds.foro.Temas(secAux));
-				Temas[] tem=iadm.cargarTema(secAux);
+				Temas[] tem=iadm.cargarTodosLosTemas(secAux.getORMID());
 				if(tem!=null) {
 					for (com.mds.database.Temas temAux: tem) {
 						navigator.addView("seccion/"+secAux.getORMID()+"/tema/"+temAux.getORMID(), new com.mds.foro.Mensajes(secAux, temAux));
